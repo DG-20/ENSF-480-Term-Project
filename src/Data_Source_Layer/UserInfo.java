@@ -1,7 +1,9 @@
 package Data_Source_Layer;
 
+import Entity.User;
 import Strategy_Layer.Singleton;
 
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -9,14 +11,23 @@ import java.util.*;
  */
 public class UserInfo implements Database {
 
+    private Connection dbConnect;
+
     /**
      * Default constructor
+     * Initializes a connection and initializes the list of logins,names, and passwords stored in the Singleton users
      */
     public UserInfo() {
+        initializeConnection();
+        users = Singleton.getInstance();
+        ArrayList<User> users = getAllUsers();
+        for (User u: users) {
+            users.add(u);
+        }
     }
 
     /**
-     * 
+     * Singleton design pattern. Holds the list of all users in the database
      */
     private Singleton users;
 
@@ -26,74 +37,87 @@ public class UserInfo implements Database {
     private boolean valid;
 
 
-
-
-
-
     /**
      * @param email 
      * @param password 
-     * @param userType 
-     * @return
+     * @param userType
+     * @return Return true if the user has valid login credentials, otherwise return false.
+     * Checks and validates a user's login details of a certain user type.
      */
     public boolean validation(String email, String password, String userType) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
+        ArrayList<User> myUsers = users.getRegisteredUsers();
+        for (int i = 0; i < myUsers.size(); i++) {
+            String userEmail = myUsers.get(i).getEmail();
+            String userPassword = myUsers.get(i).getPassword();
+            String usersType = myUsers.get(i).getType();
+            if (email.equals(userEmail) && userPassword.equals(password) && userType.equals(usersType))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * @param email 
-     * @return
+     * @return The name of the landlod associated with their login email.
      */
     public String retrieveLandlordsName(String email) {
-        // TODO implement here
-        return "";
+        String name = "";
+        ArrayList<User> myUsers = users.getRegisteredUsers();
+        for (User u: myUsers) {
+            if (u.getType().equals("Landlord") && u.getEmail().equals(email)) {
+                name = u.getName();
+            }
+        }
+        return name;
     }
 
-    /**
-     * 
-     */
-    public void UserInfo() {
-        // TODO implement here
+    public ArrayList<User> getAllUsers() {
+        ArrayList<User> u = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM user";
+            Statement stmt = dbConnect.createStatement();
+            ResultSet set = stmt.executeQuery(query);
+            while (set.next()) {
+                String email = set.getString("Email");
+                String pswd = set.getString("Password");
+                String name = set.getString("Name");
+                String type = set.getString("Type");
+                User user = new User();
+                u.add(user);
+            }
+            stmt.close();
+            set.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 
+
     /**
-     * @return
+     * Attempts to Close the connection to the database
      */
     public void close() {
-        // TODO implement here
-        return null;
+        try{
+            dbConnect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+
     /**
-     * @return
+     * Attempts to intialize a connection to the database
      */
     public void initializeConnection() {
-        // TODO implement here
-        return null;
-    }
+        try{
+            this.dbConnect = DriverManager.getConnection(Database.DBURL, USERNAME, PASSWORD);
 
-    /**
-     * @return
-     */
-    public void close() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public void initializeConnection() {
-        // TODO implement here
-        return null;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 }

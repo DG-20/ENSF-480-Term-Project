@@ -9,32 +9,32 @@ import java.util.*;
 public interface Database {
 
     /**
-     * 
+     *
      */
-    private Connection dbConnect;
 
     /**
-     * 
+     * The JDBC URL to the Database
      */
-     final String DBURL = "":
+     final String DBURL = "jdbc:mysql://127.0.0.1:3306/?user=ORPMS";
 
     /**
-     * 
+     * The username for the Database
      */
     final String USERNAME = "ORPMS";
 
     /**
-     * 
+     * The password for the Database
      */
     final String PASSWORD = "ensf480";
 
     /**
-     * @return
+     * Closes connection to the database
+     *
      */
     public void close();
 
     /**
-     * @return
+     * Opens a connection to the daatabase
      */
     public void initializeConnection();
 
