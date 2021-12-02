@@ -259,6 +259,7 @@ public class PropertyInventory implements Database {
                     "WHERE PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + period + " DAY)";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
+            set.next();
             count = set.getInt(1);
             stmt.close();
             set.close();
@@ -280,6 +281,7 @@ public class PropertyInventory implements Database {
                     "WHERE PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + period +" DAY) AND property.Status = 'Rented'";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
+            set.next();
             count = set.getInt(1);
             stmt.close();
             set.close();
@@ -299,6 +301,7 @@ public class PropertyInventory implements Database {
                     "WHERE PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + period +" DAY) AND property.Status = 'Active'";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
+            set.next();
             count = set.getInt(1);
             stmt.close();
             set.close();
@@ -320,6 +323,7 @@ public class PropertyInventory implements Database {
                     "WHERE property.Status = 'Active'";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
+            set.next();
             count = set.getInt(1);
             stmt.close();
             set.close();
