@@ -1,46 +1,22 @@
-package Entity;
+package Business_Layer;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Property {
-
-    /**
-     * Default constructor
-     */
-    public Property() {
-    }
-
-    /**
-     * 
-     */
-    public void bool;
-
-    /**
-     * 
-     */
     private int daysPaidRemaining;
-
-    /**
-     * 
-     */
     private String status;
+    private int numBedrooms;
+    private int numBathrooms;
+    private boolean furnished;
+    private String quadrant;
+    private int ID;
+    private String address;
+    private String email;
+    private int feeToPost;
+    private String expDate;
+    private String postedDate;
 
-    public void getBool() {
-        return bool;
-    }
-
-    public void setBool(void bool) {
-        this.bool = bool;
-    }
-
-    public int getDaysPaidRemaining() {
-        return daysPaidRemaining;
-    }
-
-    public Property(int daysPaidRemaining, String status, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, int ID, String address, String email, int feeToPost) {
+    public Property(int daysPaidRemaining, String status, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, int ID, String address, String email, int feeToPost, String posted_date, String exp_date) {
         this.daysPaidRemaining = daysPaidRemaining;
         this.status = status;
         this.numBedrooms = numBedrooms;
@@ -51,6 +27,15 @@ public class Property {
         this.address = address;
         this.email = email;
         this.feeToPost = feeToPost;
+        this.postedDate = posted_date;
+        this.expDate = exp_date;
+    }
+
+    public Property() {
+    }
+
+    public int getDaysPaidRemaining() {
+        return daysPaidRemaining;
     }
 
     public void setDaysPaidRemaining(int daysPaidRemaining) {
@@ -129,86 +114,33 @@ public class Property {
         this.feeToPost = feeToPost;
     }
 
-    /**
-     * 
-     */
-    private int numBedrooms;
+    public String getExpDate()
+    {
+        return this.expDate;
+    }
 
-    /**
-     * 
-     */
-    private int numBathrooms;
+    public void setExpDate(String exp_date)
+    {
+        this.expDate = exp_date;
+    }
 
-    /**
-     * 
-     */
-    private boolean furnished;
+    public String getPostedDate()
+    {
+        return this.postedDate;
+    }
 
-    /**
-     * 
-     */
-    private String quadrant;
+    public void setPostedDate(String posted_date)
+    {
+        this.postedDate = posted_date;
+    }
 
-    /**
-     * 
-     */
-    private int ID;
-
-    /**
-     * 
-     */
-    private String address;
-
-    /**
-     * 
-     */
-    private String email;
-
-    /**
-     * 
-     */
-    private int feeToPost;
-
-
-
-
-
-    /**
-     * @return
-     */
     public void display() {
         // TODO implement here
-        return null;
+        return;
     }
 
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
-
-    /**
-     * @param daysPaidRemaining 
-     * @param status 
-     * @param numBedrooms 
-     * @param numBathrooms 
-     * @param furnished 
-     * @param quadrant 
-     * @param ID 
-     * @param address 
-     * @param email
-     */
-    public void Property(int daysPaidRemaining, String status, int numBedrooms, int numBathrooms, bool furnished, String quadrant, int ID, String address, String email) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     private void sendEmail() {
         // TODO implement here
-        return null;
+        return;
     }
-
 }

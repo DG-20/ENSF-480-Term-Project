@@ -1,27 +1,13 @@
-package Entity;
+package Business_Layer;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Subscription {
-
-    /**
-     * Default constructor
-     */
-    public Subscription() {
-    }
-
-    /**
-     * 
-     */
     private String type;
-
-    /**
-     * 
-     */
     private int numBedrooms;
+    private int numBathrooms;
+    private boolean furnished;
+    private String quadrant;
 
     public Subscription(String type, int numBedrooms, int numBathrooms, bool furnished, String quadrant) {
         this.type = type;
@@ -29,6 +15,9 @@ public class Subscription {
         this.numBathrooms = numBathrooms;
         this.furnished = furnished;
         this.quadrant = quadrant;
+    }
+
+    public Subscription() {
     }
 
     public String getType() {
@@ -71,51 +60,8 @@ public class Subscription {
         this.quadrant = quadrant;
     }
 
-    /**
-     * 
-     */
-    private int numBathrooms;
-
-    /**
-     * 
-     */
-    private bool furnished;
-
-    /**
-     * 
-     */
-    private String quadrant;
-
-
-
-
-
-
-
-    /**
-     * @return
-     */
     public void display() {
         // TODO implement here
-        return null;
+        return;
     }
-
-    /**
-     * @param type 
-     * @param numBedrooms 
-     * @param numBathrooms 
-     * @param furnished 
-     * @param quadrant
-     */
-    public void Subscription(String type, int numBedrooms, int numBathrooms, bool furnished, String quadrant) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Operation2() {
-        // TODO implement here
-    }
-
 }

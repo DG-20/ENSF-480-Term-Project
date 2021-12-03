@@ -1,27 +1,12 @@
-package Entity;
+package Business_Layer;
 
 import java.util.*;
 
-/**
- * 
- */
 public class User {
-
-    /**
-     * Default constructor
-     */
-    public User() {
-    }
-
-    /**
-     * 
-     */
     private String email;
-
-    /**
-     * 
-     */
     private String password;
+    private String type;
+    private String name;
 
     public String getEmail() {
         return email;
@@ -71,31 +56,6 @@ public class User {
         this.name = name;
     }
 
-    /**
-     * 
-     */
-    private int ID;
-
-    /**
-     * 
-     */
-    private String type;
-
-    /**
-     * 
-     */
-    private String name;
-
-
-
-    /**
-     * @param email 
-     * @param password 
-     * @param type 
-     * @param name
-     */
-    public void User(String email, String password, String type, String name) {
-        // TODO implement here
+    public User() {
     }
-
 }
