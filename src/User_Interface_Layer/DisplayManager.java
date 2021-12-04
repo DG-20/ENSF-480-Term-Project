@@ -1,4 +1,4 @@
-package Strategy_Layer;
+package User_Interface_Layer;
 
 import User_Interface_Layer.InteractionForm;
 
@@ -61,7 +61,7 @@ public class DisplayManager implements Strategy {
      */
     public void display(String email) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -70,14 +70,4 @@ public class DisplayManager implements Strategy {
     public void DisplayManager() {
         // TODO implement here
     }
-
-    /**
-     * @param email 
-     * @return
-     */
-    public void display(String email) {
-        // TODO implement here
-        return null;
-    }
-
 }

@@ -54,7 +54,7 @@ public class LoginController extends Controller {
      */
     public boolean forwardUser(String email, String password, String userType) {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**

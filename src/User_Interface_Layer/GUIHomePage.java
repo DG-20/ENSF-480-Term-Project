@@ -1,6 +1,6 @@
 package User_Interface_Layer;
 
-import Strategy_Layer.Strategy;
+import User_Interface_Layer.Strategy;
 
 import java.util.*;
 
@@ -78,7 +78,7 @@ public class GUIHomePage {
      */
     private void displayRR() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -86,7 +86,7 @@ public class GUIHomePage {
      */
     private void displayLL() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -94,7 +94,7 @@ public class GUIHomePage {
      */
     private void displayManager() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -103,7 +103,7 @@ public class GUIHomePage {
      */
     public void display(String userType) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -118,7 +118,7 @@ public class GUIHomePage {
      */
     private void displayUR() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -126,7 +126,7 @@ public class GUIHomePage {
      */
     public void performStrategy() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -135,7 +135,7 @@ public class GUIHomePage {
      */
     public void setDisplayStrategy(String userType) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

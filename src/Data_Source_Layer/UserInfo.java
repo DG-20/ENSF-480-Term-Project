@@ -1,7 +1,7 @@
 package Data_Source_Layer;
 
-import Entity.User;
-import Strategy_Layer.Singleton;
+import Business_Layer.User;
+import Business_Layer.Singleton;
 
 import java.sql.*;
 import java.util.*;

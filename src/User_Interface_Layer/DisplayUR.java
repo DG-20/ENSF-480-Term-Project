@@ -1,4 +1,4 @@
-package Strategy_Layer;
+package User_Interface_Layer;
 
 import User_Interface_Layer.InteractionForm;
 
@@ -28,7 +28,7 @@ public class DisplayUR implements Strategy {
      */
     public void display(String email) {
         // TODO implement here
-        return null;
+        return;
     }
 
     public InteractionForm getMySearchForm() {
@@ -45,14 +45,4 @@ public class DisplayUR implements Strategy {
     public void DisplayUR() {
         // TODO implement here
     }
-
-    /**
-     * @param email 
-     * @return
-     */
-    public void display(String email) {
-        // TODO implement here
-        return null;
-    }
-
 }

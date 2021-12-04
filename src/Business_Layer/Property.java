@@ -3,7 +3,6 @@ package Business_Layer;
 import java.util.*;
 
 public class Property {
-    private int daysPaidRemaining;
     private String status;
     private int numBedrooms;
     private int numBathrooms;
@@ -16,8 +15,7 @@ public class Property {
     private String expDate;
     private String postedDate;
 
-    public Property(int daysPaidRemaining, String status, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, int ID, String address, String email, int feeToPost, String posted_date, String exp_date) {
-        this.daysPaidRemaining = daysPaidRemaining;
+    public Property(String status, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, int ID, String address, String posted_date, String exp_date, String email_address) {
         this.status = status;
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
@@ -25,21 +23,12 @@ public class Property {
         this.quadrant = quadrant;
         this.ID = ID;
         this.address = address;
-        this.email = email;
-        this.feeToPost = feeToPost;
+        this.email = email_address;
         this.postedDate = posted_date;
         this.expDate = exp_date;
     }
 
     public Property() {
-    }
-
-    public int getDaysPaidRemaining() {
-        return daysPaidRemaining;
-    }
-
-    public void setDaysPaidRemaining(int daysPaidRemaining) {
-        this.daysPaidRemaining = daysPaidRemaining;
     }
 
     public String getStatus() {

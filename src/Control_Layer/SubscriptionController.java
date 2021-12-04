@@ -1,7 +1,7 @@
 package Control_Layer;
 
 import Data_Source_Layer.SubscriptionList;
-import Entity.Subscription;
+import Business_Layer.Subscription;
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ public class SubscriptionController extends Controller {
      */
     public void forwardSub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email) {
         // TODO implement here
-        return null;
+        return; 
     }
 
     /**

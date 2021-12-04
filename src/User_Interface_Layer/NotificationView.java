@@ -43,7 +43,7 @@ public class NotificationView {
      */
     public void showSubbed() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -52,19 +52,4 @@ public class NotificationView {
     public void Operation1() {
         // TODO implement here
     }
-
-    /**
-     * @param email
-     */
-    public void NotificationView(String email) {
-        // TODO implement here
-    }
-
-    /**
-     * @param email
-     */
-    public void NotificationView(String email) {
-        // TODO implement here
-    }
-
 }

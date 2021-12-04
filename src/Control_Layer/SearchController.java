@@ -1,7 +1,7 @@
 package Control_Layer;
 
 import Data_Source_Layer.PropertyInventory;
-import Entity.Property;
+import Business_Layer.Property;
 
 import java.util.*;
 

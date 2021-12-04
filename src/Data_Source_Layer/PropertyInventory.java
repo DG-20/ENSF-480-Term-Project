@@ -1,6 +1,6 @@
 package Data_Source_Layer;
 
-import Entity.Property;
+import Business_Layer.Property;
 
 import javax.swing.text.DateFormatter;
 import java.sql.*;
@@ -352,13 +352,16 @@ public class PropertyInventory implements Database {
                int numBedrooms = set.getInt("numBedrooms");
                int numBathrooms = set.getInt("numBathrooms");
                String furnished = set.getString("Furnished");
+               boolean furnished_bool = false;
+               if (furnished.equals("true") == true)
+                    furnished_bool =  true;
                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
                Timestamp posted = set.getTimestamp("PostedDate");
                String postedDate = posted.toString();
                Timestamp exp = set.getTimestamp("ExpDate");
                String emailLl = set.getString("LandLordEmail");
                String expDate = posted.toString();
-               Property p = new Property(status, numBedrooms, numBathrooms, furnished, quadrant, ID, address, postedDate, expDate, emailLl);
+               Property p = new Property(status, numBedrooms, numBathrooms, furnished_bool, quadrant, ID, address, postedDate, expDate, emailLl);
                result.add(p);
            }
        } catch (SQLException e) {

@@ -24,14 +24,6 @@ public class User {
         this.password = password;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
     public String getType() {
         return type;
     }
@@ -48,10 +40,9 @@ public class User {
         this.name = name;
     }
 
-    public User(String email, String password, int ID, String type, String name) {
+    public User(String email, String password, String type, String name) {
         this.email = email;
         this.password = password;
-        this.ID = ID;
         this.type = type;
         this.name = name;
     }

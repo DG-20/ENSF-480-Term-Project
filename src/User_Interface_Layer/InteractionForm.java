@@ -48,7 +48,7 @@ public abstract class InteractionForm {
     /**
      * 
      */
-    public void Attribute2;
+    //public void Attribute2;
 
     /**
      * 

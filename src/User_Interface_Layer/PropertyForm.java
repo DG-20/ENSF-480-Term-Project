@@ -1,5 +1,10 @@
 package User_Interface_Layer;
 
+import Control_Layer.RegistrationController;
+import Control_Layer.UpdateController;
+import Control_Layer.PeriodFeesController;
+import Business_Layer.Property;
+
 import java.util.*;
 
 /**
@@ -50,7 +55,7 @@ public class PropertyForm {
      */
     public void startRegistration() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -58,7 +63,7 @@ public class PropertyForm {
      */
     public void browseProperties() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -67,7 +72,7 @@ public class PropertyForm {
      */
     private void displayMyProperties(Set<Property> myProperties) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -99,7 +104,7 @@ public class PropertyForm {
      */
     private void displayStatuses() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -128,7 +133,7 @@ public class PropertyForm {
      */
     private void payFeeGUI() {
         // TODO implement here
-        return null;
+        return;
     }
 
 }

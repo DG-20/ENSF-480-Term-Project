@@ -1,7 +1,7 @@
 package Control_Layer;
 
 import Data_Source_Layer.PropertyInventory;
-import Entity.Property;
+import Business_Layer.Property;
 
 import java.util.*;
 
@@ -30,17 +30,17 @@ public class UpdateController extends Controller {
     }
 
     public void getAttribute1() {
-        return Attribute1;
+        return;
     }
 
-    public void setAttribute1(void attribute1) {
-        Attribute1 = attribute1;
+    public void setAttribute1() {
+        //Attribute1 = attribute1;
     }
 
     /**
      * 
      */
-    public void Attribute1;
+    //public void Attribute1;
 
 
 
@@ -61,7 +61,7 @@ public class UpdateController extends Controller {
      */
     public void forwardPropertyStatus(Property p) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

@@ -1,7 +1,7 @@
 package User_Interface_Layer;
 
 import Control_Layer.SubscriptionController;
-import Entity.Subscription;
+import Business_Layer.Subscription;
 
 import java.util.*;
 
@@ -42,7 +42,7 @@ public class SubscriptionForm {
      */
     public void enterSubCriteria() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -50,7 +50,7 @@ public class SubscriptionForm {
      */
     public void displayMySubs() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -63,7 +63,7 @@ public class SubscriptionForm {
      */
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

@@ -38,7 +38,7 @@ public class SummaryForm {
      */
     public void showSummary() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

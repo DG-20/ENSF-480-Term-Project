@@ -1,6 +1,6 @@
 package Business_Layer;
 
-import Entity.User;
+import Business_Layer.User;
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ public class Singleton {
     }
 
     public static Singleton getInstance() {
-        if (instance == NULL)
+        if (instance == null)
             instance = new Singleton();
         return instance;
     }

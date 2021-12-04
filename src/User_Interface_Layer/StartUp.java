@@ -21,12 +21,12 @@ public class StartUp {
     /**
      * 
      */
-    public void Attribute1;
+    //public void Attribute1;
 
     /**
      * 
      */
-    public void Attribute2;
+    //public void Attribute2;
 
     /**
      * 
@@ -53,7 +53,7 @@ public class StartUp {
      */
     public boolean loginPage() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**
@@ -61,7 +61,7 @@ public class StartUp {
      */
     public void welcome() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -69,7 +69,7 @@ public class StartUp {
      */
     public void homePage() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

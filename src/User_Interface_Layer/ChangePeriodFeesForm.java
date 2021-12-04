@@ -34,7 +34,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
      */
     public void changePeriodFees() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

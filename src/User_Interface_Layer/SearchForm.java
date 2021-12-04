@@ -1,7 +1,7 @@
 package User_Interface_Layer;
 
 import Control_Layer.SearchController;
-import Entity.Property;
+import Business_Layer.Property;
 
 import java.util.*;
 
@@ -33,7 +33,7 @@ public class SearchForm {
      */
     public void createSearchQuery() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -42,7 +42,7 @@ public class SearchForm {
      */
     private void displayMatching(ArrayList<Property> matchedProperties) {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**
@@ -50,7 +50,7 @@ public class SearchForm {
      */
     public void sendEmailGUI() {
         // TODO implement here
-        return null;
+        return;
     }
 
     /**

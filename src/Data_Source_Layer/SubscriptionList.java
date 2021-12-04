@@ -1,6 +1,6 @@
 package Data_Source_Layer;
 
-import Entity.Subscription;
+import Business_Layer.Subscription;
 
 import java.lang.reflect.Array;
 import java.sql.*;

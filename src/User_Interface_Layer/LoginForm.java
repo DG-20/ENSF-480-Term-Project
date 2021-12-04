@@ -28,11 +28,6 @@ public class LoginForm {
     /**
      * 
      */
-    private LoginController controller;
-
-    /**
-     * 
-     */
     private String inputEmail;
 
     /**
@@ -53,9 +48,9 @@ public class LoginForm {
     /**
      * @return
      */
-    public bool startLogin() {
+    public boolean startLogin() {
         // TODO implement here
-        return null;
+        return false;
     }
 
     /**

@@ -9,7 +9,7 @@ public class Subscription {
     private boolean furnished;
     private String quadrant;
 
-    public Subscription(String type, int numBedrooms, int numBathrooms, bool furnished, String quadrant) {
+    public Subscription(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         this.type = type;
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
@@ -44,11 +44,11 @@ public class Subscription {
         this.numBathrooms = numBathrooms;
     }
 
-    public bool getFurnished() {
+    public boolean getFurnished() {
         return furnished;
     }
 
-    public void setFurnished(bool furnished) {
+    public void setFurnished(boolean furnished) {
         this.furnished = furnished;
     }
 

@@ -16,11 +16,11 @@ public class PeriodFeesController extends Controller {
     }
 
     public void getAttribute1() {
-        return Attribute1;
+        return;
     }
 
-    public void setAttribute1(void attribute1) {
-        Attribute1 = attribute1;
+    public void setAttribute1() {
+        //this.Attribute1 = attribute1;
     }
 
     public PaymentPeriodRecord getRecord() {
@@ -34,7 +34,7 @@ public class PeriodFeesController extends Controller {
     /**
      * 
      */
-    public void Attribute1;
+    //public void Attribute1;
 
     /**
      * 
