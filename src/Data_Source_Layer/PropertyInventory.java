@@ -109,10 +109,10 @@ public class PropertyInventory implements Database {
         try {
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
             LocalDateTime localDate = LocalDateTime.now();
-            String current_date = dateFormat.format(localDate);
+            String currentDate = dateFormat.format(localDate);
 
             LocalDateTime localExpdate = localDate.plusDays(myPaymentPeriodRecord.retrievePeriod());
-            String exp_date = dateFormat.format(localExpdate);
+            String expDate = dateFormat.format(localExpdate);
 
             String furn = "N";
             if (furnished) furn = "Y";
@@ -126,8 +126,8 @@ public class PropertyInventory implements Database {
             stmt.setInt(6, numBathrooms);
             stmt.setInt(7, numBedrooms);
             stmt.setString(8, type );
-            stmt.setTimestamp(8, java.sql.Timestamp.valueOf(current_date));
-            stmt.setTimestamp(9, java.sql.Timestamp.valueOf(exp_date));
+            stmt.setTimestamp(8, java.sql.Timestamp.valueOf(currentDate));
+            stmt.setTimestamp(9, java.sql.Timestamp.valueOf(expDate));
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
@@ -354,10 +354,11 @@ public class PropertyInventory implements Database {
                String furnished = set.getString("Furnished");
                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
                Timestamp posted = set.getTimestamp("PostedDate");
-               String posted_date = posted.toString();
+               String postedDate = posted.toString();
                Timestamp exp = set.getTimestamp("ExpDate");
-               String exp_date = posted.toString();
-               Property p = new Property();
+               String emailLl = set.getString("LandLordEmail");
+               String expDate = posted.toString();
+               Property p = new Property(status, numBedrooms, numBathrooms, furnished, quadrant, ID, address, postedDate, expDate, emailLl);
                result.add(p);
            }
        } catch (SQLException e) {
