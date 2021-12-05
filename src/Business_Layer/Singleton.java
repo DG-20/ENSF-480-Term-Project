@@ -1,7 +1,5 @@
 package Business_Layer;
 
-import Business_Layer.User;
-
 import java.util.*;
 
 public class Singleton {
@@ -32,5 +30,4 @@ public class Singleton {
         this.registeredUsers.add(u);
         return;
     }
-
 }

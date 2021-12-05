@@ -361,7 +361,7 @@ public class PropertyInventory implements Database {
                Timestamp exp = set.getTimestamp("ExpDate");
                String emailLl = set.getString("LandLordEmail");
                String expDate = posted.toString();
-               Property p = new Property(status, numBedrooms, numBathrooms, furnished_bool, quadrant, ID, address, postedDate, expDate, emailLl);
+               Property p = new Property(status, numBedrooms, numBathrooms, furnished_bool, quadrant, ID, address, postedDate, expDate, emailLl, type);
                result.add(p);
            }
        } catch (SQLException e) {
