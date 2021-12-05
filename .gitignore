@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/.gitignore
+.DS_Store
