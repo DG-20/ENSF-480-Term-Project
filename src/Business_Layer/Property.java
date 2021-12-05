@@ -1,10 +1,16 @@
+/*
+ * File Name: Property.java
+ * Authors:
+ *      Cheyenne Goh (UCID: 30040528)
+ *      Divyansh Goyal (UCID: 30089488)
+ *      Rui Guan(UCID: 30072848)
+ *      Sajid Hafiz (UCID: 30061336)
+ */
 package Business_Layer;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
-import java.util.*;
 
 public class Property {
     private String status;
@@ -151,6 +157,7 @@ public class Property {
         c.gridwidth = 2;
         propertyHomeContainer.add(propertyInfo, c);
         JButton okayButton = new JButton("Okay");
+        okayButton.setFocusPainted(false);
         okayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent end_event) {
                 propertyDetailsFrame.dispose();
@@ -162,6 +169,7 @@ public class Property {
         buttonPanel.add(Box.createHorizontalGlue());
         buttonPanel.add(okayButton);
         JButton sendEmailButton = new JButton("Email landlord");
+        sendEmailButton.setFocusPainted(false);
         sendEmailButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent end_event) {
                 sendEmail();
