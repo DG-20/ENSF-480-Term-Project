@@ -24,7 +24,7 @@ public class SubscriptionController extends Controller {
     public SubscriptionController(boolean addSub) {
         this.addSub=addSub;
         Database data = new SubscriptionList();
-        add(data);
+        myData.add(data);
     }
 
     private boolean addSub;
@@ -44,7 +44,7 @@ public class SubscriptionController extends Controller {
      */
     public void forwardSub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         SubscriptionList list = (SubscriptionList)d;
         list.insertSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
         return; 
@@ -56,7 +56,7 @@ public class SubscriptionController extends Controller {
      */
     public ArrayList<Subscription> getSubs(String email) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         SubscriptionList list = (SubscriptionList)d;
         return list.retrieveSubscription(email);
     }
@@ -72,7 +72,7 @@ public class SubscriptionController extends Controller {
      */
     public void forwardDeleteSub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         SubscriptionList list = (SubscriptionList)d;
         list.deleteSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
         return;

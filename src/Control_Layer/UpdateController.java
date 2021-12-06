@@ -23,7 +23,7 @@ public class UpdateController extends Controller {
      */
     public UpdateController() {
         Database data = new PropertyInventory();
-        add(data);
+        myData.add(data);
     }
 
     /**
@@ -36,7 +36,7 @@ public class UpdateController extends Controller {
      */
     public ArrayList<Property> forwardRequest(String email) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory)d;
         return property.getMatching(email);
     }
@@ -47,7 +47,7 @@ public class UpdateController extends Controller {
      */
     public void forwardPropertyStatus(Property p) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory)d;
         property.updateProperty(p);
         return;

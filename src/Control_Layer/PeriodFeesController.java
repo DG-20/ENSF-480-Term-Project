@@ -22,7 +22,7 @@ public class PeriodFeesController extends Controller {
      */
     public PeriodFeesController() {
         Database data = new PaymentPeriodRecord();
-        add(data);
+        myData.add(data);
     }
 
 
@@ -33,7 +33,7 @@ public class PeriodFeesController extends Controller {
      */
     public void forwardPeriodFees(int fee, int period) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PaymentPeriodRecord record = (PaymentPeriodRecord)d;
         record.updatePeriodPayment(fee, period);
         return;
@@ -44,7 +44,7 @@ public class PeriodFeesController extends Controller {
      */
     public int sendPayment() {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PaymentPeriodRecord record = (PaymentPeriodRecord)d;
         return record.retrievePayment();
     }

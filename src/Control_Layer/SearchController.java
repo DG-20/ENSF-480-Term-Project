@@ -23,7 +23,7 @@ public class SearchController extends Controller {
      */
     public SearchController() {
         Database data = new PropertyInventory();
-        add(data);
+        myData.add(data);
     }
 
 
@@ -37,7 +37,7 @@ public class SearchController extends Controller {
      */
     public ArrayList<Property> forwardSearch(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory)d;
         return property.getMatching(type, numBedrooms, numBathrooms, furnished, quadrant);
     }
