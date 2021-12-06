@@ -113,7 +113,7 @@ public class PropertyInventory implements Database {
      * @param address 
      * Inserts a property into the database
      */
-    public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, int ID, String address) {
+    public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         try {
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
             LocalDateTime localDate = LocalDateTime.now();

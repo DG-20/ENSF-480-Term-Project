@@ -41,7 +41,7 @@ public class GUIHomePage {
     /**
      * 
      */
-    private String email;
+    private static String email;
 
     /**
      * 
@@ -72,6 +72,10 @@ public class GUIHomePage {
      * 
      */
     private Strategy displayStrategy;
+
+    public static String getEmail() {
+        return email;
+    }
 
 
 
