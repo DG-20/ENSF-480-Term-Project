@@ -62,7 +62,7 @@ public class RegistrationController extends Controller {
      * @param address 
      * @return
      */
-    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, int ID, String address) {
+    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         // TODO implement here
         return;
     }

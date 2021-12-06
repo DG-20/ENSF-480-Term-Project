@@ -26,6 +26,6 @@ public abstract class Controller {
     /**
      * 
      */
-    private Database myData;
+    protected Database myData;
 
 }
