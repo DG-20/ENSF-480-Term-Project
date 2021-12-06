@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.PropertyInventory;
+import Data_Source_Layer.*;
 
 import java.util.*;
 
@@ -21,33 +21,9 @@ public class RegistrationController extends Controller {
      * Default constructor
      */
     public RegistrationController() {
+        Database data = new PropertyInventory();
+        add(data);
     }
-
-    /**
-     * 
-     */
-    private PropertyInventory myInventory;
-
-    public PropertyInventory getMyInventory() {
-        return myInventory;
-    }
-
-    public void setMyInventory(PropertyInventory myInventory) {
-        this.myInventory = myInventory;
-    }
-
-    public PeriodFeesController getMyPeriodFees() {
-        return myPeriodFees;
-    }
-
-    public void setMyPeriodFees(PeriodFeesController myPeriodFees) {
-        this.myPeriodFees = myPeriodFees;
-    }
-
-    /**
-     * 
-     */
-    private PeriodFeesController myPeriodFees;
 
 
 
@@ -57,21 +33,15 @@ public class RegistrationController extends Controller {
      * @param numBathrooms 
      * @param furnished 
      * @param quadrant 
-     * @param email 
-     * @param int 
+     * @param email
      * @param address 
      * @return
      */
-    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, int ID, String address) {
+    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         // TODO implement here
+        Database d = getDatabase().get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        property.registerProperty(type, numBedrooms, numBathrooms, furnished, quadrant, email, address);
         return;
     }
-
-    /**
-     * 
-     */
-    public void RegistrationController() {
-        // TODO implement here
-    }
-
 }

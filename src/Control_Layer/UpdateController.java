@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.PropertyInventory;
+import Data_Source_Layer.*;
 import Business_Layer.Property;
 
 import java.util.*;
@@ -22,45 +22,23 @@ public class UpdateController extends Controller {
      * Default constructor
      */
     public UpdateController() {
+        Database data = new PropertyInventory();
+        add(data);
     }
 
     /**
      * 
      */
-    private PropertyInventory myInventory;
-
-    public PropertyInventory getMyInventory() {
-        return myInventory;
-    }
-
-    public void setMyInventory(PropertyInventory myInventory) {
-        this.myInventory = myInventory;
-    }
-
-    public void getAttribute1() {
-        return;
-    }
-
-    public void setAttribute1() {
-        //Attribute1 = attribute1;
-    }
-
-    /**
-     * 
-     */
-    //public void Attribute1;
-
-
-
-
-
+    
     /**
      * @param email 
      * @return
      */
     public ArrayList<Property> forwardRequest(String email) {
         // TODO implement here
-        return null;
+        Database d = getDatabase().get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        return property.getMatching(email);
     }
 
     /**
@@ -69,22 +47,11 @@ public class UpdateController extends Controller {
      */
     public void forwardPropertyStatus(Property p) {
         // TODO implement here
+        Database d = getDatabase().get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        property.updateProperty(p);
         return;
     }
 
-    /**
-     * @return
-     */
-    public Set<Property> forwardRequest() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void UpdateController() {
-        // TODO implement here
-    }
 
 }

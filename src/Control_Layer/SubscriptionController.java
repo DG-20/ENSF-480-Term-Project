@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.SubscriptionList;
+import Data_Source_Layer.*;
 import Business_Layer.Subscription;
 
 import java.util.*;
@@ -21,17 +21,12 @@ public class SubscriptionController extends Controller {
     /**
      * Default constructor
      */
-    public SubscriptionController() {
+    public SubscriptionController(boolean addSub) {
+        this.addSub=addSub;
+        Database data = new SubscriptionList();
+        add(data);
     }
 
-    /**
-     * 
-     */
-    private SubscriptionList subList;
-
-    /**
-     * 
-     */
     private boolean addSub;
 
 
@@ -49,6 +44,9 @@ public class SubscriptionController extends Controller {
      */
     public void forwardSub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email) {
         // TODO implement here
+        Database d = getDatabase().get(0);
+        SubscriptionList list = (SubscriptionList)d;
+        list.insertSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
         return; 
     }
 
@@ -58,24 +56,11 @@ public class SubscriptionController extends Controller {
      */
     public ArrayList<Subscription> getSubs(String email) {
         // TODO implement here
-        return null;
+        Database d = getDatabase().get(0);
+        SubscriptionList list = (SubscriptionList)d;
+        return list.retrieveSubscription(email);
     }
 
-    public SubscriptionList getSubList() {
-        return subList;
-    }
-
-    public void setSubList(SubscriptionList subList) {
-        this.subList = subList;
-    }
-
-    public boolean isAddSub() {
-        return addSub;
-    }
-
-    public void setAddSub(boolean addSub) {
-        this.addSub = addSub;
-    }
 
     /**
      * @param type 
@@ -87,20 +72,10 @@ public class SubscriptionController extends Controller {
      */
     public void forwardDeleteSub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email) {
         // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
-
-    /**
-     * @param addSub
-     */
-    public void SubscriptionController(boolean addSub) {
-        // TODO implement here
+        Database d = getDatabase().get(0);
+        SubscriptionList list = (SubscriptionList)d;
+        list.deleteSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
+        return;
     }
 
 }

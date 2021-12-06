@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.PaymentPeriodRecord;
+import Data_Source_Layer.*;
 
 import java.util.*;
 
@@ -21,39 +21,9 @@ public class PeriodFeesController extends Controller {
      * Default constructor
      */
     public PeriodFeesController() {
+        Database data = new PaymentPeriodRecord();
+        add(data);
     }
-
-    public void getAttribute1() {
-        return;
-    }
-
-    public void setAttribute1() {
-        //this.Attribute1 = attribute1;
-    }
-
-    public PaymentPeriodRecord getRecord() {
-        return record;
-    }
-
-    public void setRecord(PaymentPeriodRecord record) {
-        this.record = record;
-    }
-
-    /**
-     * 
-     */
-    //public void Attribute1;
-
-    /**
-     * 
-     */
-    private PaymentPeriodRecord record;
-
-
-
-
-
-
 
 
     /**
@@ -63,6 +33,9 @@ public class PeriodFeesController extends Controller {
      */
     public void forwardPeriodFees(int fee, int period) {
         // TODO implement here
+        Database d = getDatabase().get(0);
+        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        record.updatePeriodPayment(fee, period);
         return;
     }
 
@@ -71,14 +44,10 @@ public class PeriodFeesController extends Controller {
      */
     public int sendPayment() {
         // TODO implement here
-        return 0;
+        Database d = getDatabase().get(0);
+        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        return record.retrievePayment();
     }
 
-    /**
-     * 
-     */
-    public void PeriodFeesController() {
-        // TODO implement here
-    }
 
 }
