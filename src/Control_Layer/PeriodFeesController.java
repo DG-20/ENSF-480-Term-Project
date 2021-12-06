@@ -9,6 +9,7 @@
 package Control_Layer;
 
 import Data_Source_Layer.PaymentPeriodRecord;
+import Data_Source_Layer.PropertyInventory;
 
 import java.util.*;
 
@@ -64,6 +65,11 @@ public class PeriodFeesController extends Controller {
     public void forwardPeriodFees(int fee, int period) {
         // TODO implement here
         return;
+    }
+
+    /* Asks the DB for the current period */
+    public int sendPeriod() {
+        return ((PaymentPeriodRecord)(myData.get(0))).retrievePeriod();
     }
 
     /**

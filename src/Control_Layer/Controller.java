@@ -26,6 +26,6 @@ public abstract class Controller {
     /**
      * 
      */
-    protected Database myData;
+    protected ArrayList<Database> myData;
 
 }
