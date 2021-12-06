@@ -25,6 +25,13 @@ public class PeriodFeesController extends Controller {
         myData.add(data);
     }
 
+    /* Asks the DB for the current period */
+    public int sendPeriod() {
+        Database d = myData.get(0);
+        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        return record.retrievePeriod();
+    }
+
 
     /**
      * @param fee 
