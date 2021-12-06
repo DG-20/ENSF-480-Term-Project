@@ -126,8 +126,8 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
         logoutB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // CAll home page or smth.
-                System.exit(1);
+                StartUp.main(new String[]{""});
+
             }
         });
 

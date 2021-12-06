@@ -126,10 +126,9 @@ public class PropertyForm extends InteractionForm {
         f.add(rowEntry);
 
         /* Fee & Period declaration */
-        //int fee = myController[0].sendPayment();
-        //int period = myController[0].sendPeriod();
-        int fee = 60;
-        int period = 20;
+        int fee = ((PeriodFeesController)myControllers.get(0)).sendPayment();
+        int period = ((PeriodFeesController)myControllers.get(0)).sendPeriod();
+
         String s = "<html><it>Current fee is: $";
         s += fee;
         s += " and the current listing period is: ";
@@ -144,6 +143,8 @@ public class PropertyForm extends InteractionForm {
         rowEntry.add(new JSeparator(SwingConstants.HORIZONTAL));
         b1.setBackground(Color.GREEN);
         f.add(b1);
+
+        f.setVisible(true);
 
         /* Submit Listener */
         b1.addActionListener(new ActionListener() {
@@ -164,6 +165,7 @@ public class PropertyForm extends InteractionForm {
                 String numBathrooms = numBathroomsT.getSelectedItem().toString();
 
 
+                /* Invalid Input - Error Checking */
                 if ( (address.length() == 0 || type.length() == 0 || cardNumber.length() == 0 || cardHolderName.length() == 0)
                         || (CVV.length() <=2 || CVV.length() >=5)
                         || (year.equals("21") && (months.equals("01") || months.equals("02") || months.equals("03") ||
@@ -187,9 +189,6 @@ public class PropertyForm extends InteractionForm {
 
         });
 
-
-
-        f.setVisible(true);
 
     }
 
