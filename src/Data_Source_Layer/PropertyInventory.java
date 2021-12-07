@@ -236,14 +236,16 @@ public class PropertyInventory implements Database {
     }
 
     /**
-     * Return an array list of properties rented in the chosen period.
+     *
+     * @param period - The period of the summary report. As in how many days back from today.
+     * @return A summary report on properties from dates ranging from [currentDate-period, currentDate]
      */
-    public ArrayList<Property> retrieveSummary() {
+    public ArrayList<Property> retrieveSummary(int period) {
         ArrayList<Property> rented = new ArrayList<>();
         try{
             String query = "SELECT Name, ID AS House_ID, Address\n" +
                     "FROM property INNER JOIN user ON property.LandlordEmail = user.Email\n" +
-                    "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + myPaymentPeriodRecord.retrievePeriod() +
+                    "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), " + " INTERVAL " + period +
                     " DAY) AND Status = 'Rented';";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
@@ -344,7 +346,7 @@ public class PropertyInventory implements Database {
      * Retrieves the total number of active listings total
      */
 
-    public int getNumActiveListings(int period) {
+    public int getNumActiveListings() {
         int count = -1;
         try {
             String query = "SELECT COUNT(*) AS Number_Of_Rented_Listings\n" +
