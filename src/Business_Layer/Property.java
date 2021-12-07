@@ -47,6 +47,8 @@ public class Property {
         return status;
     }
 
+    public String getType() { return type;}
+
     public void setStatus(String status) {
         this.status = status;
     }
@@ -82,6 +84,7 @@ public class Property {
     public void setQuadrant(String quadrant) {
         this.quadrant = quadrant;
     }
+
 
     public int getID() {
         return ID;
@@ -219,5 +222,9 @@ public class Property {
         sendEmailFrame.pack();
         sendEmailFrame.setVisible(true);
         return;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

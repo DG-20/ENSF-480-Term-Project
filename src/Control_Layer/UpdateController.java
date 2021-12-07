@@ -37,21 +37,6 @@ public class UpdateController extends Controller {
         this.myInventory = myInventory;
     }
 
-    public void getAttribute1() {
-        return;
-    }
-
-    public void setAttribute1() {
-        //Attribute1 = attribute1;
-    }
-
-    /**
-     * 
-     */
-    //public void Attribute1;
-
-
-
 
 
     /**

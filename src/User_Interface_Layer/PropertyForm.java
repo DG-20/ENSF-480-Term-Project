@@ -12,6 +12,7 @@ import Control_Layer.RegistrationController;
 import Control_Layer.UpdateController;
 import Control_Layer.PeriodFeesController;
 import Business_Layer.Property;
+import Data_Source_Layer.PropertyInventory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,6 +27,7 @@ public class PropertyForm extends InteractionForm {
 
     /**
      * Default constructor
+     * Adds three controllers
      */
     public PropertyForm() {
         myControllers.add( new PeriodFeesController());
@@ -33,10 +35,8 @@ public class PropertyForm extends InteractionForm {
         myControllers.add(new UpdateController());
     }
 
-
-
     /**
-     * @return
+     * Allows the Landlord to register a property.
      */
     public void startRegistration() {
         JFrame f = new JFrame("Property Registration Form");
@@ -177,63 +177,109 @@ public class PropertyForm extends InteractionForm {
                     return;
                 }
 
-
                 /* Valid Details */
                 JOptionPane.showMessageDialog(f, "Your property has been registered.", "Success!", 1 );
                 /* Send the property details to Controller */
                 ((RegistrationController)myControllers.get(1)).forwardProperty(type, Integer.parseInt(numBedrooms), Integer.parseInt(numBathrooms), furn, quadrant, GUIHomePage.getEmail(), address);
-                f.setVisible(false);
+                 f.dispose();
                  GUIHomePage x = new GUIHomePage();
                  x.performStrategy();
             }
 
         });
 
+        /* Back Button */
+        JButton backButton = new JButton("<<");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose();
+                new GUIHomePage().performStrategy();
+            }
+        });
+        f.add(backButton);
+
 
     }
 
-    /**
-     * @return
-     */
-    public void browseProperties() {
-        // TODO implement here
-        return;
+    /* Get all the landlord's properties from the controller and call respective display functions */
+    public void browseProperties()
+    {
+        ArrayList<Property> p = new ArrayList<>();
+        p = ((UpdateController)myControllers.get(2)).forwardRequest(GUIHomePage.getEmail());
+        displayMyProperties(p);
     }
 
-    /**
-     * @param myProperties 
-     * @return
-     */
-    private void displayMyProperties(ArrayList<Property> myProperties) {
-        // TODO implement here
-        return;
+    /* Displays the Landlord's Properties */
+    public void displayMyProperties(ArrayList<Property> p)
+    {
+        JFrame a = new JFrame("Update a Property");
+        a.setSize(350, 350);
+        a.setLayout(new FlowLayout());
+        a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        /* Header */
+        JLabel header = new JLabel("Choose one of your following properties to update");
+        JPanel row1 = new JPanel(new FlowLayout());
+        row1.add(header);
+        a.add(row1);
+
+        JSeparator sep = new JSeparator();
+        a.add(sep);
+
+        /* Initializing the combo box with Landlord's Address'*/
+        String[] address = new String[p.size()];
+        for (int i = 0; i < p.size(); i++) {
+            address[i] = p.get(i).getAddress();
+        }
+        JComboBox addressList = new JComboBox(address);
+        a.add(addressList);
+
+        /* Update Button */
+        JButton updateButton = new JButton("UPDATE");
+        a.add(updateButton);
+
+        /* Back Button */
+        JButton backButton = new JButton("<<");
+        JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panelButton.add(backButton);
+        a.add(panelButton);
+
+        // UPDATE BUTTON RESPONSE
+        // Call updateForm on the selected property.
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String address_selected = addressList.getSelectedItem().toString();
+                boolean found = false;
+                Property choice = null;
+                for (Property selected : p) {
+                    if (selected.getAddress().equals(address_selected)) {
+                        found = true;
+                        choice = selected;
+                        break;
+                    }
+                }
+                if (found) {
+                    a.dispose();
+                    new UpdateForm(choice);
+                }
+            }
+        });
+        // BACK BUTTON RESPONSE
+        // Take user back to home page.
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a.dispose();
+                new GUIHomePage().performStrategy();
+            }
+        });
+
+        a.setVisible(true);
+
     }
 
-    /**
-     * @return
-     */
-    private Property selectProperty() {
-        // TODO implement here
-        return null;
-    }
-
-
-    /**
-     * @param p 
-     * @return
-     */
-    private String changeStatus(Property p) {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @return
-     */
-    private void displayStatuses() {
-        // TODO implement here
-        return;
-    }
 
 
 

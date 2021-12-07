@@ -21,7 +21,6 @@ import java.util.*;
 public class DisplayLL extends javax.swing.JFrame implements Strategy  {
 
 
-
     /**
      * Default constructor
      */
@@ -29,9 +28,6 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
         myPropertyForm = new PropertyForm();
     }
 
-    /**
-     * 
-     */
     private InteractionForm myPropertyForm;
 
 
@@ -45,7 +41,7 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
 
     /**
      * @param email 
-     * @return
+     * Display the Landlord's Home Page
      */
     public void display(String email)  {
         JFrame f = this;
