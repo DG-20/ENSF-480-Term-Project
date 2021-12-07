@@ -56,6 +56,4 @@ public class PeriodFeesController extends Controller {
         PaymentPeriodRecord record = (PaymentPeriodRecord)d;
         return record.retrievePayment();
     }
-
-
 }
