@@ -100,10 +100,12 @@ public class SubscriptionList implements Database {
             while (set.next()) {
                 String quadrant = set.getString("Quadrant");
                 String furnished = set.getString("Furnished");
+                boolean furn = false;
+                if (furnished.equals("Y")) furn = true;
                 int numBathrooms = set.getInt("numBathrooms");
                 int numBedrooms = set.getInt("numBedrooms");
                 String type = set.getString("Type");
-                Subscription s = new Subscription();
+                Subscription s = new Subscription(type, numBedrooms, numBathrooms, furn, quadrant);
                 mySubs.add(s);
             }
             stmt.close();

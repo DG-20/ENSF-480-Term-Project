@@ -9,6 +9,8 @@
 package Control_Layer;
 
 import Data_Source_Layer.*;
+
+
 import Business_Layer.*;
 
 import java.util.*;
@@ -77,6 +79,15 @@ public class SubscriptionController extends Controller {
         list.deleteSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
         return;
     }
+    
+    /* Asks the database for all subbed properties associated with a RR's email and returns all those properties */
+    public ArrayList<Property> getSubbedProperties(String email)
+    {
+        Database d= myData.get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        return property.getNotifications(email);
+    }
+    
 
 
     public ArrayList<Property> getSubbedProperties(String email){
