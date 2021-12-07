@@ -41,4 +41,5 @@ public class SearchController extends Controller {
         PropertyInventory property = (PropertyInventory)d;
         return property.getMatching(type, numBedrooms, numBathrooms, furnished, quadrant);
     }
+
 }

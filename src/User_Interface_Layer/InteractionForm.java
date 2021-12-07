@@ -21,46 +21,10 @@ public abstract class InteractionForm {
      * Default constructor
      */
     public InteractionForm() {
+        myControllers = new ArrayList<>();
     }
 
-    /**
-     * 
-     */
-    private Controller myLoginController;
 
-    /**
-     * 
-     */
-    private Controller myRegistrationController;
-
-    /**
-     * 
-     */
-    private Controller myPeriodFeesController;
-
-    /**
-     * 
-     */
-    private Controller mySubscriptionController;
-
-    /**
-     * 
-     */
-    private Controller myUpdateController;
-
-    /**
-     * 
-     */
-    private Controller mySearchController;
-
-    /**
-     * 
-     */
-    //public void Attribute2;
-
-    /**
-     * 
-     */
-    private ArrayList<Controller> myControllers;
+    protected ArrayList<Controller> myControllers;
 
 }

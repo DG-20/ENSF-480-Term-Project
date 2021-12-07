@@ -26,9 +26,6 @@ public class UpdateController extends Controller {
         myData.add(data);
     }
 
-    /**
-     * 
-     */
     
     /**
      * @param email 
