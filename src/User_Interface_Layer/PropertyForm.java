@@ -219,7 +219,7 @@ public class PropertyForm extends InteractionForm {
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         /* Header */
-        JLabel header = new JLabel("Choose one of your following properties to update");
+        JLabel header = new JLabel("Choose one of the following properties to update");
         JPanel row1 = new JPanel(new FlowLayout());
         row1.add(header);
         a.add(row1);

@@ -92,7 +92,7 @@ public class UserInfo implements Database {
                 String pswd = set.getString("Password");
                 String name = set.getString("Name");
                 String type = set.getString("Type");
-                User user = new User();
+                User user = new User(email, pswd, type, name);
                 u.add(user);
             }
             stmt.close();
