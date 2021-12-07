@@ -16,44 +16,16 @@ import java.util.*;
 /**
  * 
  */
-public class SummaryForm {
-
-    /**
-     * Default constructor
-     */
+public class SummaryForm extends InteractionForm{
     public SummaryForm() {
     }
 
-    /**
-     * 
-     */
     private PropertyInventory myInventory;
 
-    /**
-     * 
-     */
     private UserInfo myUserInfo;
 
-
-
-
-
-
-
-
-    /**
-     * @return
-     */
     public void showSummary() {
         // TODO implement here
         return;
     }
-
-    /**
-     * 
-     */
-    public void SummaryForm() {
-        // TODO implement here
-    }
-
 }
