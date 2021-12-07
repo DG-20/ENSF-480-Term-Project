@@ -22,7 +22,7 @@ public class RegistrationController extends Controller {
      */
     public RegistrationController() {
         Database data = new PropertyInventory();
-        add(data);
+        myData.add(data);
     }
 
 
@@ -39,7 +39,7 @@ public class RegistrationController extends Controller {
      */
     public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory)d;
         property.registerProperty(type, numBedrooms, numBathrooms, furnished, quadrant, email, address);
         return;

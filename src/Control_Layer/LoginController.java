@@ -22,9 +22,8 @@ public class LoginController extends Controller {
      */
     public LoginController() {
         Database data = new UserInfo();
-        add(data);
+        myData.add(data);
     }
-
 
     /**
      * @param email 
@@ -34,7 +33,7 @@ public class LoginController extends Controller {
      */
     public boolean forwardUser(String email, String password, String userType) {
         // TODO implement here
-        Database d = getDatabase().get(0);
+        Database d = myData.get(0);
         UserInfo validate = (UserInfo)d;
         return validate.validation(email, password, userType);
     }
