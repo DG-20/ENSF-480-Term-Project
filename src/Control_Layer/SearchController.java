@@ -42,10 +42,4 @@ public class SearchController extends Controller {
         return property.getMatching(type, numBedrooms, numBathrooms, furnished, quadrant);
     }
 
-    public ArrayList<Property> getSubbedProperties(String email)
-    {
-        Database d= myData.get(0);
-        PropertyInventory property = (PropertyInventory)d;
-        return property.getNotifications(email);
-    }
 }
