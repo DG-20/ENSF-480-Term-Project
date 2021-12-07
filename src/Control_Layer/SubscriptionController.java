@@ -77,5 +77,6 @@ public class SubscriptionController extends Controller {
         list.deleteSubscription(type, numBedrooms, numBathrooms, furnished, quadrant, email);
         return;
     }
+    
 
 }
