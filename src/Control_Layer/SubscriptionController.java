@@ -87,12 +87,4 @@ public class SubscriptionController extends Controller {
         PropertyInventory property = (PropertyInventory)d;
         return property.getNotifications(email);
     }
-    
-
-
-    public ArrayList<Property> getSubbedProperties(String email){
-        Database d = myData.get(0);
-        PropertyInventory property = (PropertyInventory)d;
-        return property.getNotifications(email);
-    }
 }
