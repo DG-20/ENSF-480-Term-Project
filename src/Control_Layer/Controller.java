@@ -26,6 +26,18 @@ public abstract class Controller {
     /**
      * 
      */
-    protected ArrayList<Database> myData;
+  
+    protected ArrayList<Database> myData = new ArrayList<Database>(1);
 
+ 
+
+     
+
+    public ArrayList<Database> getDatabase(){
+        return myData;
+    }
+
+    public void add(Database data){
+        myData.add(data);
+    }
 }
