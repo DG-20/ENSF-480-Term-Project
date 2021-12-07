@@ -9,8 +9,10 @@
 package Control_Layer;
 
 import Data_Source_Layer.*;
-import Business_Layer.Subscription;
-import Business_Layer.Property;
+
+
+import Business_Layer.*;
+
 import java.util.*;
 
 /**
@@ -87,4 +89,10 @@ public class SubscriptionController extends Controller {
     }
     
 
+
+    public ArrayList<Property> getSubbedProperties(String email){
+        Database d = myData.get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        return property.getNotifications(email);
+    }
 }
