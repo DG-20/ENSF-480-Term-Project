@@ -3,158 +3,42 @@
  * Authors:
  *      Cheyenne Goh (UCID: 30040528)
  *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
+ *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
+
 package User_Interface_Layer;
 
-import User_Interface_Layer.Strategy;
-
-import java.util.*;
-
-/**
- * 
- */
+// DONE
 public class GUIHomePage {
+    private static String email;
+    private static Strategy displayStrategy;
 
-    /**
-     * Default constructor
-     */
-    public GUIHomePage() {
+    public void performStrategy() {
+        displayStrategy.display(email);
     }
 
-    /**
-     * 
-     */
-    private String userType;
+    public void setDisplayStrategy(String userType) {
+        if (userType.equals("Landlord")) {
+            displayStrategy = new DisplayLL();
+        }
+        else if (userType.equals("Manager")) {
+            displayStrategy = new DisplayManager();
+        }
+        else if (userType.equals("Registered Renter")) {
+            displayStrategy = new DisplayRR();
+        }
+        else {
+            displayStrategy = new DisplayUR();
 
-    /**
-     * 
-     */
-    private SubscriptionForm mySubForm;
-
-    /**
-     * 
-     */
-    private StartUp myStartUp;
-
-    /**
-     * 
-     */
-    private static String email;
-
-    /**
-     * 
-     */
-    private SearchForm mySearchForm;
-
-    /**
-     * 
-     */
-    private NotificationView myNotifView;
-
-    /**
-     * 
-     */
-    private PropertyForm myPropertyForm;
-
-    /**
-     * 
-     */
-    private SummaryForm mySummaryForm;
-
-    /**
-     * 
-     */
-    private ChangePeriodFeesForm myChangePF;
-
-    /**
-     * 
-     */
-    private Strategy displayStrategy;
+        }
+    }
 
     public static String getEmail() {
         return email;
     }
 
-
-
-
-
-
-
-
-
-    /**
-     * @return
-     */
-    private void displayRR() {
-        // TODO implement here
-        return;
+    public GUIHomePage(String email) {
+        this.email = email;
     }
-
-    /**
-     * @return
-     */
-    private void displayLL() {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * @return
-     */
-    private void displayManager() {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * @param userType 
-     * @return
-     */
-    public void display(String userType) {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    private void displayUR() {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * @return
-     */
-    public void performStrategy() {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * @param userType 
-     * @return
-     */
-    public void setDisplayStrategy(String userType) {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * @param email
-     */
-    public void GUIHomePage(String email) {
-        // TODO implement here
-    }
-
 }

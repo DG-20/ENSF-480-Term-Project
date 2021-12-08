@@ -182,7 +182,7 @@ public class PropertyForm extends InteractionForm {
                 /* Send the property details to Controller */
                 ((RegistrationController)myControllers.get(1)).forwardProperty(type, Integer.parseInt(numBedrooms), Integer.parseInt(numBathrooms), furn, quadrant, GUIHomePage.getEmail(), address);
                  f.dispose();
-                 GUIHomePage x = new GUIHomePage();
+                 GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
                  x.performStrategy();
             }
 
@@ -194,7 +194,7 @@ public class PropertyForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                new GUIHomePage().performStrategy();
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });
         f.add(backButton);
@@ -272,13 +272,18 @@ public class PropertyForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 a.dispose();
-                new GUIHomePage().performStrategy();
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });
 
         a.setVisible(true);
 
     }
+
+
+
+
+
 
 
 }
