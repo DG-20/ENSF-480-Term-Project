@@ -30,7 +30,7 @@ public class UserInfo implements Database {
         users = Singleton.getInstance();
         ArrayList<User> users = getAllUsers();
         for (User u: users) {
-            users.add(u);
+            this.users.addUser(u);
         }
     }
 
