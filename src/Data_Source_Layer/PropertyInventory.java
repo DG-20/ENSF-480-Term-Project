@@ -255,6 +255,8 @@ public class PropertyInventory implements Database {
                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "", "", emailAddress, "" );
                rented.add(p);
            }
+           stmt.close();
+           set.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
