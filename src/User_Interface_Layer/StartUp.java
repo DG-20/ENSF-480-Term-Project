@@ -26,7 +26,7 @@ public class StartUp {
     public void welcome() {
         EventQueue.invokeLater(() -> {
             JFrame frame = new JFrame("Welcome");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             Container container = new Container();
             container.setLayout(new GridBagLayout());

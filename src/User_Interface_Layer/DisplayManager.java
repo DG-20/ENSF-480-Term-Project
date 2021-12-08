@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 
 public class DisplayManager extends javax.swing.JFrame implements Strategy {
     public DisplayManager() {
+        mySummaryForm = new SummaryForm();
+        myChangePF = new ChangePeriodFeesForm();
+        myPropertyForm = new PropertyForm();
     }
 
     private InteractionForm mySummaryForm;
@@ -74,8 +77,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         titleText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleText.setText("Please make a selection:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
+        frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -169,6 +172,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();;
                 StartUp.main(new String[]{""});
             }
         });

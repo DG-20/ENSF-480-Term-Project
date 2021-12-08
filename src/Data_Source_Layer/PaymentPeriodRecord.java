@@ -37,9 +37,8 @@ public class PaymentPeriodRecord implements Database {
            if (fee >=1) {
                String query = "UPDATE fee SET Fee = " + fee;
                Statement stmt = dbConnect.createStatement();
-               ResultSet result = stmt.executeQuery(query);
+               int result = stmt.executeUpdate(query);
                stmt.close();
-               result.close();
            }
        } catch (SQLException e) {
            e.printStackTrace();
@@ -48,9 +47,8 @@ public class PaymentPeriodRecord implements Database {
            if (period >=1) {
                String query = "UPDATE period SET Period = "+ period;
                Statement stmt = dbConnect.createStatement();
-               ResultSet result = stmt.executeQuery(query);
+               int result = stmt.executeUpdate(query);
                stmt.close();
-               result.close();
            }
        } catch (SQLException e) {
            e.printStackTrace();
