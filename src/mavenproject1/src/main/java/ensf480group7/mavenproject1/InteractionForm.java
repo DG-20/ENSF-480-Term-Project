@@ -6,7 +6,7 @@
  *      Rui Guan(UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
+package ensf480group7.mavenproject1;
 
 import Control_Layer.Controller;
 
@@ -26,32 +26,32 @@ public abstract class InteractionForm {
     /**
      * 
      */
-    private Controller myLoginController;
+    protected Controller myLoginController;
 
     /**
      * 
      */
-    private Controller myRegistrationController;
+    protected Controller myRegistrationController;
 
     /**
      * 
      */
-    private Controller myPeriodFeesController;
+    protected Controller myPeriodFeesController;
 
     /**
      * 
      */
-    private Controller mySubscriptionController;
+    protected Controller mySubscriptionController;
 
     /**
      * 
      */
-    private Controller myUpdateController;
+    protected Controller myUpdateController;
 
     /**
      * 
      */
-    private Controller mySearchController;
+    protected Controller mySearchController;
 
     /**
      * 

@@ -6,11 +6,11 @@
  *      Rui Guan(UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
+//package User_Interface_Layer;
+package ensf480group7.mavenproject1;
 
-import Control_Layer.RegistrationController;
-import Control_Layer.UpdateController;
-import Control_Layer.PeriodFeesController;
+
+import Control_Layer.*;
 import Business_Layer.Property;
 import Data_Source_Layer.PropertyInventory;
 
@@ -30,7 +30,7 @@ public class PropertyForm extends InteractionForm {
      * Adds three controllers
      */
     public PropertyForm() {
-        myControllers.add( new PeriodFeesController());
+        myControllers.add(new PeriodFeesController());
         myControllers.add(new RegistrationController());
         myControllers.add(new UpdateController());
     }

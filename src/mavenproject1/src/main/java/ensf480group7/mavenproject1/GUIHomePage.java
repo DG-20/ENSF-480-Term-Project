@@ -6,9 +6,9 @@
  *      Rui Guan(UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
+package ensf480group7.mavenproject1;
 
-import User_Interface_Layer.Strategy;
+//import User_Interface_Layer.Strategy;
 
 import java.util.*;
 
@@ -31,12 +31,12 @@ public class GUIHomePage {
     /**
      * 
      */
-    private SubscriptionForm mySubForm;
+    //private SubscriptionForm mySubForm;
 
     /**
      * 
      */
-    private StartUp myStartUp;
+    //private StartUp myStartUp;
 
     /**
      * 
@@ -51,7 +51,7 @@ public class GUIHomePage {
     /**
      * 
      */
-    private NotificationView myNotifView;
+    //private NotificationView myNotifView;
 
     /**
      * 
@@ -61,27 +61,26 @@ public class GUIHomePage {
     /**
      * 
      */
-    private SummaryForm mySummaryForm;
+    //private SummaryForm mySummaryForm;
 
     /**
      * 
      */
-    private ChangePeriodFeesForm myChangePF;
+    //private ChangePeriodFeesForm myChangePF;
 
     /**
      * 
      */
     private Strategy displayStrategy;
 
-    public static String getEmail() {
+
+
+
+
+    public static String getEmail()
+    {
         return email;
     }
-
-
-
-
-
-
 
 
 

@@ -6,3 +6,4 @@
 .idea/shelf/
 .idea/.gitignore
 .DS_Store
+/src/mavenproject1/target/

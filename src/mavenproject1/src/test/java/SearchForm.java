@@ -6,7 +6,7 @@
  *      Rui Guan(UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
+
 
 import Control_Layer.SearchController;
 import Business_Layer.Property;

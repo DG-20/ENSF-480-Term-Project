@@ -6,12 +6,13 @@
  *      Rui Guan(UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
+//package User_Interface_Layer;
 
-import Control_Layer.SearchController;
-import Business_Layer.Property;
-
+//import Control_Layer.SearchController;
+//import Business_Layer.Property;
+package ensf480group7.mavenproject1;
 import java.util.*;
+import Business_Layer.Property;
 
 /**
  * 
@@ -61,11 +62,5 @@ public class SearchForm extends InteractionForm{
         return;
     }
 
-    /**
-     * 
-     */
-    public void SearchForm() {
-        // TODO implement here
-    }
 
 }
