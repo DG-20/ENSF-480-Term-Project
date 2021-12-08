@@ -8,6 +8,7 @@
  */
 package User_Interface_Layer;
 
+import Control_Layer.Controller;
 import Control_Layer.PeriodFeesController;
 
 import javax.swing.*;
@@ -19,14 +20,14 @@ public class ChangePeriodFeesForm extends InteractionForm {
         myController = new PeriodFeesController();
     }
 
-    private PeriodFeesController myController;
-    javax.swing.JFrame frame; // The JFrame object.
+    private Controller myController;
+    JFrame frame; // The JFrame object.
 
-    public PeriodFeesController getMyController() {
+    public Controller getMyController() {
         return myController;
     }
 
-    public void setMyController(PeriodFeesController myController) {
+    public void setMyController(Controller myController) {
         this.myController = myController;
     }
 
@@ -45,8 +46,8 @@ public class ChangePeriodFeesForm extends InteractionForm {
         JTextField amountInput = new JTextField(10);
         JTextField periodInput = new JTextField(10);
 
-        int currentPaymentVal = myController.sendPayment();
-        int currentPeriodVal = myController.sendPeriod();
+        int currentPaymentVal = ((PeriodFeesController)myController).sendPayment();
+        int currentPeriodVal = ((PeriodFeesController)myController).sendPeriod();
         String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal) + "\nPeriod: "
                 + String.valueOf(currentPeriodVal);
 
@@ -206,7 +207,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
                     }
                 }
 
-                myController.forwardPeriodFees(newAmountInt, newPeriodInt);
+                ((PeriodFeesController)myController).forwardPeriodFees(newAmountInt, newPeriodInt);
                 JOptionPane.showMessageDialog(frame, "The period and fees have been updated.", "Success!", 1 );
                 frame.dispose();
                 GUIHomePage x = new GUIHomePage();

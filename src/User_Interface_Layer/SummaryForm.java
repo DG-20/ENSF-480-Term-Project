@@ -12,48 +12,28 @@ import Data_Source_Layer.PropertyInventory;
 import Data_Source_Layer.UserInfo;
 
 import java.util.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- * 
- */
-public class SummaryForm extends InteractionForm{
-
-    /**
-     * Default constructor
-     */
+public class SummaryForm extends InteractionForm {
     public SummaryForm() {
+        myInventory = new PropertyInventory();
     }
 
-    /**
-     * 
-     */
     private PropertyInventory myInventory;
-
-    /**
-     * 
-     */
     private UserInfo myUserInfo;
 
-
-
-
-
-
-
-
-    /**
-     * @return
-     */
     public void showSummary() {
-        // TODO implement here
-        return;
+        JFrame frame = new JFrame();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JButton jButton1;
+        JScrollPane jScrollPane1;
+        JScrollPane jScrollPane2;
+        JScrollPane jScrollPane3;
+        JTextArea jTextArea1;
+        JTextArea jTextArea2;
+        JTextArea jTextArea3;
     }
-
-    /**
-     * 
-     */
-    public void SummaryForm() {
-        // TODO implement here
-    }
-
 }
