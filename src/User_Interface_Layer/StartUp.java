@@ -52,14 +52,35 @@ public class StartUp {
       c.gridwidth = 1;
       c.gridy = 1;
       container.add(managerButton, c);
+      managerButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          userType = "Manager";
+          frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+          loginPage();
+        }
+      });
 
       JButton registeredRenterButton = new JButton("Registered Renter");
       c.gridy = 2;
       container.add(registeredRenterButton, c);
+      registeredRenterButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          userType = "Registered Renter";
+          frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+          loginPage();
+        }
+      });
 
       JButton noAccountButton = new JButton("No Account");
       c.gridy = 3;
       container.add(noAccountButton, c);
+      noAccountButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          userType = "Unregistered Renter";
+          frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+          loginPage();
+        }
+      });
 
       JButton landlordButton = new JButton("Landlord");
       landlordButton.addActionListener(new ActionListener() {

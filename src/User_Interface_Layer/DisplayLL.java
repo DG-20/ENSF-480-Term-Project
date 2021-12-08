@@ -35,19 +35,10 @@ public class DisplayLL implements Strategy {
       c.ipadx = 10;
       c.ipady = 10;
 
-      JButton registerPropertyButton = new JButton("Register Property");
-      c.gridwidth = 1;
+      JButton updateButton = new JButton("Update");
       c.gridx = 0;
       c.gridy = 0;
-      container.add(registerPropertyButton, c);
-
-      JButton payPropertyButton = new JButton("Pay Property");
-      c.gridy = 1;
-      container.add(payPropertyButton, c);
-
-      JButton updatePropertyButton = new JButton("Update Property");
-      c.gridy = 2;
-      container.add(updatePropertyButton, c);
+      container.add(updateButton, c);
 
       JButton logoutButton = new JButton("Logout");
       logoutButton.addActionListener(new ActionListener() {
