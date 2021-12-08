@@ -9,12 +9,15 @@
 package User_Interface_Layer;
 
 import User_Interface_Layer.InteractionForm;
+
+import javax.swing.*;
+
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-
-
+import java.util.*;
 /**
  *
  * @author lareina.jo
@@ -34,7 +37,6 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy  {
      * @param email 
      * Display the Landlord's Home Page
      */
-    @Override
     public void display(String email)  {
         JFrame f = this;
         f.setVisible(true);
@@ -99,8 +101,4 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy  {
 
     }
     
-    public static void main(String args[]) {
-    	DisplayUR display = new DisplayUR();
-    	display.display("  ");
-    }
 }
