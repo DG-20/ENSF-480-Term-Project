@@ -81,7 +81,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
         goBackButton.setText("Go back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
-        frame.setLayout(layout);
+        frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()

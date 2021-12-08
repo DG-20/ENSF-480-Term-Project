@@ -136,8 +136,32 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         summaryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int defaultPeriod = ((SummaryForm)mySummaryForm).getPeriod();
+                String input = JOptionPane.showInputDialog("Please choose the period (number of days) of the summary you would like to view:", defaultPeriod);
+                int periodChosen = defaultPeriod;
+                try
+                {
+                    periodChosen = Integer.parseInt(input);
+                }
+                catch (Exception ee)
+                {
+                    boolean valid = false;
+                    while (valid == false)
+                    {
+                        input = JOptionPane.showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                        try
+                        {
+                            periodChosen = Integer.parseInt(input);
+                            valid = true;
+                        }
+                        catch (Exception eee)
+                        {
+                            valid = false;
+                        }
+                    }
+                }
                 frame.setVisible(false);
-                ((SummaryForm)mySummaryForm).showSummary();
+                ((SummaryForm)mySummaryForm).showSummary(periodChosen);
             }
         });
 
