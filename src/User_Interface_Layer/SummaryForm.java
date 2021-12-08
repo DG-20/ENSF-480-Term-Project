@@ -35,6 +35,7 @@ public class SummaryForm extends InteractionForm {
         JFrame frame = new JFrame();
         frame.setSize(563, 500);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JButton doneButton = new JButton();

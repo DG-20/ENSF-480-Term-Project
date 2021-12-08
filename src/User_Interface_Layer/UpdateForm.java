@@ -32,6 +32,7 @@ public class UpdateForm extends InteractionForm {
         private void changeStatus() {
                 f = new javax.swing.JFrame();
                 f.setVisible(true);
+                f.setLocationRelativeTo(null);
                 header1 = new javax.swing.JLabel();
                 header2 = new javax.swing.JLabel();
                 jSeparator1 = new javax.swing.JSeparator();

@@ -44,6 +44,7 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy {
     public void display(String email) {
         JFrame f = this;
         f.setVisible(true);
+        f.setLocationRelativeTo(null);
         JLabel jLabel1 = new javax.swing.JLabel();
         JButton updateListingB = new javax.swing.JButton();
         JButton registerPropertyB = new javax.swing.JButton();

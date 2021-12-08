@@ -41,6 +41,7 @@ public class PropertyForm extends InteractionForm {
     public void startRegistration() {
         JFrame f = new JFrame("Property Registration Form");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null);
         f.setSize(500, 500);
         f.setLayout(new FlowLayout());
         JPanel rowEntry = new JPanel();
