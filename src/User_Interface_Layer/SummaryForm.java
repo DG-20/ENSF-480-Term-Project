@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class SummaryForm {
+public class SummaryForm extends InteractionForm{
 
     /**
      * Default constructor

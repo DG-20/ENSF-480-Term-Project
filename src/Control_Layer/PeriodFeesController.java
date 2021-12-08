@@ -47,11 +47,6 @@ public class PeriodFeesController extends Controller {
         return;
     }
 
-    /* Asks the DB for the current period */
-    public int sendPeriod() {
-        return ((PaymentPeriodRecord)(myData.get(0))).retrievePeriod();
-    }
-
     /**
      * @return
      */
@@ -61,6 +56,4 @@ public class PeriodFeesController extends Controller {
         PaymentPeriodRecord record = (PaymentPeriodRecord)d;
         return record.retrievePayment();
     }
-
-
 }
