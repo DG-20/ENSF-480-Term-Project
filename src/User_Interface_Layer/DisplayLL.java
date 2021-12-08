@@ -18,8 +18,7 @@ import java.util.*;
 /**
  * 
  */
-public class DisplayLL extends javax.swing.JFrame implements Strategy  {
-
+public class DisplayLL extends javax.swing.JFrame implements Strategy {
 
     /**
      * Default constructor
@@ -30,7 +29,6 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
 
     private InteractionForm myPropertyForm;
 
-
     public InteractionForm getMyPropertyForm() {
         return myPropertyForm;
     }
@@ -40,10 +38,10 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
     }
 
     /**
-     * @param email 
-     * Display the Landlord's Home Page
+     * @param email
+     *              Display the Landlord's Home Page
      */
-    public void display(String email)  {
+    public void display(String email) {
         JFrame f = this;
         f.setVisible(true);
         JLabel jLabel1 = new javax.swing.JLabel();
@@ -70,17 +68,22 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
                                 .addGap(140, 140, 140)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(registerPropertyB, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(updateListingB, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registerPropertyB,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 215,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(updateListingB,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 215,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(21, 21, 21)
                                                 .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98,
+                                                        Short.MAX_VALUE)
                                                 .addComponent(logoutB)))
-                                .addContainerGap())
-        );
+                                .addContainerGap()));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -89,11 +92,12 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
                                         .addComponent(jLabel1)
                                         .addComponent(logoutB))
                                 .addGap(16, 16, 16)
-                                .addComponent(updateListingB, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(updateListingB, javax.swing.GroupLayout.PREFERRED_SIZE, 104,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(registerPropertyB, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(23, Short.MAX_VALUE))
-        );
+                                .addComponent(registerPropertyB, javax.swing.GroupLayout.PREFERRED_SIZE, 108,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(23, Short.MAX_VALUE)));
 
         pack();
 
@@ -103,7 +107,7 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                ((PropertyForm)myPropertyForm).browseProperties();
+                ((PropertyForm) myPropertyForm).browseProperties();
 
             }
         });
@@ -113,7 +117,7 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                ((PropertyForm)myPropertyForm).startRegistration();
+                ((PropertyForm) myPropertyForm).startRegistration();
 
             }
         });
@@ -123,12 +127,10 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                StartUp.main(new String[]{""});
+                StartUp.main(new String[] { "" });
 
             }
         });
-
-
 
     }
 

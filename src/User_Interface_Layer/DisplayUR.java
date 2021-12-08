@@ -28,10 +28,8 @@ public class DisplayUR implements Strategy {
      */
     private InteractionForm mySearchForm;
 
-
-
     /**
-     * @param email 
+     * @param email
      * @return
      */
     public void display(String email) {

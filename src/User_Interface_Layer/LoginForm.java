@@ -8,6 +8,7 @@
  */
 
 package User_Interface_Layer;
+
 // import LoginController.*;
 import Control_Layer.Controller;
 import Control_Layer.LoginController;
@@ -21,7 +22,6 @@ public class LoginForm extends InteractionForm {
     private String inputEmail;
     private String inputPassword;
     private String userType; // not relevant
-
 
     /* Start the Login Process View */
     public void startLogin() {
@@ -66,10 +66,12 @@ public class LoginForm extends InteractionForm {
             passwordLabel.setLabelFor(passwordField);
             container.add(passwordField, c);
 
-
             /* ON OK BUTTON PRESS */
             /* Check if user has valid login credentials */
-            /* If true, redirect them to their correct homepage, otherwise show an error message */
+            /*
+             * If true, redirect them to their correct homepage, otherwise show an error
+             * message
+             */
             JButton okButton = new JButton("OK");
             okButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -79,7 +81,7 @@ public class LoginForm extends InteractionForm {
                         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                         LoginController controller = (LoginController) myControllers.get(0);
                         boolean valid = controller.forwardUser(inputEmail, inputPassword, userType);
-                        if (!valid)  {
+                        if (!valid) {
                             JOptionPane.showMessageDialog(frame, "INVALID LOGIN! Try again.",
                                     "INVALID LOGIN", JOptionPane.ERROR_MESSAGE);
                             startLogin();
@@ -119,6 +121,5 @@ public class LoginForm extends InteractionForm {
     public String getInputPassword() {
         return inputPassword;
     }
-
 
 }

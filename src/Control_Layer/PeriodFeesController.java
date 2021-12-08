@@ -8,7 +8,6 @@
  */
 package Control_Layer;
 
-
 import Data_Source_Layer.*;
 
 import java.util.*;
@@ -29,20 +28,19 @@ public class PeriodFeesController extends Controller {
     /* Asks the DB for the current period */
     public int sendPeriod() {
         Database d = myData.get(0);
-        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        PaymentPeriodRecord record = (PaymentPeriodRecord) d;
         return record.retrievePeriod();
     }
 
-
     /**
-     * @param fee 
-     * @param period 
+     * @param fee
+     * @param period
      * @return
      */
     public void forwardPeriodFees(int fee, int period) {
         // TODO implement here
         Database d = myData.get(0);
-        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        PaymentPeriodRecord record = (PaymentPeriodRecord) d;
         record.updatePeriodPayment(fee, period);
         return;
     }
@@ -53,7 +51,7 @@ public class PeriodFeesController extends Controller {
     public int sendPayment() {
         // TODO implement here
         Database d = myData.get(0);
-        PaymentPeriodRecord record = (PaymentPeriodRecord)d;
+        PaymentPeriodRecord record = (PaymentPeriodRecord) d;
         return record.retrievePayment();
     }
 }

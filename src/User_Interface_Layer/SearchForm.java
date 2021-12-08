@@ -29,13 +29,6 @@ public class SearchForm {
      */
     private SearchController controller;
 
-
-
-
-
-
-
-
     /**
      * @return
      */
@@ -45,7 +38,7 @@ public class SearchForm {
     }
 
     /**
-     * @param matchedProperties 
+     * @param matchedProperties
      * @return
      */
     private void displayMatching(ArrayList<Property> matchedProperties) {

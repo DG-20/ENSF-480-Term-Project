@@ -25,22 +25,21 @@ public class RegistrationController extends Controller {
         myData.add(data);
     }
 
-
-
     /**
-     * @param type 
-     * @param numBedrooms 
-     * @param numBathrooms 
-     * @param furnished 
-     * @param quadrant 
+     * @param type
+     * @param numBedrooms
+     * @param numBathrooms
+     * @param furnished
+     * @param quadrant
      * @param email
-     * @param address 
+     * @param address
      * @return
      */
-    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
+    public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant,
+            String email, String address) {
         // TODO implement here
         Database d = myData.get(0);
-        PropertyInventory property = (PropertyInventory)d;
+        PropertyInventory property = (PropertyInventory) d;
         property.registerProperty(type, numBedrooms, numBathrooms, furnished, quadrant, email, address);
         return;
     }

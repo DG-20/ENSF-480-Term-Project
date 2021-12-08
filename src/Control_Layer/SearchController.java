@@ -26,19 +26,19 @@ public class SearchController extends Controller {
         myData.add(data);
     }
 
-
     /**
-     * @param type 
-     * @param numBedrooms 
-     * @param numBathrooms 
-     * @param furnished 
-     * @param quadrant 
+     * @param type
+     * @param numBedrooms
+     * @param numBathrooms
+     * @param furnished
+     * @param quadrant
      * @return
      */
-    public ArrayList<Property> forwardSearch(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
+    public ArrayList<Property> forwardSearch(String type, int numBedrooms, int numBathrooms, boolean furnished,
+            String quadrant) {
         // TODO implement here
         Database d = myData.get(0);
-        PropertyInventory property = (PropertyInventory)d;
+        PropertyInventory property = (PropertyInventory) d;
         return property.getMatching(type, numBedrooms, numBathrooms, furnished, quadrant);
     }
 

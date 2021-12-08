@@ -30,7 +30,7 @@ public class PropertyForm extends InteractionForm {
      * Adds three controllers
      */
     public PropertyForm() {
-        myControllers.add( new PeriodFeesController());
+        myControllers.add(new PeriodFeesController());
         myControllers.add(new RegistrationController());
         myControllers.add(new UpdateController());
     }
@@ -53,7 +53,6 @@ public class PropertyForm extends InteractionForm {
         labelTitle.setHorizontalTextPosition(JLabel.CENTER);
         f.add(labelTitle);
 
-
         /* Address */
         JLabel addressLabel = new JLabel("Address");
         JTextField addressFieldT = new JTextField(20);
@@ -61,7 +60,7 @@ public class PropertyForm extends InteractionForm {
         rowEntry.add(addressFieldT);
 
         /* Quadrant */
-        String[] choices = {"NE", "NW", "SW", "SE"};
+        String[] choices = { "NE", "NW", "SW", "SE" };
         JLabel quadrantLabel = new JLabel("Quadrant");
         rowEntry.add(quadrantLabel);
         JComboBox quadrantList = new JComboBox(choices);
@@ -74,18 +73,18 @@ public class PropertyForm extends InteractionForm {
         rowEntry.add(typeT);
 
         /* number of bathrooms & number of bedrooms */
-        String[] numChoices = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] numChoices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         JLabel numBathroomsLabel = new JLabel("Number of bathrooms");
         JComboBox numBathroomsT = new JComboBox(numChoices);
         rowEntry.add(numBathroomsLabel);
         rowEntry.add(numBathroomsT);
-        JLabel numBedroomsLabel = new JLabel ("Number of bedrooms");
+        JLabel numBedroomsLabel = new JLabel("Number of bedrooms");
         JComboBox numBedroomsT = new JComboBox(numChoices);
         rowEntry.add(numBedroomsLabel);
         rowEntry.add(numBedroomsT);
 
         /* Furnished? */
-        String[] furn = {"Y", "N"};
+        String[] furn = { "Y", "N" };
         JLabel furnishedLabel = new JLabel("Furnished");
         JComboBox furnishedT = new JComboBox(furn);
         rowEntry.add(furnishedLabel);
@@ -109,13 +108,12 @@ public class PropertyForm extends InteractionForm {
         rowEntry.add(cvv);
         rowEntry.add(cvvT);
 
-
         /* Expiry Date */
         JPanel ccEntry = new JPanel();
         ccEntry.setLayout(new GridLayout(0, 2));
         JLabel expDate = new JLabel("Exp. Date (MM/YY)");
-        String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
-        String[] years = {"21", "22", "23", "24", "25"};
+        String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+        String[] years = { "21", "22", "23", "24", "25" };
         JComboBox monthsT = new JComboBox(months);
         JComboBox yearsT = new JComboBox(years);
         ccEntry.add(monthsT);
@@ -126,8 +124,8 @@ public class PropertyForm extends InteractionForm {
         f.add(rowEntry);
 
         /* Fee & Period declaration */
-        int fee = ((PeriodFeesController)myControllers.get(0)).sendPayment();
-        int period = ((PeriodFeesController)myControllers.get(0)).sendPeriod();
+        int fee = ((PeriodFeesController) myControllers.get(0)).sendPayment();
+        int period = ((PeriodFeesController) myControllers.get(0)).sendPeriod();
 
         String s = "<html><it>Current fee is: $";
         s += fee;
@@ -157,33 +155,35 @@ public class PropertyForm extends InteractionForm {
                 String furnished = furnishedT.getSelectedItem().toString();
                 String quadrant = quadrantList.getSelectedItem().toString();
                 boolean furn = false;
-                if (furnished.equals("Y"))  furn = true;
+                if (furnished.equals("Y"))
+                    furn = true;
                 String CVV = cvvT.getText();
                 String months = monthsT.getSelectedItem().toString();
                 String year = yearsT.getSelectedItem().toString();
                 String numBedrooms = numBedroomsT.getSelectedItem().toString();
                 String numBathrooms = numBathroomsT.getSelectedItem().toString();
 
-
                 /* Invalid Input - Error Checking */
-                if ( (address.length() == 0 || type.length() == 0 || cardNumber.length() == 0 || cardHolderName.length() == 0)
-                        || (CVV.length() <=2 || CVV.length() >=5)
+                if ((address.length() == 0 || type.length() == 0 || cardNumber.length() == 0
+                        || cardHolderName.length() == 0)
+                        || (CVV.length() <= 2 || CVV.length() >= 5)
                         || (year.equals("21") && (months.equals("01") || months.equals("02") || months.equals("03") ||
-                        months.equals("04") || months.equals("05") || months.equals("06") || months.equals("07")
-                        || months.equals("08") || months.equals("09") || months.equals("10") || months.equals("11"))))
-                {
+                                months.equals("04") || months.equals("05") || months.equals("06") || months.equals("07")
+                                || months.equals("08") || months.equals("09") || months.equals("10")
+                                || months.equals("11")))) {
                     JOptionPane.showMessageDialog(f, "One or more of your fields are invalid",
                             "INVALID INPUT", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
                 /* Valid Details */
-                JOptionPane.showMessageDialog(f, "Your property has been registered.", "Success!", 1 );
+                JOptionPane.showMessageDialog(f, "Your property has been registered.", "Success!", 1);
                 /* Send the property details to Controller */
-                ((RegistrationController)myControllers.get(1)).forwardProperty(type, Integer.parseInt(numBedrooms), Integer.parseInt(numBathrooms), furn, quadrant, GUIHomePage.getEmail(), address);
-                 f.dispose();
-                 GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
-                 x.performStrategy();
+                ((RegistrationController) myControllers.get(1)).forwardProperty(type, Integer.parseInt(numBedrooms),
+                        Integer.parseInt(numBathrooms), furn, quadrant, GUIHomePage.getEmail(), address);
+                f.dispose();
+                GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
+                x.performStrategy();
             }
 
         });
@@ -199,20 +199,20 @@ public class PropertyForm extends InteractionForm {
         });
         f.add(backButton);
 
-
     }
 
-    /* Get all the landlord's properties from the controller and call respective display functions */
-    public void browseProperties()
-    {
+    /*
+     * Get all the landlord's properties from the controller and call respective
+     * display functions
+     */
+    public void browseProperties() {
         ArrayList<Property> p = new ArrayList<>();
-        p = ((UpdateController)myControllers.get(2)).forwardRequest(GUIHomePage.getEmail());
+        p = ((UpdateController) myControllers.get(2)).forwardRequest(GUIHomePage.getEmail());
         displayMyProperties(p);
     }
 
     /* Displays the Landlord's Properties */
-    public void displayMyProperties(ArrayList<Property> p)
-    {
+    public void displayMyProperties(ArrayList<Property> p) {
         JFrame a = new JFrame("Update a Property");
         a.setSize(350, 350);
         a.setLayout(new FlowLayout());
@@ -227,7 +227,7 @@ public class PropertyForm extends InteractionForm {
         JSeparator sep = new JSeparator();
         a.add(sep);
 
-        /* Initializing the combo box with Landlord's Address'*/
+        /* Initializing the combo box with Landlord's Address' */
         String[] address = new String[p.size()];
         for (int i = 0; i < p.size(); i++) {
             address[i] = p.get(i).getAddress();
@@ -279,11 +279,5 @@ public class PropertyForm extends InteractionForm {
         a.setVisible(true);
 
     }
-
-
-
-
-
-
 
 }

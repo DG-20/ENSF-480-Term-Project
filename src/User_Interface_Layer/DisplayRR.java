@@ -62,17 +62,8 @@ public class DisplayRR implements Strategy {
      */
     private InteractionForm myNotifView;
 
-
-
-
-
-
-
-
-
-
     /**
-     * @param email 
+     * @param email
      * @return
      */
     public void display(String email) {

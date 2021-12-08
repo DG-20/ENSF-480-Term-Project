@@ -39,12 +39,6 @@ public class SubscriptionForm {
      */
     private String email;
 
-
-
-
-
-
-
     /**
      * @return
      */
@@ -62,11 +56,11 @@ public class SubscriptionForm {
     }
 
     /**
-     * @param type 
-     * @param numBedrooms 
-     * @param numBathrooms 
-     * @param furnished 
-     * @param quadrant 
+     * @param type
+     * @param numBedrooms
+     * @param numBathrooms
+     * @param furnished
+     * @param quadrant
      * @return
      */
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {

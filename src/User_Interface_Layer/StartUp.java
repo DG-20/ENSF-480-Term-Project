@@ -8,6 +8,7 @@
  */
 
 package User_Interface_Layer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -112,5 +113,6 @@ public class StartUp {
         startUp.welcome();
     }
 
-    public StartUp() {}
+    public StartUp() {
+    }
 }

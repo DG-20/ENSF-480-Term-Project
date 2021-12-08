@@ -83,16 +83,16 @@ public class Subscription {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         String subscriptionInfoString = "<html><h2>Subscription Parameters</h2><br><p><b>Type of property: "
-        + this.type
-        + "<br>Number of bedrooms: "
-        + String.valueOf(this.numBedrooms)
-        + "<br>Number of bathrooms: "
-        + String.valueOf(this.numBathrooms)
-        + "<br>Furnished: "
-        + (this.furnished == true? "Yes": "No")
-        + "<br>City quadrant: "
-        + this.quadrant
-        + "</b></p></html>"; 
+                + this.type
+                + "<br>Number of bedrooms: "
+                + String.valueOf(this.numBedrooms)
+                + "<br>Number of bathrooms: "
+                + String.valueOf(this.numBathrooms)
+                + "<br>Furnished: "
+                + (this.furnished == true ? "Yes" : "No")
+                + "<br>City quadrant: "
+                + this.quadrant
+                + "</b></p></html>";
         System.out.println(subscriptionInfoString);
         JLabel subscriptionInfo = new JLabel(subscriptionInfoString);
         subscriptionInfo.setBorder(BorderFactory.createEmptyBorder(0, 5, 10, 0));
@@ -112,7 +112,7 @@ public class Subscription {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
         buttonPanel.add(Box.createHorizontalGlue());
         buttonPanel.add(okayButton);
-        
+
         subscriptionDetailsFrame.getContentPane().add(subscriptionInfo, BorderLayout.CENTER);
         subscriptionDetailsFrame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
 
