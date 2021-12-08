@@ -14,9 +14,74 @@ public class GUIHomePage {
   private String email;
   private Strategy displayStrategy;
 
+<<<<<<< HEAD
   public void performStrategy() {
     displayStrategy.display(email);
   }
+=======
+    /**
+     * Default constructor
+     */
+    public GUIHomePage() {
+    }
+
+    /**
+     * 
+     */
+    private String userType;
+
+    /**
+     * 
+     */
+    private SubscriptionForm mySubForm;
+
+    /**
+     * 
+     */
+    private StartUp myStartUp;
+
+    /**
+     * 
+     */
+    private static String email;
+
+    /**
+     * 
+     */
+    private SearchForm mySearchForm;
+
+    /**
+     * 
+     */
+    private NotificationView myNotifView;
+
+    /**
+     * 
+     */
+    private PropertyForm myPropertyForm;
+
+    /**
+     * 
+     */
+    private SummaryForm mySummaryForm;
+
+    /**
+     * 
+     */
+    private ChangePeriodFeesForm myChangePF;
+
+    /**
+     * 
+     */
+    private Strategy displayStrategy;
+
+    public static String getEmail() {
+        return email;
+    }
+
+
+
+>>>>>>> 9ae9a13e7367ad7659f1ea92f7078c8e3d14d718
 
   public void setDisplayStrategy(String userType) {
     if (userType.equals("Landlord")) {

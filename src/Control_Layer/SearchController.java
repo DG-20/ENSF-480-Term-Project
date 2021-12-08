@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.PropertyInventory;
+import Data_Source_Layer.*;
 import Business_Layer.Property;
 
 import java.util.*;
@@ -22,21 +22,10 @@ public class SearchController extends Controller {
      * Default constructor
      */
     public SearchController() {
+        Database data = new PropertyInventory();
+        myData.add(data);
     }
 
-    /**
-     * 
-     */
-    private PropertyInventory myInventory;
-
-
-    public PropertyInventory getMyInventory() {
-        return myInventory;
-    }
-
-    public void setMyInventory(PropertyInventory myInventory) {
-        this.myInventory = myInventory;
-    }
 
     /**
      * @param type 
@@ -48,14 +37,9 @@ public class SearchController extends Controller {
      */
     public ArrayList<Property> forwardSearch(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void SearchController() {
-        // TODO implement here
+        Database d = myData.get(0);
+        PropertyInventory property = (PropertyInventory)d;
+        return property.getMatching(type, numBedrooms, numBathrooms, furnished, quadrant);
     }
 
 }

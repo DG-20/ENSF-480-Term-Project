@@ -9,6 +9,7 @@
 package Data_Source_Layer;
 
 import Business_Layer.Property;
+import Business_Layer.Singleton;
 
 import javax.swing.text.DateFormatter;
 import java.sql.*;
@@ -113,7 +114,7 @@ public class PropertyInventory implements Database {
      * @param address 
      * Inserts a property into the database
      */
-    public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, int ID, String address) {
+    public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         try {
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
             LocalDateTime localDate = LocalDateTime.now();
@@ -146,20 +147,40 @@ public class PropertyInventory implements Database {
 
     /**
      * @param email 
-     * Returns a list of properties managed by a landlord
+     * Returns a list of properties managed by a landlord or by manager
      */
     public ArrayList<Property> getMatching(String email) {
+
         ArrayList<Property> myProperties = new ArrayList<>();
-       try {
-           String query = "SELECT * FROM property where LandlordEmail = " + email;
-           Statement stmt = dbConnect.createStatement();
-           ResultSet set = stmt.executeQuery(query);
-           myProperties = convertToProperty(set);
-           stmt.close();
-           set.close();
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
+        /* First need to check if the email belongs to Landlord or Manager to decide which properties to send */
+        boolean type = Singleton.getInstance().isManager(email);
+        if (type)
+        {
+            // The user is a manager. Send all properties.
+            try{
+                String query = "SELECT * FROM property";
+                Statement stmt = dbConnect.createStatement();
+                ResultSet set = stmt.executeQuery(query);
+                myProperties = convertToProperty(set);
+                stmt.close();
+                set.close();
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
+            /* User is a Landlord */
+            try {
+                String query = "SELECT * FROM property where LandlordEmail = " + email;
+                Statement stmt = dbConnect.createStatement();
+                ResultSet set = stmt.executeQuery(query);
+                myProperties = convertToProperty(set);
+                stmt.close();
+                set.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return myProperties;
     }
 
@@ -215,14 +236,16 @@ public class PropertyInventory implements Database {
     }
 
     /**
-     * Return an array list of properties rented in the chosen period.
+     *
+     * @param period - The period of the summary report. As in how many days back from today.
+     * @return A summary report on properties from dates ranging from [currentDate-period, currentDate]
      */
-    public ArrayList<Property> retrieveSummary() {
+    public ArrayList<Property> retrieveSummary(int period) {
         ArrayList<Property> rented = new ArrayList<>();
         try{
             String query = "SELECT Name, ID AS House_ID, Address\n" +
                     "FROM property INNER JOIN user ON property.LandlordEmail = user.Email\n" +
-                    "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + myPaymentPeriodRecord.retrievePeriod() +
+                    "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), " + " INTERVAL " + period +
                     " DAY) AND Status = 'Rented';";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
@@ -323,7 +346,7 @@ public class PropertyInventory implements Database {
      * Retrieves the total number of active listings total
      */
 
-    public int getNumActiveListings(int period) {
+    public int getNumActiveListings() {
         int count = -1;
         try {
             String query = "SELECT COUNT(*) AS Number_Of_Rented_Listings\n" +
@@ -361,14 +384,14 @@ public class PropertyInventory implements Database {
                int numBathrooms = set.getInt("numBathrooms");
                String furnished = set.getString("Furnished");
                boolean furnished_bool = false;
-               if (furnished.equals("true") == true)
+               if (furnished.equals("Y"))
                     furnished_bool =  true;
                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
                Timestamp posted = set.getTimestamp("PostedDate");
                String postedDate = posted.toString();
                Timestamp exp = set.getTimestamp("ExpDate");
                String emailLl = set.getString("LandLordEmail");
-               String expDate = posted.toString();
+               String expDate = exp.toString();
                Property p = new Property(status, numBedrooms, numBathrooms, furnished_bool, quadrant, ID, address, postedDate, expDate, emailLl, type);
                result.add(p);
            }

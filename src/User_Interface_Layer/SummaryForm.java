@@ -6,6 +6,40 @@
  *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
+<<<<<<< HEAD
+=======
+package User_Interface_Layer;
+
+import Data_Source_Layer.PropertyInventory;
+import Data_Source_Layer.UserInfo;
+
+import java.util.*;
+
+/**
+ * 
+ */
+public class SummaryForm extends InteractionForm{
+
+    /**
+     * Default constructor
+     */
+    public SummaryForm() {
+    }
+
+    /**
+     * 
+     */
+    private PropertyInventory myInventory;
+
+    /**
+     * 
+     */
+    private UserInfo myUserInfo;
+
+
+
+
+>>>>>>> 9ae9a13e7367ad7659f1ea92f7078c8e3d14d718
 
 package User_Interface_Layer;
 // import Data_Source_Layer.*;

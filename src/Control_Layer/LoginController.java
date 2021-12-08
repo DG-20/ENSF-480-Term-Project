@@ -8,7 +8,7 @@
  */
 package Control_Layer;
 
-import Data_Source_Layer.UserInfo;
+import Data_Source_Layer.*;
 
 import java.util.*;
 
@@ -21,38 +21,9 @@ public class LoginController extends Controller {
      * Default constructor
      */
     public LoginController() {
+        Database data = new UserInfo();
+        myData.add(data);
     }
-
-    public UserInfo getValidation() {
-        return validation;
-    }
-
-    public void setValidation(UserInfo validation) {
-        this.validation = validation;
-    }
-
-    public UserInfo getValidate() {
-        return validate;
-    }
-
-    public void setValidate(UserInfo validate) {
-        this.validate = validate;
-    }
-
-    /**
-     * 
-     */
-    private UserInfo validation;
-
-    /**
-     * 
-     */
-    private UserInfo validate;
-
-
-
-
-
 
     /**
      * @param email 
@@ -62,14 +33,8 @@ public class LoginController extends Controller {
      */
     public boolean forwardUser(String email, String password, String userType) {
         // TODO implement here
-        return false;
+        Database d = myData.get(0);
+        UserInfo validate = (UserInfo)d;
+        return validate.validation(email, password, userType);
     }
-
-    /**
-     * 
-     */
-    public void LoginController() {
-        // TODO implement here
-    }
-
 }
