@@ -25,34 +25,34 @@ public class PaymentPeriodRecord implements Database {
         initializeConnection();
     }
 
-
     /**
-     * @param fee 
-     * @param period 
+     * @param fee
+     * @param period
      * @return nothing
-     * Updates the Database with a new fee or new period value where fee and period >=1.
+     *         Updates the Database with a new fee or new period value where fee and
+     *         period >=1.
      */
     public void updatePeriodPayment(int fee, int period) {
-       try {
-           if (fee >=1) {
-               String query = "UPDATE fee SET Fee = " + fee;
-               Statement stmt = dbConnect.createStatement();
-               int result = stmt.executeUpdate(query);
-               stmt.close();
-           }
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-       try {
-           if (period >=1) {
-               String query = "UPDATE period SET Period = "+ period;
-               Statement stmt = dbConnect.createStatement();
-               int result = stmt.executeUpdate(query);
-               stmt.close();
-           }
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
+        try {
+            if (fee >= 1) {
+                String query = "UPDATE fee SET Fee = " + fee;
+                Statement stmt = dbConnect.createStatement();
+                int result = stmt.executeUpdate(query);
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            if (period >= 1) {
+                String query = "UPDATE period SET Period = " + period;
+                Statement stmt = dbConnect.createStatement();
+                int result = stmt.executeUpdate(query);
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -60,7 +60,7 @@ public class PaymentPeriodRecord implements Database {
      */
     public int retrievePayment() {
         int fee = -1;
-        try{
+        try {
             String query = "select Fee from fee";
             Statement stmt = dbConnect.createStatement();
             ResultSet result = stmt.executeQuery(query);
@@ -82,7 +82,7 @@ public class PaymentPeriodRecord implements Database {
      */
     public int retrievePeriod() {
         int period = -1;
-        try{
+        try {
             String query = "select Period from period";
             Statement stmt = dbConnect.createStatement();
             ResultSet result = stmt.executeQuery(query);
@@ -98,15 +98,15 @@ public class PaymentPeriodRecord implements Database {
         return period;
     }
 
-
     /**
-     * Attempts to establish a connection to the database using the DBURL, USERNAME, and PASSWORD
+     * Attempts to establish a connection to the database using the DBURL, USERNAME,
+     * and PASSWORD
      */
     public void initializeConnection() {
-        try{
+        try {
             this.dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return;
@@ -116,12 +116,11 @@ public class PaymentPeriodRecord implements Database {
      * Closes connection to the database
      */
     public void close() {
-        try{
+        try {
             dbConnect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 
 }

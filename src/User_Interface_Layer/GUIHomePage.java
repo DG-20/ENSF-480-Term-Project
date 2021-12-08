@@ -21,14 +21,11 @@ public class GUIHomePage {
     public void setDisplayStrategy(String userType) {
         if (userType.equals("Landlord")) {
             displayStrategy = new DisplayLL();
-        }
-        else if (userType.equals("Manager")) {
+        } else if (userType.equals("Manager")) {
             displayStrategy = new DisplayManager();
-        }
-        else if (userType.equals("Registered Renter")) {
+        } else if (userType.equals("Registered Renter")) {
             displayStrategy = new DisplayRR();
-        }
-        else {
+        } else {
             displayStrategy = new DisplayUR();
 
         }

@@ -39,13 +39,6 @@ public class NotificationView {
      */
     private SubscriptionController subController;
 
-
-
-
-
-
-
-
     /**
      * @return
      */

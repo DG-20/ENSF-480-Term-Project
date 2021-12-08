@@ -23,7 +23,7 @@ public interface Database {
     /**
      * The JDBC URL to the Database
      */
-     final String DBURL = "jdbc:mysql://127.0.0.1:3306/orpms";
+    final String DBURL = "jdbc:mysql://127.0.0.1:3306/orpms";
 
     /**
      * The username for the Database

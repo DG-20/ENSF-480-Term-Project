@@ -53,6 +53,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         JFrame frame = this;
         frame.setVisible(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
         JButton updateListingButton = new JButton();
         JButton changePFButton = new JButton();
@@ -80,40 +81,51 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
         frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateListingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(changePFButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                            .addComponent(summaryButton, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(titleText)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(updateListingButton,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(changePFButton,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 376,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(summaryButton,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 376,
+                                                                Short.MAX_VALUE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(113, 113, 113)
+                                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(titleText)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(titleText)
-                .addGap(18, 18, 18)
-                .addComponent(summaryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateListingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(changePFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(titleText)
+                                .addGap(18, 18, 18)
+                                .addComponent(summaryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updateListingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(changePFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()));
 
         pack();
 
@@ -122,7 +134,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((PropertyForm)myPropertyForm).browseProperties();
+                ((PropertyForm) myPropertyForm).browseProperties();
             }
         });
 
@@ -131,7 +143,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((ChangePeriodFeesForm)myChangePF).changePeriodFees();
+                ((ChangePeriodFeesForm) myChangePF).changePeriodFees();
             }
         });
 
@@ -139,32 +151,39 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         summaryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int defaultPeriod = ((SummaryForm)mySummaryForm).getPeriod();
-                String input = JOptionPane.showInputDialog("Please choose the period (number of days) of the summary you would like to view:", defaultPeriod);
+                int defaultPeriod = ((SummaryForm) mySummaryForm).getPeriod();
+                String input = JOptionPane.showInputDialog(
+                        "Please choose the period (number of days) of the summary you would like to view:",
+                        defaultPeriod);
                 int periodChosen = defaultPeriod;
-                try
-                {
+                try {
                     periodChosen = Integer.parseInt(input);
-                }
-                catch (Exception ee)
-                {
+                } catch (Exception ee) {
                     boolean valid = false;
-                    while (valid == false)
-                    {
-                        input = JOptionPane.showInputDialog("Please choose the period of the summary you would like to view:", 60);
-                        try
-                        {
+                    while (valid == false) {
+                        input = JOptionPane
+                                .showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                        try {
                             periodChosen = Integer.parseInt(input);
                             valid = true;
-                        }
-                        catch (Exception eee)
-                        {
+                        } catch (Exception eee) {
                             valid = false;
                         }
                     }
                 }
+                boolean valid = true;
+                while (periodChosen <= 0 || valid == false) {
+                    input = JOptionPane
+                            .showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                    try {
+                        periodChosen = Integer.parseInt(input);
+                        valid = true;
+                    } catch (Exception eee) {
+                        valid = false;
+                    }
+                }
                 frame.setVisible(false);
-                ((SummaryForm)mySummaryForm).showSummary(periodChosen);
+                ((SummaryForm) mySummaryForm).showSummary(periodChosen);
             }
         });
 
@@ -172,8 +191,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();;
-                StartUp.main(new String[]{""});
+                frame.dispose();
+                ;
+                StartUp.main(new String[] { "" });
             }
         });
     }

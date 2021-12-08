@@ -47,7 +47,9 @@ public class Property {
         return status;
     }
 
-    public String getType() { return type;}
+    public String getType() {
+        return type;
+    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -84,7 +86,6 @@ public class Property {
     public void setQuadrant(String quadrant) {
         this.quadrant = quadrant;
     }
-
 
     public int getID() {
         return ID;
@@ -139,20 +140,20 @@ public class Property {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         String propertyInfoString = "<html><p><b>Address: "
-        + this.address
-        + "<br>Type of property: "
-        + this.type
-        + "<br>Number of bedrooms: "
-        + String.valueOf(this.numBedrooms)
-        + "<br>Number of bathrooms: "
-        + String.valueOf(this.numBathrooms)
-        + "<br>Furnished: "
-        + (this.furnished == true? "Yes": "No")
-        + "<br>City quadrant: "
-        + this.quadrant
-        + "<br>Date posted: "
-        + this.postedDate
-        + "</b></p></html>";
+                + this.address
+                + "<br>Type of property: "
+                + this.type
+                + "<br>Number of bedrooms: "
+                + String.valueOf(this.numBedrooms)
+                + "<br>Number of bathrooms: "
+                + String.valueOf(this.numBathrooms)
+                + "<br>Furnished: "
+                + (this.furnished == true ? "Yes" : "No")
+                + "<br>City quadrant: "
+                + this.quadrant
+                + "<br>Date posted: "
+                + this.postedDate
+                + "</b></p></html>";
         JLabel propertyInfo = new JLabel(propertyInfoString);
         propertyInfo.setBorder(BorderFactory.createEmptyBorder(0, 5, 10, 0));
         c.gridx = 0;
@@ -208,8 +209,9 @@ public class Property {
         JButton sendButton = new JButton("Send");
         sendButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent end_event) {
-                String[] option = {"Great!"};
-                JOptionPane.showOptionDialog(null, "Email has been sent to landlord", "Confirmation page", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, option, option[0]);
+                String[] option = { "Great!" };
+                JOptionPane.showOptionDialog(null, "Email has been sent to landlord", "Confirmation page",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, option, option[0]);
                 sendEmailFrame.dispose();
             }
         });
