@@ -46,8 +46,8 @@ public class ChangePeriodFeesForm extends InteractionForm {
         JTextField amountInput = new JTextField(10);
         JTextField periodInput = new JTextField(10);
 
-        int currentPaymentVal = ((PeriodFeesController)myController).sendPayment();
-        int currentPeriodVal = ((PeriodFeesController)myController).sendPeriod();
+        int currentPaymentVal = ((PeriodFeesController) myController).sendPayment();
+        int currentPeriodVal = ((PeriodFeesController) myController).sendPeriod();
         String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal) + "\nPeriod: "
                 + String.valueOf(currentPeriodVal);
 
@@ -207,11 +207,11 @@ public class ChangePeriodFeesForm extends InteractionForm {
                     }
                 }
 
-                ((PeriodFeesController)myController).forwardPeriodFees(newAmountInt, newPeriodInt);
-                JOptionPane.showMessageDialog(frame, "The period and fees have been updated.", "Success!", 1 );
+                ((PeriodFeesController) myController).forwardPeriodFees(newAmountInt, newPeriodInt);
+                JOptionPane.showMessageDialog(frame, "The period and fees have been updated.", "Success!", 1);
                 frame.dispose();
-                GUIHomePage x = new GUIHomePage();
-                 x.performStrategy();
+                GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
+                x.performStrategy();
             }
         });
 
@@ -219,7 +219,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new GUIHomePage().performStrategy();
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });
     }

@@ -108,6 +108,7 @@ public class UpdateForm extends InteractionForm{
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boolean success = true;
                 String newStatus = statusList.getSelectedItem().toString();
+                System.out.println("The new status selected is: " + newStatus);
                 if (chosenProperty.getStatus().equals("Cancelled")) success = false;
                 updateButtonActionPerformed(evt, success, newStatus);
             }
@@ -254,13 +255,14 @@ public class UpdateForm extends InteractionForm{
             JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
                     "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
         } else {
-            chosenProperty.setType(newStatus);
+            chosenProperty.setStatus(newStatus);
             /* Send the new property to the controller for it to be updated. */
+            System.out.println("Chosen property ID is: " + chosenProperty.getID() + " it's new status is: " + chosenProperty.getStatus());
             ((UpdateController)(myControllers.get(0))).forwardPropertyStatus(chosenProperty);
             JOptionPane.showMessageDialog(null, "Your property has successfully been updated!", "Update successful",
                     1);
             f.dispose();
-            new GUIHomePage().performStrategy();
+            new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
         }
     }
 

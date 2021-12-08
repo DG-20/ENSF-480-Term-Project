@@ -32,7 +32,6 @@ public class LoginController extends Controller {
      * @return
      */
     public boolean forwardUser(String email, String password, String userType) {
-        // TODO implement here
         Database d = myData.get(0);
         UserInfo validate = (UserInfo)d;
         return validate.validation(email, password, userType);

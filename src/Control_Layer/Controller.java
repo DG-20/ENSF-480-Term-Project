@@ -21,6 +21,7 @@ public abstract class Controller {
      * Default constructor
      */
     public Controller() {
+        myData = new ArrayList<>();
     }
 
     /**

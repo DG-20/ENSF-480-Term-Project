@@ -3,104 +3,114 @@
  * Authors:
  *      Cheyenne Goh (UCID: 30040528)
  *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
+ *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
+
 package User_Interface_Layer;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-import java.util.*;
-
-/**
- * 
- */
 public class StartUp {
-
-    /**
-     * Default constructor
-     */
-    public StartUp() {
-    }
-
-    /**
-     * 
-     */
     private String userType;
-
-    /**
-     * 
-     */
-    //public void Attribute1;
-
-    /**
-     * 
-     */
-    //public void Attribute2;
-
-    /**
-     * 
-     */
     private LoginForm login;
+    // private InteractionForm homePage; // not used
 
-    /**
-     * 
-     */
-    private InteractionForm homePage;
-
-    /**
-     * 
-     */
-    private String email;
-
-
-
-
-
-
-    /**
-     * @return
-     */
-    public boolean loginPage() {
-        // TODO implement here
-        return false;
+    public boolean loginPage() { // boolean not used (can be void)
+        login = new LoginForm(userType);
+        login.startLogin();
+        return true;
     }
 
-    /**
-     * @return
-     */
     public void welcome() {
-        // TODO implement here
-        return;
+        EventQueue.invokeLater(() -> {
+            JFrame frame = new JFrame("Welcome");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            Container container = new Container();
+            container.setLayout(new GridBagLayout());
+
+            JPanel panel = new JPanel();
+            panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            panel.setLayout(new BorderLayout());
+            panel.add(container);
+
+            GridBagConstraints c = new GridBagConstraints();
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.ipadx = 10;
+            c.ipady = 10;
+
+            JLabel chooseOneLabel = new JLabel("Choose one:");
+            chooseOneLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 10, 0));
+            c.gridx = 0;
+            c.gridy = 0;
+            c.gridwidth = 2;
+            container.add(chooseOneLabel, c);
+
+            JButton managerButton = new JButton("Manager");
+            c.gridwidth = 1;
+            c.gridy = 1;
+            container.add(managerButton, c);
+            managerButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    userType = "Manager";
+                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                    loginPage();
+                }
+            });
+
+            JButton registeredRenterButton = new JButton("Registered Renter");
+            c.gridy = 2;
+            container.add(registeredRenterButton, c);
+            registeredRenterButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    userType = "Registered Renter";
+                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                    loginPage();
+                }
+            });
+
+            JButton noAccountButton = new JButton("No Account");
+            c.gridy = 3;
+            container.add(noAccountButton, c);
+            noAccountButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    userType = "Unregistered Renter";
+                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                    GUIHomePage x = new GUIHomePage("");
+                    x.setDisplayStrategy(userType);
+                    x.performStrategy();
+                }
+            });
+
+            JButton landlordButton = new JButton("Landlord");
+            landlordButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    userType = "Landlord";
+                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                    loginPage();
+                }
+            });
+            c.gridx = 1;
+            c.gridy = 1;
+            c.gridheight = 3;
+            c.fill = GridBagConstraints.VERTICAL;
+            container.add(landlordButton, c);
+
+            frame.getContentPane().add(panel, BorderLayout.CENTER);
+            frame.pack();
+            frame.setVisible(true);
+        });
     }
 
-    /**
-     * @return
-     */
-    public void homePage() {
-        // TODO implement here
-        return;
+    // public void homePage() {
+    // }
+
+    public static void main(String args[]) {
+        StartUp startUp = new StartUp();
+        startUp.welcome();
     }
 
-    /**
-     * @param args 
-     * @return
-     */
-    public static void main(String[] args) {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * 
-     */
-    public void Operation2() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void StartUp() {
-        // TODO implement here
-    }
-
+    public StartUp() {}
 }

@@ -122,6 +122,7 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy  {
         logoutB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 StartUp.main(new String[]{""});
 
             }
