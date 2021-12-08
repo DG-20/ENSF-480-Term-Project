@@ -67,6 +67,27 @@ public class UserInfo implements Database {
     }
 
     /**
+     *
+     * @param email: The email of the user in question
+     * @return The name of the user associated with that email
+     */
+    public String getNameFromEmail(String email)
+    {
+        String requestedEmail = "";
+        String query = "SELECT Name from user WHERE Email = '" + email + "'";
+        try {
+            Statement stmt = dbConnect.createStatement();
+            ResultSet set = stmt.executeQuery(query);
+            while (set.next()) {
+                requestedEmail = set.getString("Name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return requestedEmail;
+    }
+
+    /**
      * @param email 
      * @return The name of the landlod associated with their login email.
      */

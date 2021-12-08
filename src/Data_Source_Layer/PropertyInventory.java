@@ -110,8 +110,7 @@ public class PropertyInventory implements Database {
      * @param furnished 
      * @param quadrant 
      * @param email 
-     * @param ID
-     * @param address 
+     * @param address
      * Inserts a property into the database
      */
     public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
@@ -243,13 +242,19 @@ public class PropertyInventory implements Database {
     public ArrayList<Property> retrieveSummary(int period) {
         ArrayList<Property> rented = new ArrayList<>();
         try{
-            String query = "SELECT Name, ID AS House_ID, Address\n" +
+            String query = "SELECT LandlordEmail, Name, ID AS House_ID, Address\n" +
                     "FROM property INNER JOIN user ON property.LandlordEmail = user.Email\n" +
                     "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), " + " INTERVAL " + period +
                     " DAY) AND Status = 'Rented';";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
-           rented = convertToProperty(set);
+           while (set.next()) {
+               int houseID = set.getInt("House_ID");
+               String address = set.getString("Address");
+               String emailAddress = set.getString("LandlordEmail");
+               Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "", "", emailAddress, "" );
+               rented.add(p);
+           }
         } catch (SQLException e) {
             e.printStackTrace();
         }
