@@ -48,7 +48,7 @@ public class PropertyInventory implements Database {
         try{
             String query = "UPDATE property SET Status = 'Cancelled' WHERE SYSDATE() > ExpDate AND Status != 'Rented';";
             Statement stmt = dbConnect.createStatement();
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -171,7 +171,8 @@ public class PropertyInventory implements Database {
         } else {
             /* User is a Landlord */
             try {
-                String query = "SELECT * FROM property where LandlordEmail = " + email;
+                String query = "SELECT * FROM property where LandlordEmail = '" + email +"'";
+                System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 ResultSet set = stmt.executeQuery(query);
                 myProperties = convertToProperty(set);

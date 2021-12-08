@@ -209,7 +209,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
                 myController.forwardPeriodFees(newAmountInt, newPeriodInt);
                 JOptionPane.showMessageDialog(frame, "The period and fees have been updated.", "Success!", 1 );
                 frame.dispose();
-                GUIHomePage x = new GUIHomePage();
+                GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
                  x.performStrategy();
             }
         });
@@ -218,7 +218,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new GUIHomePage().performStrategy();
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });
     }

@@ -260,7 +260,7 @@ public class UpdateForm extends InteractionForm{
             JOptionPane.showMessageDialog(null, "Your property has successfully been updated!", "Update successful",
                     1);
             f.dispose();
-            new GUIHomePage().performStrategy();
+            new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
         }
     }
 
