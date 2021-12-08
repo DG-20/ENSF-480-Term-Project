@@ -27,6 +27,7 @@ public class LoginForm extends InteractionForm {
     public void startLogin() {
         EventQueue.invokeLater(() -> {
             JFrame frame = new JFrame("Start Login");
+            frame.setLocationRelativeTo(null);
             frame.setSize(500, 500);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
