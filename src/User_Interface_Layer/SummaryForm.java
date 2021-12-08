@@ -20,10 +20,12 @@ public class SummaryForm extends InteractionForm {
     public SummaryForm() {
         myInventory = new PropertyInventory();
         myPaymentPeriod = new PaymentPeriodRecord();
+        myUserInfo = new UserInfo();
     }
 
     private Database myInventory;
     private Database myPaymentPeriod;
+    private Database myUserInfo;
 
     public int getPeriod()
     {
@@ -101,16 +103,13 @@ public class SummaryForm extends InteractionForm {
         for (int i = 0; i < numPropertiesRented; i++)
         {
             Property propertyGet = rentedProperties.get(i);
-            vals[]
+            vals[i][0] = ((UserInfo)myUserInfo).retrieveLandlordsName(propertyGet.getEmail());
+            vals[i][1] = propertyGet.getID();
+            vals[i][2] = propertyGet.getAddress();
         }
 
         listTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
+            vals,
             new String [] {
                 "LandLord Name", "Property ID", "Address"
             }
@@ -188,6 +187,12 @@ public class SummaryForm extends InteractionForm {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        
+        doneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+            }
+        });
     }
 }
