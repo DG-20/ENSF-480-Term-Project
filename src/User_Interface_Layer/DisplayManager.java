@@ -3,16 +3,30 @@
  * Authors:
  *      Cheyenne Goh (UCID: 30040528)
  *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
+ *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
-package User_Interface_Layer;
-
-import User_Interface_Layer.InteractionForm;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
+package User_Interface_Layer;
+
+public class DisplayManager implements Strategy {
+  private InteractionForm mySummaryForm;
+  private InteractionForm myChangePF;
+  private InteractionForm myPropertyForm;
+
+  public void display(String email) {
+    mySummaryForm = new SummaryForm();
+    myChangePF = new ChangePeriodFeesForm();
+    myPropertyForm = new PropertyForm(email);
+  }
+
+  public DisplayManager() {}
+}
 
 public class DisplayManager extends javax.swing.JFrame implements Strategy {
     public DisplayManager() {
@@ -52,13 +66,14 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     public void display(String email) {
         JFrame frame = this;
         frame.setVisible(true);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         JButton updateListingButton = new JButton();
         JButton changePFButton = new JButton();
         JButton summaryButton = new JButton();
-        JButton logoutButton = new javax.swing.JButton();
+        JButton logoutButton = new JButton();
         JLabel titleText = new JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         updateListingButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         updateListingButton.setText("Update Listing");

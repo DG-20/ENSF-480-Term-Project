@@ -80,8 +80,11 @@ public class SubscriptionController extends Controller {
         return;
     }
     
-    public ArrayList<Property> getSubbedProperties(String email){
-        Database d = myData.get(0);
+
+    /* Asks the database for all subbed properties associated with a RR's email and returns all those properties */
+    public ArrayList<Property> getSubbedProperties(String email)
+    {
+        Database d= myData.get(0);
         PropertyInventory property = (PropertyInventory)d;
         return property.getNotifications(email);
     }

@@ -3,9 +3,41 @@
  * Authors:
  *      Cheyenne Goh (UCID: 30040528)
  *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
+ *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
+<<<<<<< HEAD
+
+package User_Interface_Layer;
+// import Entity.*;
+
+public class PropertyForm extends InteractionForm {
+  private String email;
+
+  public void startRegistration() {
+
+  }
+
+  public void browseProperties() {
+
+  }
+
+  // private void displayMyProperties(Property[] myProperties) {
+    
+  // }
+
+  // private Property selectProperty() {
+
+  // }
+  
+  // private String changeStatus(Property p) {
+
+  // }
+
+  private void displayStatuses() {
+
+  }
+=======
 package User_Interface_Layer;
 
 import Control_Layer.RegistrationController;
@@ -285,5 +317,9 @@ public class PropertyForm extends InteractionForm {
 
 
 
+>>>>>>> 9ae9a13e7367ad7659f1ea92f7078c8e3d14d718
 
+  public PropertyForm(String email) {
+    this.email = email;
+  }
 }

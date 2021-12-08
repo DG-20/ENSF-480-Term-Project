@@ -3,87 +3,22 @@
  * Authors:
  *      Cheyenne Goh (UCID: 30040528)
  *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
+ *      Rui Guan (UCID: 30072848)
  *      Sajid Hafiz (UCID: 30061336)
  */
+
 package User_Interface_Layer;
 
-import User_Interface_Layer.InteractionForm;
-
-import java.util.*;
-
-/**
- * 
- */
 public class DisplayRR implements Strategy {
+  private InteractionForm mySearchForm;
+  private InteractionForm mySubForm;
+  private InteractionForm myNotifView;
 
-    public InteractionForm getMySearchForm() {
-        return mySearchForm;
-    }
+  public void display(String email) {
+    mySearchForm = new SearchForm();
+    mySubForm = new SubscriptionForm(email);
+    myNotifView = new NotificationView(email);
+  }
 
-    public void setMySearchForm(InteractionForm mySearchForm) {
-        this.mySearchForm = mySearchForm;
-    }
-
-    public InteractionForm getMySubForm() {
-        return mySubForm;
-    }
-
-    public void setMySubForm(InteractionForm mySubForm) {
-        this.mySubForm = mySubForm;
-    }
-
-    public InteractionForm getMyNotifView() {
-        return myNotifView;
-    }
-
-    public void setMyNotifView(InteractionForm myNotifView) {
-        this.myNotifView = myNotifView;
-    }
-
-    /**
-     * Default constructor
-     */
-    public DisplayRR() {
-    }
-
-    /**
-     * 
-     */
-    private InteractionForm mySearchForm;
-
-    /**
-     * 
-     */
-    private InteractionForm mySubForm;
-
-    /**
-     * 
-     */
-    private InteractionForm myNotifView;
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @param email 
-     * @return
-     */
-    public void display(String email) {
-        // TODO implement here
-        return;
-    }
-
-    /**
-     * 
-     */
-    public void DisplayRR() {
-        // TODO implement here
-    }
+  public DisplayRR() {}
 }
