@@ -116,7 +116,7 @@ public class PropertyInventory implements Database {
      */
     public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, String email, String address) {
         try {
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
             LocalDateTime localDate = LocalDateTime.now();
             String currentDate = dateFormat.format(localDate);
 
@@ -125,7 +125,7 @@ public class PropertyInventory implements Database {
 
             String furn = "N";
             if (furnished) furn = "Y";
-            String query = "INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO property (ID, LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate) VALUES (ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = dbConnect.prepareStatement(query);
             stmt.setString(1, email);
             stmt.setString(2, "Active");
@@ -135,8 +135,8 @@ public class PropertyInventory implements Database {
             stmt.setInt(6, numBathrooms);
             stmt.setInt(7, numBedrooms);
             stmt.setString(8, type );
-            stmt.setTimestamp(8, java.sql.Timestamp.valueOf(currentDate));
-            stmt.setTimestamp(9, java.sql.Timestamp.valueOf(expDate));
+            stmt.setTimestamp(9, java.sql.Timestamp.valueOf(currentDate));
+            stmt.setTimestamp(10, java.sql.Timestamp.valueOf(expDate));
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
@@ -172,7 +172,6 @@ public class PropertyInventory implements Database {
             /* User is a Landlord */
             try {
                 String query = "SELECT * FROM property where LandlordEmail = '" + email +"'";
-                System.out.println(query);
                 Statement stmt = dbConnect.createStatement();
                 ResultSet set = stmt.executeQuery(query);
                 myProperties = convertToProperty(set);

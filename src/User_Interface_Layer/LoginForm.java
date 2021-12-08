@@ -9,6 +9,10 @@
 
 package User_Interface_Layer;
 // import LoginController.*;
+import Control_Layer.Controller;
+import Control_Layer.LoginController;
+import Control_Layer.PeriodFeesController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,9 +22,12 @@ public class LoginForm extends InteractionForm {
     private String inputPassword;
     private String userType; // not relevant
 
-    public boolean startLogin() { // boolean not used (can be void)
+
+    /* Start the Login Process View */
+    public void startLogin() {
         EventQueue.invokeLater(() -> {
             JFrame frame = new JFrame("Start Login");
+            frame.setSize(500, 500);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             Container container = new Container();
@@ -59,6 +66,10 @@ public class LoginForm extends InteractionForm {
             passwordLabel.setLabelFor(passwordField);
             container.add(passwordField, c);
 
+
+            /* ON OK BUTTON PRESS */
+            /* Check if user has valid login credentials */
+            /* If true, redirect them to their correct homepage, otherwise show an error message */
             JButton okButton = new JButton("OK");
             okButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -66,9 +77,17 @@ public class LoginForm extends InteractionForm {
                     inputPassword = String.valueOf(passwordField.getPassword());
                     if (inputEmail.length() > 0 && inputPassword.length() > 0) {
                         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-                        GUIHomePage guiHomePage = new GUIHomePage(inputEmail);
-                        guiHomePage.setDisplayStrategy(userType);
-                        guiHomePage.performStrategy();
+                        LoginController controller = (LoginController) myControllers.get(0);
+                        boolean valid = controller.forwardUser(inputEmail, inputPassword, userType);
+                        if (!valid)  {
+                            JOptionPane.showMessageDialog(frame, "INVALID LOGIN! Try again.",
+                                    "INVALID LOGIN", JOptionPane.ERROR_MESSAGE);
+                            startLogin();
+                        } else {
+                            GUIHomePage guiHomePage = new GUIHomePage(inputEmail);
+                            guiHomePage.setDisplayStrategy(userType);
+                            guiHomePage.performStrategy();
+                        }
                     }
                 }
             });
@@ -85,12 +104,12 @@ public class LoginForm extends InteractionForm {
             frame.pack();
             frame.setVisible(true);
         });
-        return true;
     }
 
     public LoginForm(String userType) {
         this.userType = userType;
-
+        Controller x = new LoginController();
+        myControllers.add(x);
     }
 
     public String getInputEmail() {
@@ -100,4 +119,6 @@ public class LoginForm extends InteractionForm {
     public String getInputPassword() {
         return inputPassword;
     }
+
+
 }
