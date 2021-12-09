@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class SearchForm {
+public class SearchForm extends InteractionForm {
 
     /**
      * Default constructor
