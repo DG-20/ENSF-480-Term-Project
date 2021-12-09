@@ -69,7 +69,7 @@ public class SummaryForm extends InteractionForm {
                 // Retrieving the total statistics from myInventory using various functions.
                 int totalRentedListings = ((PropertyInventory) myInventory).getNumRentedListingsPeriod(periodChosen);
                 int totalPeriodListings = ((PropertyInventory) myInventory).getNumListingsPeriod(periodChosen);
-                int totalActiveListings = ((PropertyInventory) myInventory).getNumActiveListingsPeriod(periodChosen);
+                int totalActiveListings = ((PropertyInventory) myInventory).getNumActiveListings();
                 // Getting an ArrayList of Properties using retrieveSummary.
                 ArrayList<Property> rentedProperties = ((PropertyInventory) myInventory).retrieveSummary(periodChosen);
                 int numPropertiesRented = rentedProperties.size();

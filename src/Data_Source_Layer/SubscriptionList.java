@@ -95,7 +95,8 @@ public class SubscriptionList implements Database {
 
     /**
      * @param email
-     * @return Returns the subscription details associated with a registered
+     * @return ArrayList<Subscription>
+     *     Returns the subscription details associated with a registered
      *         renter's email
      */
     public ArrayList<Subscription> retrieveSubscription(String email) {
@@ -138,7 +139,7 @@ public class SubscriptionList implements Database {
     }
 
     /**
-     * Attempts to intialize a connection to the database
+     * Attempts to initialize a connection to the database
      */
     public void initializeConnection() {
         try {
