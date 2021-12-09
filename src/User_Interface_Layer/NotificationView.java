@@ -32,8 +32,7 @@ public class NotificationView extends InteractionForm {
 
     public void showSubbed() {
 
-        ArrayList<Property> p = subController.getSubbedProperties(email);
-        p.get(0).getAddress(); // for debugging
+        ArrayList<Property> p = new ArrayList<>(subController.getSubbedProperties(email));
         JFrame a = new JFrame("Notifications");
         a.setLocationRelativeTo(null);
         a.setSize(350, 350);
@@ -41,7 +40,7 @@ public class NotificationView extends InteractionForm {
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         /* Header */
-        JLabel header = new JLabel("Choose one of the following properties to update");
+        JLabel header = new JLabel("Choose a notification to view");
         JPanel row1 = new JPanel(new FlowLayout());
         row1.add(header);
         a.add(row1);

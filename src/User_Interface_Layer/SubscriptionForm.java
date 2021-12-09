@@ -24,6 +24,7 @@ public class SubscriptionForm extends InteractionForm {
 
     public SubscriptionForm(String email) {
         subscribedRequest = new Subscription();
+        controller = new SubscriptionController(true);
         this.email = email;
     }
 
@@ -36,11 +37,11 @@ public class SubscriptionForm extends InteractionForm {
     }
 
     public void displayMySubs() {
-        ArrayList<Subscription> subs = controller.getSubs(email);
+        ArrayList<Subscription> subs = new ArrayList<Subscription>(controller.getSubs(email));
 
         JFrame a = new JFrame("Manage Subscriptions");
         a.setLocationRelativeTo(null);
-        a.setSize(350, 350);
+        a.setSize(500, 530);
         a.setLayout(new FlowLayout());
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,26 +58,37 @@ public class SubscriptionForm extends InteractionForm {
                                 "# of Bedrooms",
                                 "# of Bathrooms",
                                 "Furnished",
-                                "Quadrant",};
+                                "Quadrant"};
 
-        String data[][] = new String[subs.size()][5];
+        Object data[][] = new Object[subs.size()][5];
         for (int i = 0; i < subs.size(); i++) {
             data[i][0] = subs.get(i).getType();
-            data[i][1] = String.valueOf(subs.get(i).getNumBedrooms());
-            data[i][2] = String.valueOf(subs.get(i).getNumBathrooms());
-            data[i][3] = String.valueOf(subs.get(i).getFurnished());
+            data[i][1] = Integer.valueOf(subs.get(i).getNumBedrooms());
+            data[i][2] = Integer.valueOf(subs.get(i).getNumBathrooms());
+            data[i][3] = Boolean.valueOf(subs.get(i).getFurnished());
             data[i][4] = subs.get(i).getQuadrant();
         }
 
         JTable table = new JTable(data, columnNames);
-        table.setEnabled(false);
-        a.add(table);
+        table.setDefaultEditor(Object.class, null);
+        table.setRowSelectionAllowed(true);
+        table.setColumnSelectionAllowed(false);
+        
+        JScrollPane scrollPane = new JScrollPane(table);
+        table.setFillsViewportHeight(true);
+        a.add(scrollPane);
 
         /* Back Button */
         JButton backButton = new JButton("<<");
-        JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelButton.add(backButton);
-        a.add(panelButton);
+
+        /* Add Button */
+        JButton addButton = new JButton("+");
+
+        /* Button Panel */
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.add(backButton);
+        a.add(buttonPanel);
+        a.add(addButton);
 
         // BACK BUTTON RESPONSE
         // Take user back to home page.
@@ -88,10 +100,19 @@ public class SubscriptionForm extends InteractionForm {
             }
         });
 
+        // ADD BUTTON RESPONSE
+        // Add new subscription
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enterSubCriteria();
+            }
+        });
+
         a.setVisible(true);
     }
 
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
-        // TODO implement here
+        // controller.forwardDeleteSub
     }
 }
