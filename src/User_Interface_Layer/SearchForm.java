@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -112,39 +113,132 @@ public class SearchForm extends InteractionForm {
                 ArrayList<Property> p = new ArrayList<>();
                 p = ((SearchController) myControllers.get(0)).forwardSearch(selectedType, Integer.parseInt(selectedBed),
                         Integer.parseInt(selectedBath), furn, selectedQuad);
-                displayMatching(p);
+                f.dispose();
+                matchedProperties = p;
+                displayMatching();
             }
         });
 
         /* Back Button */
-        JButton backButton = new JButton("<<");
+        JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
                 // new DisplayUR().display(null);
                 new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
-                ;
             }
         });
         f.add(backButton);
     }
 
-    private void displayMatching(ArrayList<Property> matchedProperties) {
-        System.out.println(matchedProperties.size());
-        // TODO implement here
-        for (Property selected : matchedProperties) {
-            selected.display();
+    private ArrayList<Property> matchedProperties;
+
+    private void displayMatching() {
+        if (matchedProperties.size() == 0) {
+            JOptionPane.showMessageDialog(null, "No properties matching your search!");
+            createSearchQuery();
+            return;
         }
-        return;
+
+        JFrame frame = new JFrame("SEARCH RESULTS");
+        frame.setSize(400, 280);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
+
+        JLabel titleLabel = new JLabel();
+        JComboBox<String> addressComboBox = new JComboBox<String>();
+        JButton detailsButton = new JButton();
+        JButton goBackButton = new JButton();
+
+        titleLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        titleLabel.setText("Search Results");
+
+        addressComboBox.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        addressComboBox.setMaximumRowCount(100);
+
+        int numSize = matchedProperties.size();
+
+        String[] addresses = new String[numSize];
+        for (int i = 0; i < matchedProperties.size(); i++) {
+            addresses[i] = matchedProperties.get(i).getAddress();
+        }
+
+        addressComboBox.setModel(
+                new javax.swing.DefaultComboBoxModel<>(addresses));
+        addressComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            }
+        });
+
+        detailsButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        detailsButton.setText("View Details");
+
+        goBackButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        goBackButton.setText("Go Back");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
+        frame.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(titleLabel)
+                                .addGap(151, 151, 151))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(goBackButton))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(addressComboBox, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73,
+                                                        Short.MAX_VALUE)
+                                                .addComponent(detailsButton)))
+                                .addGap(35, 35, 35)));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(titleLabel)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(detailsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addressComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153,
+                                        Short.MAX_VALUE)
+                                .addComponent(goBackButton)
+                                .addContainerGap()));
+
+        frame.pack();
+
+        detailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                String addressChosen = addressComboBox.getSelectedItem().toString();
+                for (int i = 0; i < numSize; i++) {
+                    if (addressChosen.equals(matchedProperties.get(i).getAddress())) {
+                        matchedProperties.get(i).display(this);
+                        break;
+                    }
+                }
+            }
+        });
+        // createSearchQuery();
+
+        // for (Property selected : matchedProperties) {
+        // selected.display();
+        // }
+        // createSearchQuery();
     }
 
-    /**
-     * @return
-     */
-    public void sendEmailGUI() {
-        // TODO implement here
-        return;
+    public void callback() {
+        displayMatching();
     }
-
 }
