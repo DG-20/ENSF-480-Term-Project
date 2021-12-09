@@ -55,14 +55,14 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
-        JButton manageSubsButton = new JButton();
+        JButton manageSubscriptionsButton = new JButton();
         JButton notificationsButton = new JButton();
         JButton browseButton = new JButton();
         JButton logoutButton = new JButton();
         JLabel titleText = new JLabel();
 
-        manageSubsButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        manageSubsButton.setText("Manage Subs");
+        manageSubscriptionsButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        manageSubscriptionsButton.setText("Manage Subsciptions");
 
         notificationsButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         notificationsButton.setText("Notifications");
@@ -88,7 +88,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
                                                 .addContainerGap()
                                                 .addGroup(layout
                                                         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(manageSubsButton,
+                                                        .addComponent(manageSubscriptionsButton,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(notificationsButton,
@@ -114,7 +114,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
                                 .addGap(17, 17, 17)
                                 .addComponent(titleText)
                                 .addGap(18, 18, 18)
-                                .addComponent(manageSubsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                .addComponent(manageSubscriptionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(notificationsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
@@ -130,7 +130,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
         pack();
 
         /* Call Manage Subs */
-        manageSubsButton.addActionListener(new ActionListener() {
+        manageSubscriptionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
