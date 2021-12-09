@@ -40,6 +40,7 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy {
     public void display(String email) {
         JFrame f = this;
         f.setVisible(true);
+        f.setLocationRelativeTo(null);
         Color bgColor = new Color(128, 128, 105);
         f.getContentPane().setBackground(bgColor);
         f.setTitle("Unregistered Renter");
@@ -81,6 +82,7 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy {
                                 .addContainerGap(106, Short.MAX_VALUE)));
         // </editor-fold>
 
+        /* On Search Press, Browse Properties */
         Searching.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,10 +91,11 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* Do a Logout */
+        /* On Exit press, Do a Logout */
         Exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 StartUp.main(new String[] { "" });
 
             }

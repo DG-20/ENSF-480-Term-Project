@@ -23,7 +23,7 @@ public class GUIHomePage {
             displayStrategy = new DisplayLL();
         } else if (userType.equals("Manager")) {
             displayStrategy = new DisplayManager();
-        } else if (userType.equals("Registered Renter")) {
+        } else if (userType.equals("RR")) {
             displayStrategy = new DisplayRR();
         } else {
             displayStrategy = new DisplayUR();
