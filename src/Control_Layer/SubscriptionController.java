@@ -26,6 +26,8 @@ public class SubscriptionController extends Controller {
         this.addSub = addSub;
         Database data = new SubscriptionList();
         myData.add(data);
+        Database data2 = new PropertyInventory();
+        myData.add(data2);
     }
 
     private boolean addSub;
@@ -81,7 +83,7 @@ public class SubscriptionController extends Controller {
      * returns all those properties
      */
     public ArrayList<Property> getSubbedProperties(String email) {
-        Database d = myData.get(0);
+        Database d = myData.get(1);
         PropertyInventory property = (PropertyInventory) d;
         return property.getNotifications(email);
     }

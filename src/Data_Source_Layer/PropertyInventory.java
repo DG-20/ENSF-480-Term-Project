@@ -168,8 +168,8 @@ public class PropertyInventory implements Database {
                     "(\n" +
                     "SELECT *\n" +
                     "FROM subscription\n" +
-                    "WHERE RREmail = " + email +
-                    ") AS T JOIN property using(Quadrant, Furnished, numBathrooms, numBedrooms)\n" +
+                    "WHERE RREmail = '" + email +
+                    "') AS T JOIN property using(Quadrant, Furnished, numBathrooms, numBedrooms)\n" +
                     "WHERE T.Quadrant = property.Quadrant AND T.Furnished = property.furnished AND T.numBathrooms = property.numBathrooms AND T.numBedrooms = property.numBedrooms\n"
                     +
                     ") AS V WHERE V.Status = 'Active'";

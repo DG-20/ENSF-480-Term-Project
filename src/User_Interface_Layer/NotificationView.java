@@ -33,7 +33,7 @@ public class NotificationView extends InteractionForm {
     public void showSubbed() {
 
         ArrayList<Property> p = subController.getSubbedProperties(email);
-
+        p.get(0).getAddress(); // for debugging
         JFrame a = new JFrame("Notifications");
         a.setLocationRelativeTo(null);
         a.setSize(350, 350);
