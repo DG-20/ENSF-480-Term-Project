@@ -215,6 +215,7 @@ public class PropertyForm extends InteractionForm {
     /* Displays the Landlord's Properties */
     public void displayMyProperties(ArrayList<Property> p) {
         JFrame a = new JFrame("Update a Property");
+        a.setLocationRelativeTo(null);
         a.setSize(350, 350);
         a.setLayout(new FlowLayout());
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
