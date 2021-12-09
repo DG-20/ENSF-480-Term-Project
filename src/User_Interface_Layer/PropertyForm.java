@@ -190,7 +190,7 @@ public class PropertyForm extends InteractionForm {
         });
 
         /* Back Button */
-        JButton backButton = new JButton("<<");
+        JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -242,7 +242,7 @@ public class PropertyForm extends InteractionForm {
         a.add(updateButton);
 
         /* Back Button */
-        JButton backButton = new JButton("<<");
+        JButton backButton = new JButton("Go Back");
         JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panelButton.add(backButton);
         a.add(panelButton);
