@@ -18,8 +18,11 @@ import java.awt.event.ActionListener;
  * This class extends the JFrame class and implements the Strategy interface.
  */
 public class DisplayManager extends javax.swing.JFrame implements Strategy {
-    // Default constructor initializes the private member variables of type
-    // InteractionForm.
+    /*
+     * Public Constructor for DisplayManager.
+     * It initializes all three InteractionForm member variables.
+     * This does not take in any values as parameters.
+     */
     public DisplayManager() {
         mySummaryForm = new SummaryForm();
         myChangePF = new ChangePeriodFeesForm();
@@ -30,7 +33,11 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm myChangePF;
     private InteractionForm myPropertyForm;
 
-    // Getters and Setters.
+    /*
+     * getMySummaryForm is a getter for the member variable mySummaryForm.
+     * This function does not take in any parameters.
+     * It returns an object of InteractionForm.
+     */
     public InteractionForm getMySummaryForm() {
         return mySummaryForm;
     }
@@ -39,6 +46,11 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         this.mySummaryForm = mySummaryForm;
     }
 
+    /*
+     * getMyChangePF is a getter for the member variable myChangePF.
+     * This function does not take in any parameters.
+     * It returns an object of InteractionForm.
+     */
     public InteractionForm getMyChangePF() {
         return myChangePF;
     }
@@ -47,6 +59,11 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         this.myChangePF = myChangePF;
     }
 
+    /*
+     * getMyPropertyForm is a getter for the member variable mySummaryForm.
+     * This function does not take in any parameters.
+     * It returns an object of InteractionForm.
+     */
     public InteractionForm getMyPropertyForm() {
         return myPropertyForm;
     }
