@@ -69,9 +69,9 @@ public class PropertyInventory implements Database {
             furn = 'Y';
         }
         try {
-            String query = "SELECT * FROM property WHERE Quadrant = " + quadrant + " AND Furnished = " + furn
-                    + " AND numBathrooms =" + numBathrooms +
-                    " AND numBedrooms = " + numBedrooms + " AND Type = " + type + " AND Status = 'Active'";
+            String query = "SELECT * FROM property WHERE Quadrant = '" + quadrant + "' AND Furnished = '" + furn
+                    + "' AND numBathrooms =" + numBathrooms +
+                    " AND numBedrooms = " + numBedrooms + " AND Type = '" + type + "' AND Status = 'Active'";
             Statement stmt = dbConnect.createStatement();
             ResultSet result = stmt.executeQuery(query);
             matchedProperties = convertToProperty(result);

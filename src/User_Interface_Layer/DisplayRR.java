@@ -52,6 +52,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
     public void display(String email) {
         JFrame frame = this;
         frame.setVisible(true);
+        frame.setTitle("REGISTERED RENTER HOMEPAGE");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
@@ -134,7 +135,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((SubscriptionForm)mySubForm).displayMySubs();
+                ((SubscriptionForm) mySubForm).displayMySubs();
             }
         });
 
@@ -144,7 +145,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
                 myNotifView = new NotificationView(email);
-                ((NotificationView)myNotifView).showSubbed();
+                ((NotificationView) myNotifView).showSubbed();
             }
         });
 
@@ -153,7 +154,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((SearchForm)mySearchForm).createSearchQuery(); // Rui's implementation
+                ((SearchForm) mySearchForm).createSearchQuery(); // Rui's implementation
             }
         });
 

@@ -59,6 +59,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     public void display(String email) {
         // Setting properties of the JFrame.
         JFrame frame = this;
+        frame.setTitle("MANAGER HOMEPAGE");
         frame.setVisible(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
