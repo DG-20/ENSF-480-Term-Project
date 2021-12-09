@@ -66,7 +66,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
 
                 // Setting the Strings of the elements that display values.
                 String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal)
-                                + "<html><br>Period: </html>"
+                                + "  Period: "
                                 + String.valueOf(currentPeriodVal);
 
                 enterInfoLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));

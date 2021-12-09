@@ -12,7 +12,6 @@ import Control_Layer.RegistrationController;
 import Control_Layer.UpdateController;
 import Control_Layer.PeriodFeesController;
 import Business_Layer.Property;
-import Data_Source_Layer.PropertyInventory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +26,7 @@ public class PropertyForm extends InteractionForm {
 
     /**
      * Default constructor
-     * Adds three controllers
+     * Adds three controllers.
      */
     public PropertyForm() {
         myControllers.add(new PeriodFeesController());
@@ -204,7 +203,7 @@ public class PropertyForm extends InteractionForm {
 
     /*
      * Get all the landlord's properties from the controller and call respective
-     * display functions
+     * display functions.
      */
     public void browseProperties() {
         ArrayList<Property> p = new ArrayList<>();
@@ -212,7 +211,7 @@ public class PropertyForm extends InteractionForm {
         displayMyProperties(p);
     }
 
-    /* Displays the Landlord's Properties */
+    /* Displays the Landlord's Properties. */
     public void displayMyProperties(ArrayList<Property> p) {
         JFrame a = new JFrame("Update a Property");
         a.setLocationRelativeTo(null);
@@ -229,7 +228,7 @@ public class PropertyForm extends InteractionForm {
         JSeparator sep = new JSeparator();
         a.add(sep);
 
-        /* Initializing the combo box with Landlord's Address' */
+        /* Initializing the combo box with Landlord's Address. */
         String[] address = new String[p.size()];
         for (int i = 0; i < p.size(); i++) {
             address[i] = p.get(i).getAddress();
@@ -277,9 +276,6 @@ public class PropertyForm extends InteractionForm {
                 new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });
-
         a.setVisible(true);
-
     }
-
 }

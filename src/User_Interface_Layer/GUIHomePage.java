@@ -9,15 +9,23 @@
 
 package User_Interface_Layer;
 
-// DONE
+/*
+ * A class which implements the Strategy Design Pattern by using 
+ * function setStrateug and performStrategy.
+ * This class contains an object of the interface Strategy as a member variable, 
+ * which is set differently, based on the user type.
+ */
 public class GUIHomePage {
     private static String email;
     private static Strategy displayStrategy;
 
+    // Calls the display of the member variable displayStrategy.
     public void performStrategy() {
         displayStrategy.display(email);
     }
 
+    // This function takes in the user type as a String and accordingly initializes
+    // the object.
     public void setDisplayStrategy(String userType) {
         if (userType.equals("Landlord")) {
             displayStrategy = new DisplayLL();
@@ -27,14 +35,15 @@ public class GUIHomePage {
             displayStrategy = new DisplayRR();
         } else {
             displayStrategy = new DisplayUR();
-
         }
     }
 
+    // Getter.
     public static String getEmail() {
         return email;
     }
 
+    // Default constructor.
     public GUIHomePage(String email) {
         this.email = email;
     }

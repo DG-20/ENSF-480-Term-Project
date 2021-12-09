@@ -22,29 +22,23 @@ import java.util.*;
 import java.sql.Date.*;
 import java.util.Date;
 
-/**
- * 
- */
 public class PropertyInventory implements Database {
 
     private Connection dbConnect;
     private ArrayList<Property> mySearchedProperties;
     PaymentPeriodRecord myPaymentPeriodRecord;
 
-    /**
-     * Default constructor
-     */
+    // Default constructor which initializes the connection, and updates the
+    // properties using the date.
     public PropertyInventory() {
         myPaymentPeriodRecord = new PaymentPeriodRecord();
         initializeConnection();
         updateAllProperties();
     }
 
-    /**
-     * This updates all properties in the database to cancelled if the current date
-     * is greater or equal to the
-     * expiration date and if it is not rented
-     */
+    // This updates all properties in the database to cancelled if the current date
+    // is greater or equal to the
+    // expiration date and if it is not rented.
     private void updateAllProperties() {
         try {
             String query = "UPDATE property SET Status = 'Cancelled' WHERE SYSDATE() > ExpDate AND Status != 'Rented';";
@@ -56,30 +50,17 @@ public class PropertyInventory implements Database {
         }
     }
 
-    /**
-     * Getter, returns mySearchedProperties
-     */
+    // Getter, returns mySearchedProperties
     public ArrayList<Property> getMySearchedProperties() {
         return mySearchedProperties;
     }
 
-    /**
-     *
-     * @param mySearchedProperties
-     *                             sets mySearchedProperties to parameter
-     */
+    // Sets mySearchedProperties to the input parameter.
     public void setMySearchedProperties(ArrayList<Property> mySearchedProperties) {
         this.mySearchedProperties = mySearchedProperties;
     }
 
-    /**
-     * @param type
-     * @param numBedrooms
-     * @param numBathrooms
-     * @param furnished
-     * @param quadrant
-     * @return The matched properties that match the parameters and are active
-     */
+    // Returns the matched properties that match the parameters and are active.
     public ArrayList<Property> getMatching(String type, int numBedrooms, int numBathrooms, boolean furnished,
             String quadrant) {
         char furn = 'N';
@@ -99,20 +80,10 @@ public class PropertyInventory implements Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return matchedProperties;
     }
 
-    /**
-     * @param type
-     * @param numBedrooms
-     * @param numBathrooms
-     * @param furnished
-     * @param quadrant
-     * @param email
-     * @param address
-     *                     Inserts a property into the database
-     */
+    // Inserts a property into the database.
     public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant,
             String email, String address) {
         try {
@@ -145,16 +116,13 @@ public class PropertyInventory implements Database {
         }
     }
 
-    /**
-     * @param email
-     *              Returns a list of properties managed by a landlord or by manager
-     */
+    // Returns a list of properties managed by a landlord or by manager.
     public ArrayList<Property> getMatching(String email) {
 
         ArrayList<Property> myProperties = new ArrayList<>();
         /*
          * First need to check if the email belongs to Landlord or Manager to decide
-         * which properties to send
+         * which properties to send.
          */
         boolean type = Singleton.getInstance().isManager(email);
         if (type) {
@@ -170,7 +138,7 @@ public class PropertyInventory implements Database {
                 e.printStackTrace();
             }
         } else {
-            /* User is a Landlord */
+            /* User is a Landlord. */
             try {
                 String query = "SELECT * FROM property where LandlordEmail = '" + email + "'";
                 Statement stmt = dbConnect.createStatement();
@@ -185,12 +153,9 @@ public class PropertyInventory implements Database {
         return myProperties;
     }
 
-    /**
-     *
-     * @param email of a Registered Renter's
-     * @return All active properties that match a registered renter's subscriptions
-     *         given their email
-     */
+    // Takes in the email of a Registered Renter.
+    // Returns all active properties that match a registered renter's subscriptions
+    // given their email.
     public ArrayList<Property> getNotifications(String email) {
         ArrayList<Property> notifiedProperties = new ArrayList<>();
         try {
@@ -220,11 +185,8 @@ public class PropertyInventory implements Database {
         return notifiedProperties;
     }
 
-    /**
-     * @param p
-     *          Updates the property in the datbase associated with p's ID and p's
-     *          new status
-     */
+    // Updates the property in the datbase associated with Property p's ID and p's
+    // new status.
     public void updateProperty(Property p) {
         String newStatus = p.getStatus();
         int ID = p.getID();
@@ -240,13 +202,10 @@ public class PropertyInventory implements Database {
         }
     }
 
-    /**
-     *
-     * @param period - The period of the summary report. As in how many days back
-     *               from today.
-     * @return A summary report on properties from dates ranging from
-     *         [currentDate-period, currentDate]
-     */
+    // Takes in the period of the summary report. As in how many days back from
+    // today.
+    // Returns a summary report on properties from dates ranging from
+    // [currentDate-period, currentDate].
     public ArrayList<Property> retrieveSummary(int period) {
         ArrayList<Property> rented = new ArrayList<>();
         try {
@@ -271,9 +230,7 @@ public class PropertyInventory implements Database {
         return rented;
     }
 
-    /**
-     * Attempts to Close the connection to the database
-     */
+    // Attempts to Close the connection to the database.
     public void close() {
         try {
             dbConnect.close();
@@ -282,9 +239,7 @@ public class PropertyInventory implements Database {
         }
     }
 
-    /**
-     * Attempts to initialize the connection to the database
-     */
+    // Attempts to initialize the connection to the database.
     public void initializeConnection() {
         try {
             this.dbConnect = DriverManager.getConnection(Database.DBURL, USERNAME, PASSWORD);
@@ -294,9 +249,7 @@ public class PropertyInventory implements Database {
         }
     }
 
-    /**
-     * Retrievs the total number of listings within a period
-     */
+    // Retrievs the total number of listings within a period.
     public int getNumListingsPeriod(int period) {
         int count = -1;
         try {
@@ -316,9 +269,7 @@ public class PropertyInventory implements Database {
         return count;
     }
 
-    /**
-     * Retrieves the total number of listings RENTED within a period
-     */
+    // Retrieves the total number of listings RENTED within a period.
     public int getNumRentedListingsPeriod(int period) {
         int count = -1;
         try {
@@ -338,9 +289,7 @@ public class PropertyInventory implements Database {
         return count;
     }
 
-    /**
-     * Retrieves the total number of active listings within a period
-     */
+    // Retrieves the total number of active listings within a period.
     public int getNumActiveListingsPeriod(int period) {
         int count = -1;
         try {
@@ -360,10 +309,7 @@ public class PropertyInventory implements Database {
         return count;
     }
 
-    /**
-     * Retrieves the total number of active listings total
-     */
-
+    // Retrieves the total number of active listings total.
     public int getNumActiveListings() {
         int count = -1;
         try {
@@ -383,14 +329,8 @@ public class PropertyInventory implements Database {
 
     }
 
-    /**
-     *
-     * @param set
-     * @return ArrayList<Property>
-     *         This helper function takes in a ResultSet generated from an SQL
-     *         query, parses it, calls the
-     *         property constructor, and returns the list of properties.
-     */
+    // This helper function takes in a ResultSet generated from an SQL query, parses
+    // it, calls the property constructor, and returns the list of properties.
     private ArrayList<Property> convertToProperty(ResultSet set) {
         ArrayList<Property> result = new ArrayList<>();
         try {

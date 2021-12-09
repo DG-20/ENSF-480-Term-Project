@@ -12,25 +12,30 @@ package User_Interface_Layer;
 // import LoginController.*;
 import Control_Layer.Controller;
 import Control_Layer.LoginController;
-import Control_Layer.PeriodFeesController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
+/*
+ * LoginForm presents the login page for managers, landlords, and registered renters. 
+ * It displays the GUI and gets the user input. 
+ * This class contains member variables which store the email, password, and the user type.
+ */
 public class LoginForm extends InteractionForm {
     private String inputEmail;
     private String inputPassword;
     private String userType; // not relevant
 
-    /* Start the Login Process View */
+    // Function which performs the GUI operation to login.
     public void startLogin() {
+        // Setting the JFrame properties.
         JFrame frame = new JFrame("LOGIN PAGE");
         frame.setLocationRelativeTo(null);
         frame.setSize(400, 230);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
 
+        // Creating and initializing the elements of the JFrame.
         JLabel loginLabel = new JLabel();
         JTextField emailTextField = new JTextField();
         JLabel emailLabel = new JLabel();
@@ -39,6 +44,7 @@ public class LoginForm extends InteractionForm {
         JButton cancelButton = new JButton();
         JButton submitButton = new JButton();
 
+        // Setting the font and text of the elements.
         loginLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
         loginLabel.setText("Please enter your login details:");
 
@@ -60,6 +66,8 @@ public class LoginForm extends InteractionForm {
         submitButton.setFont(new java.awt.Font("Times New Roman", 1, 12));
         submitButton.setText("Submit");
 
+        // Creating a new layout (both vertical and horizontal) and setting the
+        // elements' sizes and positions.
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
         frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,6 +129,10 @@ public class LoginForm extends InteractionForm {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap()));
 
+        // If the user clicks upon the submit button, perform error checking and display
+        // an error message if the input is not valid.
+        // Calling upon forwardUser inside of controller to verify the email and
+        // password entered.
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 inputEmail = emailTextField.getText();
@@ -142,6 +154,8 @@ public class LoginForm extends InteractionForm {
             }
         });
 
+        // If the user clicks on the cancel button, dispose of this frame and simply
+        // call back the welcome function.
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent equals) {
                 frame.dispose();
@@ -149,15 +163,20 @@ public class LoginForm extends InteractionForm {
             }
         });
 
+        // Packs all elements according to their set sizes and locations.
         frame.pack();
     }
 
+    // The constructor takes in a String of the user type and sets it.
+    // Creating a LoginController object and adding it to the myControllers
+    // ArrayList.
     public LoginForm(String userType) {
         this.userType = userType;
         Controller x = new LoginController();
         myControllers.add(x);
     }
 
+    // Getters.
     public String getInputEmail() {
         return inputEmail;
     }
@@ -165,5 +184,4 @@ public class LoginForm extends InteractionForm {
     public String getInputPassword() {
         return inputPassword;
     }
-
 }
