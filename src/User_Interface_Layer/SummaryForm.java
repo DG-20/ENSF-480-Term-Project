@@ -27,17 +27,17 @@ public class SummaryForm extends InteractionForm {
     private Database myPaymentPeriod;
     private Database myUserInfo;
 
-    public int getPeriod()
-    {
-        return ((PaymentPeriodRecord)myPaymentPeriod).retrievePeriod();
+    public int getPeriod() {
+        return ((PaymentPeriodRecord) myPaymentPeriod).retrievePeriod();
     }
 
     public void showSummary(int periodChosen) {
         JFrame frame = new JFrame();
         frame.setSize(563, 500);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
+
         JButton doneButton = new JButton();
         JLabel listLabel = new JLabel();
         JScrollPane listPane = new JScrollPane();
@@ -45,18 +45,21 @@ public class SummaryForm extends InteractionForm {
         JLabel summaryTitleLabel = new JLabel();
         JTextArea totalActiveListingsDisplay = new JTextArea();
         JLabel totalActiveListingsLabel = new JLabel();
-        JScrollPane totalActiveListingsPane = new JScrollPane();
+        JScrollPane totalActiveListingsPane = new JScrollPane(totalActiveListingsDisplay,
+                JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         JTextArea totalPeriodListingsDisplay = new JTextArea();
         JLabel totalPeriodListingsLabel = new JLabel();
-        JScrollPane totalPeriodListingsPane = new JScrollPane();
+        JScrollPane totalPeriodListingsPane = new JScrollPane(totalPeriodListingsDisplay,
+                JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         JTextArea totalRentedListingsDisplay = new JTextArea();
         JLabel totalRentedListingsLabel = new JLabel();
-        JScrollPane totalRentedListingsPane = new JScrollPane();
+        JScrollPane totalRentedListingsPane = new JScrollPane(totalRentedListingsDisplay,
+                JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        int totalRentedListings = ((PropertyInventory)myInventory).getNumRentedListingsPeriod(periodChosen);
-        int totalPeriodListings = ((PropertyInventory)myInventory).getNumListingsPeriod(periodChosen);
-        int totalActiveListings = ((PropertyInventory)myInventory).getNumActiveListingsPeriod(periodChosen);
-        ArrayList<Property> rentedProperties = ((PropertyInventory)myInventory).retrieveSummary(periodChosen);
+        int totalRentedListings = ((PropertyInventory) myInventory).getNumRentedListingsPeriod(periodChosen);
+        int totalPeriodListings = ((PropertyInventory) myInventory).getNumListingsPeriod(periodChosen);
+        int totalActiveListings = ((PropertyInventory) myInventory).getNumActiveListingsPeriod(periodChosen);
+        ArrayList<Property> rentedProperties = ((PropertyInventory) myInventory).retrieveSummary(periodChosen);
         int numPropertiesRented = rentedProperties.size();
 
         totalRentedListingsDisplay.setColumns(20);
@@ -64,13 +67,10 @@ public class SummaryForm extends InteractionForm {
         totalRentedListingsDisplay.setEditable(false);
         totalRentedListingsDisplay.setText(String.valueOf(totalRentedListings));
 
-        totalRentedListingsPane.setViewportView(totalRentedListingsDisplay);
-
         totalPeriodListingsDisplay.setColumns(20);
         totalPeriodListingsDisplay.setRows(5);
         totalPeriodListingsDisplay.setEditable(false);
         totalPeriodListingsDisplay.setText(String.valueOf(totalPeriodListings));
-        totalPeriodListingsPane.setViewportView(totalPeriodListingsDisplay);
 
         doneButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         doneButton.setText("Done");
@@ -80,53 +80,52 @@ public class SummaryForm extends InteractionForm {
         summaryTitleLabel.setText("Summary:");
 
         totalPeriodListingsLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        totalPeriodListingsLabel.setText("Total number of listings in " + String.valueOf(periodChosen) + " days:" );
+        totalPeriodListingsLabel
+                .setText("Total number of listings in the last " + String.valueOf(periodChosen) + " days:");
 
         totalRentedListingsLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        totalRentedListingsLabel.setText("Total number of rented properties in " + String.valueOf(periodChosen) + " days:");
+        totalRentedListingsLabel
+                .setText("Total number of rented properties in the last " + String.valueOf(periodChosen) + " days:");
 
         totalActiveListingsDisplay.setColumns(20);
         totalActiveListingsDisplay.setRows(5);
         totalActiveListingsDisplay.setEditable(false);
         totalActiveListingsDisplay.setText(String.valueOf(totalActiveListings));
-        totalActiveListingsPane.setViewportView(totalActiveListingsDisplay);
 
         totalActiveListingsLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         totalActiveListingsLabel.setText("Total number of \"active\" listings:");
 
         listLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        listLabel.setText("List of properties \"rented\" in " + String.valueOf(periodChosen) + " days:");
+        listLabel.setText("List of properties \"rented\" in the last " + String.valueOf(periodChosen) + " days:");
 
-        Object [][] vals;
+        Object[][] vals;
         vals = new Object[numPropertiesRented][3];
 
-        for (int i = 0; i < numPropertiesRented; i++)
-        {
+        for (int i = 0; i < numPropertiesRented; i++) {
             Property propertyGet = rentedProperties.get(i);
-            vals[i][0] = ((UserInfo)myUserInfo).retrieveLandlordsName(propertyGet.getEmail());
+            vals[i][0] = ((UserInfo) myUserInfo).retrieveLandlordsName(propertyGet.getEmail());
             vals[i][1] = propertyGet.getID();
             vals[i][2] = propertyGet.getAddress();
         }
 
         listTable.setModel(new javax.swing.table.DefaultTableModel(
-            vals,
-            new String [] {
-                "LandLord Name", "Property ID", "Address"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                vals,
+                new String[] {
+                        "LandLord Name", "Property ID", "Address"
+                }) {
+            Class[] types = new Class[] {
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            boolean[] canEdit = new boolean[] {
+                    false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         listPane.setViewportView(listTable);
@@ -135,57 +134,66 @@ public class SummaryForm extends InteractionForm {
         frame.getContentPane().setLayout(layout);
         frame.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(summaryTitleLabel)
-                        .addGap(246, 246, 246))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(doneButton)
-                        .addGap(233, 233, 233))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(listPane, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-                    .addComponent(totalRentedListingsPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(totalPeriodListingsPane)
-                    .addComponent(totalActiveListingsPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalPeriodListingsLabel)
-                            .addComponent(totalRentedListingsLabel)
-                            .addComponent(totalActiveListingsLabel)
-                            .addComponent(listLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                layout.createSequentialGroup()
+                                                        .addComponent(summaryTitleLabel)
+                                                        .addGap(246, 246, 246))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                layout.createSequentialGroup()
+                                                        .addComponent(doneButton)
+                                                        .addGap(233, 233, 233))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(listPane, javax.swing.GroupLayout.DEFAULT_SIZE, 537,
+                                                Short.MAX_VALUE)
+                                        .addComponent(totalRentedListingsPane,
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(totalPeriodListingsPane)
+                                        .addComponent(totalActiveListingsPane,
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout
+                                                .createSequentialGroup()
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(totalPeriodListingsLabel)
+                                                        .addComponent(totalRentedListingsLabel)
+                                                        .addComponent(totalActiveListingsLabel)
+                                                        .addComponent(listLabel))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(summaryTitleLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalPeriodListingsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalPeriodListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(totalRentedListingsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalRentedListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(totalActiveListingsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalActiveListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(listLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listPane, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(doneButton)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(summaryTitleLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalPeriodListingsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalPeriodListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(totalRentedListingsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalRentedListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(totalActiveListingsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(totalActiveListingsPane, javax.swing.GroupLayout.PREFERRED_SIZE, 49,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(listLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(listPane, javax.swing.GroupLayout.PREFERRED_SIZE, 87,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(doneButton)
+                                .addContainerGap(16, Short.MAX_VALUE)));
 
         doneButton.addActionListener(new ActionListener() {
             @Override

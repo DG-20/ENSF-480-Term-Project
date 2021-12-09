@@ -23,13 +23,14 @@ public class UserInfo implements Database {
 
     /**
      * Default constructor
-     * Initializes a connection and initializes the list of logins,names, and passwords stored in the Singleton users
+     * Initializes a connection and initializes the list of logins,names, and
+     * passwords stored in the Singleton users
      */
     public UserInfo() {
         initializeConnection();
         users = Singleton.getInstance();
         ArrayList<User> users = getAllUsers();
-        for (User u: users) {
+        for (User u : users) {
             this.users.addUser(u);
         }
     }
@@ -44,13 +45,13 @@ public class UserInfo implements Database {
      */
     private boolean valid;
 
-
     /**
-     * @param email 
-     * @param password 
+     * @param email
+     * @param password
      * @param userType
-     * @return Return true if the user has valid login credentials, otherwise return false.
-     * Checks and validates a user's login details of a certain user type.
+     * @return Return true if the user has valid login credentials, otherwise return
+     *         false.
+     *         Checks and validates a user's login details of a certain user type.
      */
     public boolean validation(String email, String password, String userType) {
         ArrayList<User> myUsers = users.getRegisteredUsers();
@@ -58,24 +59,21 @@ public class UserInfo implements Database {
             String userEmail = myUsers.get(i).getEmail();
             String userPassword = myUsers.get(i).getPassword();
             String usersType = myUsers.get(i).getType();
-            if (email.equals(userEmail) && userPassword.equals(password) && userType.equals(usersType))
-            {
+            if (email.equals(userEmail) && userPassword.equals(password) && userType.equals(usersType)) {
                 return true;
             }
         }
         return false;
     }
 
-
-
     /**
-     * @param email 
+     * @param email
      * @return The name of the landlod associated with their login email.
      */
     public String retrieveLandlordsName(String email) {
         String name = "";
         ArrayList<User> myUsers = users.getRegisteredUsers();
-        for (User u: myUsers) {
+        for (User u : myUsers) {
             if (u.getType().equals("Landlord") && u.getEmail().equals(email)) {
                 name = u.getName();
             }
@@ -105,27 +103,25 @@ public class UserInfo implements Database {
         return u;
     }
 
-
     /**
      * Attempts to Close the connection to the database
      */
     public void close() {
-        try{
+        try {
             dbConnect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
     /**
      * Attempts to intialize a connection to the database
      */
     public void initializeConnection() {
-        try{
+        try {
             this.dbConnect = DriverManager.getConnection(Database.DBURL, USERNAME, PASSWORD);
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

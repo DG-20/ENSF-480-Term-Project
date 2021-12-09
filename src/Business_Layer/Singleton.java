@@ -14,7 +14,6 @@ public class Singleton {
     private static Singleton instance;
     private ArrayList<User> registeredUsers;
 
-
     public ArrayList<User> getRegisteredUsers() {
         return registeredUsers;
     }
@@ -32,15 +31,13 @@ public class Singleton {
     /**
      *
      * @param email - The email in question
-     * @return True if the email is associated with an existing Manager account, otherwise return false
+     * @return True if the email is associated with an existing Manager account,
+     *         otherwise return false
      */
-    public boolean isManager(String email)
-    {
+    public boolean isManager(String email) {
         boolean result = false;
-        for(User u: registeredUsers)
-        {
-            if (email.equals(u.getEmail()) && u.getType().equals("Manager"))
-            {
+        for (User u : registeredUsers) {
+            if (email.equals(u.getEmail()) && u.getType().equals("Manager")) {
                 result = true;
             }
         }
@@ -50,15 +47,13 @@ public class Singleton {
     /**
      *
      * @param email - The email in question
-     * @return True if the email is associated with an existing Registered Renter account, otherwise return false
+     * @return True if the email is associated with an existing Registered Renter
+     *         account, otherwise return false
      */
-    public boolean isRR(String email)
-    {
+    public boolean isRR(String email) {
         boolean result = false;
-        for(User u: registeredUsers)
-        {
-            if (email.equals(u.getEmail()) && u.getType().equals("RR"))
-            {
+        for (User u : registeredUsers) {
+            if (email.equals(u.getEmail()) && u.getType().equals("RR")) {
                 result = true;
             }
         }
@@ -68,23 +63,20 @@ public class Singleton {
     /**
      *
      * @param email - The email in question
-     * @return True if the email is associated with an existing Landlord account, otherwise return false
+     * @return True if the email is associated with an existing Landlord account,
+     *         otherwise return false
      */
-    public boolean isLL(String email)
-    {
+    public boolean isLL(String email) {
         boolean result = false;
-        for(User u: registeredUsers)
-        {
-            if (email.equals(u.getEmail()) && u.getType().equals("Landlord"))
-            {
+        for (User u : registeredUsers) {
+            if (email.equals(u.getEmail()) && u.getType().equals("Landlord")) {
                 result = true;
             }
         }
         return result;
     }
 
-    private Singleton() 
-    {
+    private Singleton() {
         this.registeredUsers = new ArrayList<User>();
     }
 

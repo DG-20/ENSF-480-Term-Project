@@ -24,7 +24,6 @@ public abstract class InteractionForm {
         myControllers = new ArrayList<>();
     }
 
-
     protected ArrayList<Controller> myControllers;
 
 }

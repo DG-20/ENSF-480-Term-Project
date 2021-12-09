@@ -39,13 +39,6 @@ public class NotificationView extends InteractionForm {
      */
     private SubscriptionController subController;
 
-
-
-
-
-
-
-
     /**
      * @return
      */

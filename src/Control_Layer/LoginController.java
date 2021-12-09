@@ -26,14 +26,14 @@ public class LoginController extends Controller {
     }
 
     /**
-     * @param email 
-     * @param password 
-     * @param userType 
+     * @param email
+     * @param password
+     * @param userType
      * @return
      */
     public boolean forwardUser(String email, String password, String userType) {
         Database d = myData.get(0);
-        UserInfo validate = (UserInfo)d;
+        UserInfo validate = (UserInfo) d;
         return validate.validation(email, password, userType);
     }
 }
