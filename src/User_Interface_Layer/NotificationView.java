@@ -83,7 +83,7 @@ public class NotificationView extends InteractionForm {
                 }
                 if (found) {
                     a.dispose();
-                    choice.display();;
+                    choice.display();
                 }
             }
         });

@@ -12,18 +12,18 @@ CREATE TABLE user (
 );
 
 INSERT INTO user (Email, Password, Name, Type) VALUES
-('john@example.com', 'pass', 'John', 'RR'),
+('john@example.com', 'pass', 'John Baker', 'RR'),
 ('admin@example.com', 'superpassword', 'admin', 'Manager'),
-('landlord@example.com', 'slumlord', 'Kenny', 'Landlord'),
-('tom@example.com', 'pass', 'Tom', 'RR'),
-('landlord2@example.com', 'pass', 'Bob', 'Landlord'),
-('landlord3@example.com', 'pass', 'Matt', 'Landlord'),
-('landlord4@example.com', 'pass', 'Rob', 'Landlord'),
-('landlord5@example.com', 'pass', 'Jim', 'Landlord'),
-('rr1@example.com', 'pass', 'Gale', 'RR'),
-('rr2@example.com', 'pass', 'Rob', 'RR'),
-('rr3@example.com', 'pass', 'Mary', 'RR'),
-('rr4@example.com', 'pass', 'Sam', 'RR');
+('landlord@example.com', 'slumlord', 'Kenny Kenith', 'Landlord'),
+('tom@example.com', 'pass', 'Tom Sawyer', 'RR'),
+('landlord2@example.com', 'pass', 'Bob Mawyer', 'Landlord'),
+('landlord3@example.com', 'pass', 'Matt Lawyer', 'Landlord'),
+('landlord4@example.com', 'pass', 'Rob Bowyer', 'Landlord'),
+('landlord5@example.com', 'pass', 'Jim Rawyer', 'Landlord'),
+('rr1@example.com', 'pass', 'Gale Nawyer', 'RR'),
+('rr2@example.com', 'pass', 'Rob Fawyer', 'RR'),
+('rr3@example.com', 'pass', 'Mary Lamb', 'RR'),
+('rr4@example.com', 'pass', 'Sam Sammy', 'RR');
 
 DROP TABLE IF EXISTS property;
 CREATE TABLE property (
@@ -36,15 +36,17 @@ Furnished       char(1),
 numBathrooms    TINYINT,
 numBedrooms     TINYINT,
 Type           varchar(25),
-PostedDate      DATE,
-ExpDate         DATE,
+PostedDate      timestamp,
+ExpDate         timestamp,
 primary key (ID),
 foreign key (LandlordEmail) references USER(Email) ON UPDATE CASCADE
 );
 
 INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate) VALUES
 ('landlord@example.com', 'Active', 'NE', '402 Elmo Street NE', 'Y', 2, 4, 'Detached', '2021-11-24', '2021-12-24'),
-('landlord2@example.com', 'Active', 'SW', '123 Grover Street SW', 'N', 1, 3, 'Apartment', '2021-11-29', '2021-12-29'),
+('landlord@example.com', 'Active', 'NW', '123 Baker Street NW', 'Y', 1, 3, 'Dormitory', '2021-11-24', '2022-12-24'),
+('landlord2@example.com', 'Active', 'SW', '123 Grover Street N', 'N', 1, 3, 'Apartment', '2021-11-29', '2021-12-29'),
+('landlord2@example.com', 'Active', 'SW', '500 Orange Drive N', 'N', '1', 3, 'Apartment', '2021-11-29', '2022-12-29'),
 ('landlord@example.com', 'Suspended', 'SE', '421 University Drive SE', 'Y', '2', '1', 'Dormitory', '2021-10-30', '2021-11-30'),
 ('landlord4@example.com', 'Active', 'SE', '421 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-10-30', '2021-11-30'),
 ('landlord4@example.com', 'Rented', 'SE', '300 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-11-30', '2021-11-30'),
@@ -63,6 +65,7 @@ foreign key (RREmail) references USER(Email) ON UPDATE CASCADE
 
 INSERT INTO subscription(RREmail, Quadrant, Furnished, numBathrooms, numBedrooms, Type) VALUES
 ('john@example.com', 'NE', 'Y', 2, 4, 'Detached'),
+('john@example.com', 'NW', 'Y', 1, 3, 'Dormitory'),
 ('tom@example.com', 'SW', 'N', 1, 3, 'Apartment'),
 ('rr2@example.com', 'SE', 'N', 1, 1, 'Dormitory'),
 ('rr2@example.com', 'SE', 'Y', 2, 1, 'Apartment');
