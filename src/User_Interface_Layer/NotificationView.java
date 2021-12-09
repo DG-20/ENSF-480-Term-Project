@@ -31,9 +31,10 @@ public class NotificationView extends InteractionForm {
     private SubscriptionController subController;
 
     public void showSubbed() {
+
         ArrayList<Property> p = subController.getSubbedProperties(email);
 
-        JFrame a = new JFrame("Manage Subscriptions");
+        JFrame a = new JFrame("Notifications");
         a.setLocationRelativeTo(null);
         a.setSize(350, 350);
         a.setLayout(new FlowLayout());

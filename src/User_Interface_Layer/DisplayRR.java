@@ -18,7 +18,6 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
 
     public DisplayRR() {
         mySearchForm = new SearchForm();
-        mySubForm = new SubscriptionForm();
     }
 
     private InteractionForm mySearchForm;
@@ -135,6 +134,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                mySubForm = new SubscriptionForm(email);
                 ((SubscriptionForm) mySubForm).displayMySubs();
             }
         });
