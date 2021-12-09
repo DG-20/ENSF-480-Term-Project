@@ -122,7 +122,8 @@ public class SearchForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                new DisplayUR().display(null);
+                // new DisplayUR().display(null);
+                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
                 ;
             }
         });
