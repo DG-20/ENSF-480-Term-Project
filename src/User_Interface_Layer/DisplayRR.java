@@ -57,16 +57,19 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
         frame.setLocationRelativeTo(null);
 
         JButton manageSubsButton = new JButton();
-        JButton changePFButton = new JButton();
-        JButton searchPropertiesButton = new JButton();
+        JButton notificationsButton = new JButton();
+        JButton browseButton = new JButton();
         JButton logoutButton = new JButton();
         JLabel titleText = new JLabel();
 
         manageSubsButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         manageSubsButton.setText("Manage Subs");
 
-        changePFButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        changePFButton.setText("Change Amount and Period of Fees");
+        notificationsButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        notificationsButton.setText("Notifications");
+
+        browseButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        browseButton.setText("Browse");
 
         logoutButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         logoutButton.setText("Logout");
@@ -89,7 +92,10 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
                                                         .addComponent(manageSubsButton,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(changePFButton,
+                                                        .addComponent(notificationsButton,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(browseButton,
                                                                 javax.swing.GroupLayout.Alignment.TRAILING,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, 376,
                                                                 Short.MAX_VALUE)))
@@ -112,7 +118,10 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
                                 .addComponent(manageSubsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(changePFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                .addComponent(notificationsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(browseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
@@ -121,7 +130,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
 
         pack();
 
-        /* Call Update Listing Form */
+        /* Call Manage Subs */
         manageSubsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,11 +138,20 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* Call ChangePeriodFees Form */
-        changePFButton.addActionListener(new ActionListener() {
+        /* Notification View */
+        notificationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+            }
+        });
+
+        /* Call Search Form */
+        browseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                ((SearchForm)mySearchForm).createSearchQuery();
             }
         });
 
