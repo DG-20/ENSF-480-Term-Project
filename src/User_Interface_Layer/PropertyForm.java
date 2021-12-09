@@ -30,9 +30,9 @@ public class PropertyForm extends InteractionForm {
      * Adds three controllers
      */
     public PropertyForm() {
-        myControllers.add( new PeriodFeesController());
-        myControllers.add(new RegistrationController());
-        myControllers.add(new UpdateController());
+//        myControllers.add( new PeriodFeesController());
+//        myControllers.add(new RegistrationController());
+//        myControllers.add(new UpdateController());
     }
 
     /**
@@ -125,17 +125,17 @@ public class PropertyForm extends InteractionForm {
 
         f.add(rowEntry);
 
-        /* Fee & Period declaration */
-        int fee = ((PeriodFeesController)myControllers.get(0)).sendPayment();
-        int period = ((PeriodFeesController)myControllers.get(0)).sendPeriod();
-
-        String s = "<html><it>Current fee is: $";
-        s += fee;
-        s += " and the current listing period is: ";
-        s += period;
-        s += " DAYS</html></it>";
-        JLabel info = new JLabel(s);
-        f.add(info);
+//        /* Fee & Period declaration */
+//        int fee = ((PeriodFeesController)myControllers.get(0)).sendPayment();
+//        int period = ((PeriodFeesController)myControllers.get(0)).sendPeriod();
+//
+//        String s = "<html><it>Current fee is: $";
+//        s += fee;
+//        s += " and the current listing period is: ";
+//        s += period;
+//        s += " DAYS</html></it>";
+//        JLabel info = new JLabel(s);
+//        f.add(info);
 
         /* Submit */
         JButton b1 = new JButton("SUBMIT");
@@ -278,9 +278,14 @@ public class PropertyForm extends InteractionForm {
 
         a.setVisible(true);
 
+        
+        
     }
 
-
+    public static void main(String args[]) {
+        PropertyForm form = new PropertyForm();
+        form.startRegistration();
+    }
 
 
 

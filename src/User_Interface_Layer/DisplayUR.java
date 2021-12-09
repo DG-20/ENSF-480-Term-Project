@@ -40,18 +40,18 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy  {
     public void display(String email)  {
         JFrame f = this;
         f.setVisible(true);
-        Color bgColor = new Color(128,128,105);
+        Color bgColor = new Color(225,225,225);
         f.getContentPane().setBackground(bgColor);
         f.setTitle("Unregistered Renter");
 		f.setResizable(false); 		//user can't resize GUI on their own
-		f.setSize(440,420);
+		f.setSize(300,340);
 		
         JButton Searching = new javax.swing.JButton();
         JButton Exit = new javax.swing.JButton();
         
-        Font font = new Font("Comic Sans MS", Font.PLAIN, 20);
-        Searching.setFont(font);
-        Exit.setFont(font);
+        //Font font = new Font("Comic Sans MS", Font.PLAIN, 20);
+        //Searching.setFont(font);
+        //Exit.setFont(font);
         Searching.setText("Searching");
         Exit.setText("    Exit     ");
 
@@ -60,7 +60,7 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy  {
         layout.setHorizontalGroup(
         		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(160, 160, 160)
+                    .addGap(90, 90, 90)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(Searching)
                         .addComponent(Exit))
@@ -73,7 +73,7 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy  {
             .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(100, 100, 100)
+                            .addGap(70, 70, 70)
                             .addComponent(Searching, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
                             .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
