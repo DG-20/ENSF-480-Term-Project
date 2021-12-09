@@ -103,7 +103,7 @@ public class SubscriptionList implements Database {
         try {
             String query = "SELECT *\n" +
                     "FROM Subscription\n" +
-                    "WHERE Subscription.RREmail = " + email;
+                    "WHERE Subscription.RREmail = '" + email + "'";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
             while (set.next()) {

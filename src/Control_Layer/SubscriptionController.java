@@ -78,9 +78,11 @@ public class SubscriptionController extends Controller {
         return;
     }
 
-    /*
-     * Asks the database for all subbed properties associated with a RR's email and
-     * returns all those properties
+    /**
+     * * Asks the database for all subbed properties associated with a RR's email and
+     * * returns all those properties
+     * @param email
+     * @return
      */
     public ArrayList<Property> getSubbedProperties(String email) {
         Database d = myData.get(1);
