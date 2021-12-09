@@ -101,7 +101,7 @@ public class StartUp {
 
         registeredRenterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                userType = "Registered Renter";
+                userType = "RR";
                 // frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
                 frame.setVisible(false);
                 loginPage();

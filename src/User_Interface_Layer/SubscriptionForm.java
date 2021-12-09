@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class SubscriptionForm {
+public class SubscriptionForm extends InteractionForm {
 
     /**
      * Default constructor

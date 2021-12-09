@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * 
  */
-public class NotificationView {
+public class NotificationView extends InteractionForm {
 
     /**
      * Default constructor
