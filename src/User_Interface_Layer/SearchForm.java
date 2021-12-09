@@ -114,6 +114,7 @@ public class SearchForm extends InteractionForm {
                 p = ((SearchController) myControllers.get(0)).forwardSearch(selectedType, Integer.parseInt(selectedBed),
                         Integer.parseInt(selectedBath), furn, selectedQuad);
                 f.dispose();
+
                 matchedProperties = p;
                 displayMatching();
             }

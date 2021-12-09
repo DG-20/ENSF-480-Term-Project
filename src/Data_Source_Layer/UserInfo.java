@@ -40,10 +40,6 @@ public class UserInfo implements Database {
      */
     private Singleton users;
 
-    /**
-     * 
-     */
-    private boolean valid;
 
     /**
      * @param email
@@ -67,8 +63,9 @@ public class UserInfo implements Database {
     }
 
     /**
-     * @param email
-     * @return The name of the landlod associated with their login email.
+     * @param email The email of the Landlord.
+     * @return String The name of the landlord associated with their login email.
+     * Finds the Landlord's name from their email.
      */
     public String retrieveLandlordsName(String email) {
         String name = "";
@@ -81,6 +78,11 @@ public class UserInfo implements Database {
         return name;
     }
 
+
+    /**
+     *  Queries the database to collect all user info.
+     * @return ArrayList<User>
+     */
     public ArrayList<User> getAllUsers() {
         ArrayList<User> u = new ArrayList<>();
         try {
