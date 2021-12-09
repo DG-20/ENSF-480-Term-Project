@@ -19,7 +19,6 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
     public DisplayRR() {
         mySearchForm = new SearchForm();
         mySubForm = new SubscriptionForm();
-        myNotifView = new NotificationView();
     }
 
     private InteractionForm mySearchForm;
@@ -135,14 +134,17 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                ((SubscriptionForm)mySubForm).displayMySubs();
             }
         });
 
-        /* Notification View */
+        /* Call Notification View */
         notificationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                myNotifView = new NotificationView(email);
+                ((NotificationView)myNotifView).showSubbed();
             }
         });
 
@@ -151,7 +153,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((SearchForm)mySearchForm).createSearchQuery();
+                ((SearchForm)mySearchForm).createSearchQuery(); // Rui's implementation
             }
         });
 

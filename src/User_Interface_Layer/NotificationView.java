@@ -13,44 +13,20 @@ import Control_Layer.SubscriptionController;
 
 import java.util.*;
 
-/**
- * 
- */
 public class NotificationView extends InteractionForm {
 
-    /**
-     * Default constructor
-     */
-    public NotificationView() {
+    public NotificationView(String email) {
+        controller = new SearchController();
+        this.email = email;
+        // subController = new SubscriptionController(true);
     }
 
-    /**
-     * 
-     */
     private SearchController controller;
-
-    /**
-     * 
-     */
     private String email;
+    // private SubscriptionController subController;
 
-    /**
-     * 
-     */
-    private SubscriptionController subController;
-
-    /**
-     * @return
-     */
     public void showSubbed() {
-        // TODO implement here
-        return;
+        // controller.getSubbedProperties(email);
     }
 
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
 }

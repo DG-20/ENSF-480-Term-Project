@@ -18,41 +18,19 @@ import java.util.*;
  */
 public class SubscriptionForm extends InteractionForm {
 
-    /**
-     * Default constructor
-     */
     public SubscriptionForm() {
     }
 
-    /**
-     * 
-     */
     private Subscription subscribedRequest;
-
-    /**
-     * 
-     */
     private SubscriptionController controller;
-
-    /**
-     * 
-     */
     private String email;
 
-    /**
-     * @return
-     */
     public void enterSubCriteria() {
         // TODO implement here
-        return;
     }
 
-    /**
-     * @return
-     */
     public void displayMySubs() {
         // TODO implement here
-        return;
     }
 
     /**
@@ -65,14 +43,5 @@ public class SubscriptionForm extends InteractionForm {
      */
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         // TODO implement here
-        return;
     }
-
-    /**
-     * @param email
-     */
-    public void SubscriptionForm(String email) {
-        // TODO implement here
-    }
-
 }
