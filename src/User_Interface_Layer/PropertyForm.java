@@ -12,6 +12,7 @@ import Control_Layer.RegistrationController;
 import Control_Layer.UpdateController;
 import Control_Layer.PeriodFeesController;
 import Business_Layer.Property;
+import Data_Source_Layer.PropertyInventory;
 
 import javax.swing.*;
 import java.awt.*;

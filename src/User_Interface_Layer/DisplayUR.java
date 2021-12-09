@@ -18,12 +18,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
-
 /**
  *
  * @author lareina.jo
  */
-public class DisplayUR extends javax.swing.JFrame implements Strategy {
+public class DisplayUR extends javax.swing.JFrame implements Strategy  {
     /**
      * Default constructor
      */
@@ -33,74 +32,73 @@ public class DisplayUR extends javax.swing.JFrame implements Strategy {
 
     private InteractionForm mySearchForm;
 
+
     /**
-     * @param email
-     * @return
+     * @param email 
+     * Display the Landlord's Home Page
      */
-    public void display(String email) {
+    public void display(String email)  {
         JFrame f = this;
         f.setVisible(true);
-        f.setLocationRelativeTo(null);
-        Color bgColor = new Color(128, 128, 105);
+        Color bgColor = new Color(225,225,225);
         f.getContentPane().setBackground(bgColor);
         f.setTitle("Unregistered Renter");
-        f.setResizable(false); // user can't resize GUI on their own
-        f.setSize(440, 420);
-
+		f.setResizable(false); 		//user can't resize GUI on their own
+		f.setSize(300,340);
+		
         JButton Searching = new javax.swing.JButton();
         JButton Exit = new javax.swing.JButton();
-
-        Font font = new Font("Comic Sans MS", Font.PLAIN, 20);
-        Searching.setFont(font);
-        Exit.setFont(font);
+        
+        //Font font = new Font("Comic Sans MS", Font.PLAIN, 20);
+        //Searching.setFont(font);
+        //Exit.setFont(font);
         Searching.setText("Searching");
         Exit.setText("    Exit     ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(160, 160, 160)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(Searching)
-                                        .addComponent(Exit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addContainerGap(80, Short.MAX_VALUE)));
-
+        		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(90, 90, 90)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Searching)
+                        .addComponent(Exit))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addContainerGap(80, Short.MAX_VALUE))
+        );
+        
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(100, 100, 100)
-                                                .addComponent(Searching, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(30, 30, 30)
-                                                .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(106, Short.MAX_VALUE)));
-        // </editor-fold>
+                            .addGap(70, 70, 70)
+                            .addComponent(Searching, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30)
+                            .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(106, Short.MAX_VALUE))
+        );
+        // </editor-fold>                       
 
-        /* On Search Press, Browse Properties */
         Searching.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                f.setVisible(false);
-                ((SearchForm) mySearchForm).createSearchQuery();
-            }
-        });
-
-        /* On Exit press, Do a Logout */
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		f.setVisible(false);
+        		((SearchForm)mySearchForm).createSearchQuery();
+        	}
+    	});   
+        
+		
+        /* Do a Logout */
         Exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                f.dispose();
-                StartUp.main(new String[] { "" });
+                StartUp.main(new String[]{""});
 
             }
         });
 
     }
-
+    
 }

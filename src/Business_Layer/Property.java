@@ -87,6 +87,7 @@ public class Property {
         this.quadrant = quadrant;
     }
 
+
     public int getID() {
         return ID;
     }
