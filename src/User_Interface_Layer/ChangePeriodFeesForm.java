@@ -15,14 +15,22 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+ * A class which presents the GUI for the Manager when they would like to change
+ * the period/amount of the fees.
+ * This class communicates with the database using the PeriodFeesController to
+ * get and set information provided by the manager.
+ * This class extends InteractionForm as it is a form for the Manager.
+ */
 public class ChangePeriodFeesForm extends InteractionForm {
+        // Default constructor which initializes myController.
         public ChangePeriodFeesForm() {
                 myController = new PeriodFeesController();
         }
 
         private Controller myController;
-        JFrame frame; // The JFrame object.
 
+        // Getter and Setter for myController.
         public Controller getMyController() {
                 return myController;
         }
@@ -32,12 +40,14 @@ public class ChangePeriodFeesForm extends InteractionForm {
         }
 
         public void changePeriodFees() {
-                frame = new JFrame();
+                // Creating a new JFrame and setting specs.
+                JFrame frame = new JFrame();
                 frame.setSize(450, 320);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                 frame.setLocationRelativeTo(null);
 
+                // Initializing the elements to be displayed on the JFrame.
                 JButton confirmButton = new JButton();
                 JButton goBackButton = new JButton();
                 JLabel enterInfoLabel = new JLabel();
@@ -48,38 +58,47 @@ public class ChangePeriodFeesForm extends InteractionForm {
                 JTextField amountInput = new JTextField(10);
                 JTextField periodInput = new JTextField(10);
 
+                // Obtaining the current payment amount and period from the controller.
+                // A type-case is required as the myController object is of type Controller
+                // (container class).
                 int currentPaymentVal = ((PeriodFeesController) myController).sendPayment();
                 int currentPeriodVal = ((PeriodFeesController) myController).sendPeriod();
-                String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal) + "\nPeriod: "
+
+                // Setting the Strings of the elements that display values.
+                String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal)
+                                + "<html><br>Period: </html>"
                                 + String.valueOf(currentPeriodVal);
 
-                enterInfoLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+                enterInfoLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 enterInfoLabel.setText(
                                 "<html>Please enter in the following information:<br>(Leave unchanged element(s) blank)</html>");
 
-                currentLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+                currentLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 currentLabel.setText("Current amount and period of fees:");
 
-                currentDisplay.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+                currentDisplay.setFont(new java.awt.Font("Times New Roman", 1, 12));
                 currentDisplay.setEditable(false);
                 currentDisplay.setText(currentDisplayField);
 
-                amountInput.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+                amountInput.setFont(new java.awt.Font("Times New Roman", 0, 10));
 
-                periodInput.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+                periodInput.setFont(new java.awt.Font("Times New Roman", 0, 10));
 
-                amountLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+                amountLabel.setFont(new java.awt.Font("Times New Roman", 1, 12));
                 amountLabel.setText("Amount (int):");
 
-                periodLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+                periodLabel.setFont(new java.awt.Font("Times New Roman", 1, 12));
                 periodLabel.setText("Period (int):");
 
-                confirmButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+                confirmButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 confirmButton.setText("Confirm");
 
-                goBackButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+                goBackButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 goBackButton.setText("Go back");
 
+                // Creating a layout (both horizontal and vertical) to fixate all elements in
+                // pre-defined areas and setting their sizes, as well as assigning gaps between
+                // them.
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
                 frame.getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
@@ -185,12 +204,14 @@ public class ChangePeriodFeesForm extends InteractionForm {
                                                                 .addComponent(goBackButton)
                                                                 .addContainerGap(31, Short.MAX_VALUE)));
 
+                // Packs all elements according to their set sizes and locations.
                 frame.pack();
 
-                /* Call ChangePeriodFees Form */
+                // If the confirm button is clicked.
                 confirmButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                                // Obtaining the values the user entered as Strings.
                                 String newAmount = amountInput.getText();
                                 String newPeriod = periodInput.getText();
 
@@ -199,6 +220,8 @@ public class ChangePeriodFeesForm extends InteractionForm {
                                 boolean zeroStringAmount = false;
                                 boolean zeroStringPeriod = false;
 
+                                // If either field was left blank, this means they would like to use the current
+                                // value.
                                 if (newAmount.strip().length() == 0) {
                                         newAmountInt = -1;
                                         zeroStringAmount = true;
@@ -211,6 +234,8 @@ public class ChangePeriodFeesForm extends InteractionForm {
 
                                 boolean error_present = false;
 
+                                // If the user did not leave a field blank, trying to parse the String into an
+                                // integer. Error checking if the user did not enter an int.
                                 if (zeroStringAmount == false) {
                                         try {
                                                 newAmountInt = Integer.parseInt(newAmount);
@@ -230,12 +255,16 @@ public class ChangePeriodFeesForm extends InteractionForm {
                                         }
                                 }
 
+                                // If the input is invalid, displaying an error message and asking them to
+                                // re-submit with proper values.
                                 if (error_present == true) {
                                         JOptionPane.showMessageDialog(frame, "Please enter positive integers only",
                                                         "INVALID INPUT", JOptionPane.ERROR_MESSAGE);
                                         return;
                                 }
 
+                                // Calling forwardPeriodFees with the entered information to update the
+                                // database. Then, showing the homepage for the Manager again.
                                 ((PeriodFeesController) myController).forwardPeriodFees(newAmountInt, newPeriodInt);
                                 JOptionPane.showMessageDialog(frame, "The period and fees have been updated.",
                                                 "Success!", 1);
@@ -245,6 +274,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
                         }
                 });
 
+                // If the back button was clicked, go back to the homepage of the Manager.
                 goBackButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {

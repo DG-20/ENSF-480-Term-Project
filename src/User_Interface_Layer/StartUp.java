@@ -12,30 +12,42 @@ package User_Interface_Layer;
 import javax.swing.*;
 import java.awt.event.*;
 
+/* StartUp is the creation class which contains the main method.
+ * This class contains an object of LoginFrom and a String which holds the type of user.
+ * It presents the welcome page and calls upon the loginpage.
+ */
 public class StartUp {
     private String userType;
     private LoginForm login;
     // private InteractionForm homePage; // not used
 
+    // A function which creates the LoginForm object and calls upon startLogin
+    // which presents the login GUI and takes user input.
     public boolean loginPage() { // boolean not used (can be void)
         login = new LoginForm(userType);
         login.startLogin();
         return true;
     }
 
+    // A function which presents the welcome screen where the user chooses which
+    // type of user they are. This calls loginPage(), and for unregistered renters,
+    // calls upon the appropriate function in the DisplayUR class.
     public void welcome() {
+        // Creating a new JFrame and setting its specs.
         JFrame frame = new JFrame("WELCOME SCREEN");
         frame.setSize(400, 320);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
+        // Creating elements to be displayed on the frame.
         JButton registeredRenterButton = new javax.swing.JButton();
         JButton managerButton = new JButton();
         JButton noAccountButton = new JButton();
         JButton landlordButton = new JButton();
         JLabel chooseOneLabel = new JLabel();
 
+        // Setting the text and fonts of the elements.
         registeredRenterButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         registeredRenterButton.setText("Registered Renter");
 
@@ -51,6 +63,8 @@ public class StartUp {
         chooseOneLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
         chooseOneLabel.setText("Please Choose One:");
 
+        // Creating a new layout (horizontal and vertical) and placing the elements
+        // accordingly to their respective positions.
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
         frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,6 +104,8 @@ public class StartUp {
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        // If the manager button is clicked, calling upon loginpage() and hiding this
+        // GUI.
         managerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 userType = "Manager";
@@ -99,6 +115,8 @@ public class StartUp {
             }
         });
 
+        // If the registered renter button is clicked, calling upon loginpage() and
+        // hiding this GUI.
         registeredRenterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 userType = "Registered Renter";
@@ -108,6 +126,8 @@ public class StartUp {
             }
         });
 
+        // If no account is clicked, calling upon performStrategy after setting the
+        // strategy according to the user type.
         noAccountButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 userType = "Unregistered Renter";
@@ -119,6 +139,8 @@ public class StartUp {
             }
         });
 
+        // If the landlord button is clicked, calling upon loginpage() and hiding this
+        // GUI.
         landlordButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 userType = "Landlord";
@@ -128,14 +150,18 @@ public class StartUp {
             }
         });
 
+        // Packs all elements according to their set sizes and locations.
         frame.pack();
     }
 
+    // Main function which creates an object of type StartUp and calls upon the
+    // welcome function.
     public static void main(String args[]) {
         StartUp startUp = new StartUp();
         startUp.welcome();
     }
 
+    // Empty default constructor.
     public StartUp() {
     }
 }
