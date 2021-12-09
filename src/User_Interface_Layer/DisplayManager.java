@@ -8,13 +8,18 @@
  */
 package User_Interface_Layer;
 
-import User_Interface_Layer.InteractionForm;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+ * A class which displays the homepage of the Manager.
+ * Calls upon other InteractionForms depending on which button is clicked on.
+ * This class extends the JFrame class and implements the Strategy interface.
+ */
 public class DisplayManager extends javax.swing.JFrame implements Strategy {
+    // Default constructor initializes the private member variables of type
+    // InteractionForm.
     public DisplayManager() {
         mySummaryForm = new SummaryForm();
         myChangePF = new ChangePeriodFeesForm();
@@ -25,6 +30,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm myChangePF;
     private InteractionForm myPropertyForm;
 
+    // Getters and Setters.
     public InteractionForm getMySummaryForm() {
         return mySummaryForm;
     }
@@ -49,35 +55,41 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         this.myPropertyForm = myPropertyForm;
     }
 
+    // A function which displays the homepage of the Manager.
     public void display(String email) {
+        // Setting properties of the JFrame.
         JFrame frame = this;
         frame.setVisible(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
+        // Creating elements to be displayed on the JFrame.
         JButton updateListingButton = new JButton();
         JButton changePFButton = new JButton();
         JButton summaryButton = new JButton();
         JButton logoutButton = new JButton();
         JLabel titleText = new JLabel();
 
-        updateListingButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        // Setting the fonts and texts of the created elements.
+        updateListingButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         updateListingButton.setText("Update Listing");
 
-        changePFButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        changePFButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         changePFButton.setText("Change Amount and Period of Fees");
 
-        summaryButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        summaryButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         summaryButton.setText("Show Summary");
 
-        logoutButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        logoutButton.setFont(new java.awt.Font("Times New Roman", 1, 12));
         logoutButton.setText("Logout");
         logoutButton.setActionCommand("Logout");
 
-        titleText.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        titleText.setFont(new java.awt.Font("Times New Roman", 1, 14));
         titleText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleText.setText("Please make a selection:");
 
+        // Creating a new layout (both horizontal and vertical) to position all elements
+        // and size them as we intend.
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
         frame.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,9 +139,11 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap()));
 
+        // Packs all elements according to their set sizes and locations.
         pack();
 
-        /* Call Update Listing Form */
+        // If the update listing button is clicked, hides this GUI page and calls upon
+        // myPropertyForm's function browseProperties.
         updateListingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -138,7 +152,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* Call ChangePeriodFees Form */
+        // If the change period and fees button is clicked, hide this GUI page, and call
+        // upon the changePeriodFees function in myChangePF.
         changePFButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -147,7 +162,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* Call Summary Form */
+        // If the summary button is clicked, asking the user what time period they would
+        // like to view back up to. Showing the current period value in the inputDialog
+        // box.
         summaryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,6 +173,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                         "Please choose the period (number of days) of the summary you would like to view:",
                         defaultPeriod);
                 int periodChosen = defaultPeriod;
+                // Error checking to only take in a positive integer value, and re-prompting the
+                // user until a valid input is entered.
                 try {
                     periodChosen = Integer.parseInt(input);
                 } catch (Exception ee) {
@@ -182,17 +201,18 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                         valid = false;
                     }
                 }
+                // Hiding this GUI page and calling upon showSummary in mySummaryForm.
                 frame.setVisible(false);
                 ((SummaryForm) mySummaryForm).showSummary(periodChosen);
             }
         });
 
-        /* Do a Logout */
+        // If the logout button was clicked, dispose of this frame and call upon the
+        // main function again.
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ;
                 StartUp.main(new String[] { "" });
             }
         });
