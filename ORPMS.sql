@@ -53,12 +53,17 @@ INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBa
 ('landlord4@example.com', 'Active', 'SE', '421 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-10-30', '2021-11-30', NULL),
 ('landlord4@example.com', 'Cancelled', 'SE', '300 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-11-30', '2021-11-30', NULL ),
 ('landlord4@example.com', 'Cancelled', 'NW', '405 Maple Drive SW', 'N', '4', '4', 'Apartment', '2021-09-30', '2021-11-30' , NULL),
-('landlord@example.com', 'Suspended', 'SW', '123 Garbage Street SW', 'Y', 2, 4, 'Dormitory', '2021-12-09', '2022-1-30', NULL),
+('landlord@example.com', 'Suspended', 'SW', '123 Garbage Street SW', 'Y', 2, 4, 'Dormitory', '2021-12-01', '2022-1-30', '2021-12-05'),
 ('landlord@example.com', 'Rented', 'SE', '123 Pororidge Drive SE', 'Y', 3, 3, 'Apartment', '2021-12-06', '2022-1-30', '2021-12-09'),
 ('landlord3@example.com', 'Rented', 'NE', '232 Whitehaven Crescent NE', 'N', 1, 1, 'Apartment', '2021-12-06', '2022-1-30', '2021-12-09'),
 ('landlord3@example.com', 'Cancelled', 'NW', '415 Elmo Street SW', 'N', 1, 1, 'Apartment', '2021-10-20', '2021-11-20', NULL),
 ('landlord3@example.com', 'Active', 'NE', '100 Crow Street NE', 'Y', 1, 1, 'Apartment', '2021-10-20', '2022-1-30', NULL),
 ('landlord3@example.com', 'Rented', 'NE', '100 Banana Street NE', 'Y', 1, 1, 'Apartment', '2021-10-20', '2022-1-30', '2021-12-09'),
+('ll6@example.com', 'Suspended', 'NE', '333 SanFran Drive NE', 'Y', 3,1, 'Penthouse', '2020-11-19', '2022-3-12', NULL),
+('landlord5@example.com', 'Rented', 'SE', '444 Jacob Ave SE', 'N', 1,1, 'Townhouse', '2021-05-10', '2022-11-15', '2021-08-11'),
+('landlord5@example.com', 'Active', 'NW', '678 Koop Street NW', 'Y', 4,4, 'Detached', '2021-02-07', '2022-10-25', NULL),
+('ll6@example.com', 'Active', 'SW', '999 Jingle Avenue SW', 'N', 1,2, 'Attached', '2021-04-09', '2022-7-26', NULL),
+('landlord5@example.com', 'Cancelled', 'NE', '233 Excalibur Street NE', 'N', 1,1, 'Attached', '2021-09-13', '2022-2-20', NULL),
 ('landlord4@example.com', 'Active', 'SE', '100 Northway SE', 'N', 2,2, 'Detached', '2021-12-09', '2022-1-30', NULL);
 
 DROP TABLE IF EXISTS subscription;
@@ -85,6 +90,11 @@ INSERT INTO subscription(RREmail, Quadrant, Furnished, numBathrooms, numBedrooms
 ('tom@example.com', 'SE', 'Y', 3, 3, 'Apartment'),
 ('tom@example.com', 'NW', 'N', 1, 1, 'Apartment'),
 ('rr2@example.com', 'SE', 'N', 2,  2, 'Detached'),
+('tom@example.com', 'NE', 'N', 1, 1, 'Attached'),
+('tom@example.com', 'SW', 'N', 1, 2, 'Attached'),
+('rr1@example.com', 'NW', 'Y', 4, 4, 'Detached'),
+('rr1@example.com', 'NE', 'Y', 3, 1, 'Penthouse'),
+('rr1@example.com', 'SE', 'N', 1, 1, 'Townhouse'),
 ('john@example.com', 'SE', 'N', 2,  2, 'Detached');
 
 DROP TABLE IF EXISTS fee;
