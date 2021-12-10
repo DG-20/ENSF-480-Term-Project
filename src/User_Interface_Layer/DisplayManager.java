@@ -31,6 +31,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         myPropertyForm = new PropertyForm();
         myUserInfoForm = new UserInfoForm();
         myDetailedViewProperty = new DetailedViewProperty();
+
     }
 
     private InteractionForm mySummaryForm;
@@ -38,6 +39,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm myPropertyForm;
     private InteractionForm myUserInfoForm;
     private InteractionForm myDetailedViewProperty;
+
 
     // Getters and Setters.
     public InteractionForm getMySummaryForm() {
@@ -257,6 +259,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 ((UserInfoForm)myUserInfoForm).display();
+
             }
         });
 

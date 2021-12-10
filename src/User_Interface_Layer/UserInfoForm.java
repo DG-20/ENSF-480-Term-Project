@@ -21,6 +21,7 @@ import java.util.*;
 public class UserInfoForm extends InteractionForm {
         /*
          * The public default constructor
+
          */
         public UserInfoForm() {
         }
