@@ -33,72 +33,14 @@ public class NotificationView extends InteractionForm {
     public void showSubbed() {
 
         ArrayList<Property> p = subController.getSubbedProperties(email);
-        JFrame a = new JFrame("Notifications");
-        a.setLocationRelativeTo(null);
-        a.setSize(350, 350);
-        a.setLayout(new FlowLayout());
-        a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        /* Header */
-        JLabel header = new JLabel("Choose one of the following properties to view");
-        JPanel row1 = new JPanel(new FlowLayout());
-        row1.add(header);
-        a.add(row1);
-
-        JSeparator sep = new JSeparator();
-        a.add(sep);
-
-        /* Initializing the combo box with Subscriptions' Address' */
-        String[] address = new String[p.size()];
-        for (int i = 0; i < p.size(); i++) {
-            address[i] = p.get(i).getAddress();
+        if (p.isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                            "No Matches Found!",
+                            "Sorry...",
+                            JOptionPane.INFORMATION_MESSAGE);
+            new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+            return;
         }
-        JComboBox addressList = new JComboBox(address);
-        a.add(addressList);
-
-        /* View Property Button */
-        JButton viewPropertyButton = new JButton("VIEW PROPERTY");
-        a.add(viewPropertyButton);
-
-        /* Back Button */
-        JButton backButton = new JButton("<<");
-        JPanel panelButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelButton.add(backButton);
-        a.add(panelButton);
-
-        // VIEW PROPERTY BUTTON RESPONSE
-        // Calls on the selected property.
-        viewPropertyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String address_selected = addressList.getSelectedItem().toString();
-                boolean found = false;
-                Property choice = null;
-                for (Property selected : p) {
-                    if (selected.getAddress().equals(address_selected)) {
-                        found = true;
-                        choice = selected;
-                        break;
-                    }
-                }
-                if (found) {
-                    a.dispose();
-                    new ViewPropertyForm(p);
-                }
-            }
-        });
-        // BACK BUTTON RESPONSE
-        // Take user back to home page.
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                a.dispose();
-                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
-            }
-        });
-
-        a.setVisible(true);
-
+        new ViewPropertyForm(p);
     }
-
 }
