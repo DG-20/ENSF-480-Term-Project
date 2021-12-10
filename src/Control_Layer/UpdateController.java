@@ -10,45 +10,44 @@ package Control_Layer;
 
 import Data_Source_Layer.*;
 import Business_Layer.Property;
-
 import java.util.*;
 
-/**
- * Class for update the property inventory
+/*
+ * Class for updating the PropertyInventory database.
+ * This class extends Controller.
  */
 public class UpdateController extends Controller {
-
-    /**
-     * Default constructor
+    /*
+     * Default constructor creates a new object of type PropertyInventory and adds
+     * it to myData.
      */
     public UpdateController() {
         Database data = new PropertyInventory();
         myData.add(data);
     }
 
-    /**
-     * Call getMatching function of PropertyInventory class
-     * @param email
-     * @return
+    /*
+     * Calls getMatching function in PropertyInventory and takes in the User's
+     * email.
+     * It returns the properties associated with the landlord's email in an
+     * ArrayList.
      */
     public ArrayList<Property> forwardRequest(String email) {
-        // TODO implement here
         Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory) d;
         return property.getMatching(email);
     }
 
-    /**
-     * Call updateProperty function of PropertyInventory class
-     * @param Property p
-     * @return
+    /*
+     * Calls updateProperty function in PropertyInventory.
+     * This takes in a Property as the argument and passes that property into the
+     * updateProperty function to update the database.
+     * The return type of this method is void.
      */
     public void forwardPropertyStatus(Property p) {
-        // TODO implement here
         Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory) d;
         property.updateProperty(p);
         return;
     }
-
 }

@@ -20,12 +20,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-/**
- * A class concerned with registering a property and retrieving a list of assigned properties.
+/*
+ * A class concerned with registering a property and retrieving a list of
+ * assigned properties.
  */
 public class PropertyForm extends InteractionForm {
 
-    /**
+    /*
      * Default constructor
      * Adds three controllers.
      */
@@ -35,7 +36,7 @@ public class PropertyForm extends InteractionForm {
         myControllers.add(new UpdateController());
     }
 
-    /**
+    /*
      * Allows the Landlord to register a property.
      */
     public void startRegistration() {
@@ -69,14 +70,14 @@ public class PropertyForm extends InteractionForm {
 
         /* Type */
         JLabel typeLabel = new JLabel("Type");
-        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory" };
         JComboBox<String> typeT = new JComboBox<String>(typeChoices);
         rowEntry.add(typeLabel);
         rowEntry.add(typeT);
 
         /* numBathrooms & bedrooms spinner */
-        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
-        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1);
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
         JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
         numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
@@ -149,7 +150,7 @@ public class PropertyForm extends InteractionForm {
 
         f.setVisible(true);
 
-        /*On SUBMIT button press */
+        /* On SUBMIT button press */
         /* REgister the property into the database by calling appropriate conrollers */
         submit.addActionListener(new ActionListener() {
             @Override
@@ -217,9 +218,8 @@ public class PropertyForm extends InteractionForm {
         p = ((UpdateController) myControllers.get(2)).forwardRequest(GUIHomePage.getEmail());
 
         /* Landlord has zero registered properties */
-        /*  redirect them to home page */
-        if (p.size() == 0)
-        {
+        /* redirect them to home page */
+        if (p.size() == 0) {
             JOptionPane.showMessageDialog(null, "You have zero registered properties!",
                     "NO PROPERTIES!", JOptionPane.ERROR_MESSAGE);
             new GUIHomePage(GUIHomePage.getEmail()).performStrategy();

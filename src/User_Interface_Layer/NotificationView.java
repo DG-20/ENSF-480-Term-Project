@@ -35,9 +35,9 @@ public class NotificationView extends InteractionForm {
         ArrayList<Property> p = subController.getSubbedProperties(email);
         if (p.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                            "No Matches Found!",
-                            "Sorry...",
-                            JOptionPane.INFORMATION_MESSAGE);
+                    "No Matches Found!",
+                    "Sorry...",
+                    JOptionPane.INFORMATION_MESSAGE);
             new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             return;
         }

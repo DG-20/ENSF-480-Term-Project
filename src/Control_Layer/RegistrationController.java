@@ -10,15 +10,18 @@ package Control_Layer;
 
 import Data_Source_Layer.*;
 
-import java.util.*;
-
 /**
- * The controller for the property registration
+ * The controller for the property registration.
+ * This class communicates with the Database and the RegistrationForm.
+ * This class extends Controller.
  */
 public class RegistrationController extends Controller {
 
     /**
-     * Default constructor
+     * Default constructor.
+     * This constructor creates a new object data to be a new PropertyInventory
+     * object.
+     * Also, this adds this data object to the myData ArrayList in Controller.
      */
     public RegistrationController() {
         Database data = new PropertyInventory();
@@ -26,19 +29,13 @@ public class RegistrationController extends Controller {
     }
 
     /**
-     * Call the registerProperty function of PropertyInventory class
-     * @param type
-     * @param numBedrooms
-     * @param numBathrooms
-     * @param furnished
-     * @param quadrant
-     * @param email
-     * @param address
-     * @return
+     * Call the registerProperty function of the PropertyInventory class.
+     * This method takes in the property's values as arguments and then passes it to
+     * registerProperty.
+     * The return type of forwardProperty is void.
      */
     public void forwardProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant,
             String email, String address) {
-        // TODO implement here
         Database d = myData.get(0);
         PropertyInventory property = (PropertyInventory) d;
         property.registerProperty(type, numBedrooms, numBathrooms, furnished, quadrant, email, address);

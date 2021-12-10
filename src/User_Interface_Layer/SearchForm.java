@@ -37,12 +37,12 @@ public class SearchForm extends InteractionForm {
      * Create a new search
      */
     public void createSearchQuery() {
-        
-        //create a new frame
+
+        // create a new frame
         JFrame f = new JFrame("Search Property Form");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        //setup the frame
+
+        // setup the frame
         f.setSize(500, 300);
         f.setLocationRelativeTo(null);
         f.setLayout(new FlowLayout());
@@ -58,14 +58,14 @@ public class SearchForm extends InteractionForm {
 
         /* combo box of the house types */
         JLabel typeLabel = new JLabel("Type");
-        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory" };
         JComboBox<String> typeT = new JComboBox<String>(typeChoices);
         rowEntry.add(typeLabel);
         rowEntry.add(typeT);
 
         /* combo box of the num of bathrooms & bedrooms */
-        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
-        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1);
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
         JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
         numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
@@ -103,8 +103,11 @@ public class SearchForm extends InteractionForm {
 
         f.setVisible(true);
 
-        /*On SUBMIT button press */
-        /* Forward the search parameters to the controller and then call the ViewPropertyForm display the matched properties */
+        /* On SUBMIT button press */
+        /*
+         * Forward the search parameters to the controller and then call the
+         * ViewPropertyForm display the matched properties
+         */
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

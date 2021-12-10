@@ -17,8 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-/**
- * A class concerned with adding and removing Registered Renter's subscriptions and displaying them.
+/*
+ * A class concerned with adding and removing Registered Renter's subscriptions
+ * and displaying them.
  */
 public class SubscriptionForm extends InteractionForm {
 
@@ -47,14 +48,14 @@ public class SubscriptionForm extends InteractionForm {
 
         /* Type */
         JLabel typeLabel = new JLabel("Type");
-        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory" };
         JComboBox<String> typeT = new JComboBox<String>(typeChoices);
         rowEntry.add(typeLabel);
         rowEntry.add(typeT);
 
         /* number of bathrooms & number of bedrooms */
-        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
-        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1);
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1);
         JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
         JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
         numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
@@ -91,7 +92,9 @@ public class SubscriptionForm extends InteractionForm {
         f.setVisible(true);
 
         /* On SUBMIT button press */
-        /* REgister the subscription into the database by calling appropriate conrollers */
+        /*
+         * REgister the subscription into the database by calling appropriate conrollers
+         */
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,7 +113,7 @@ public class SubscriptionForm extends InteractionForm {
             }
         });
 
-        /*On Back button press */
+        /* On Back button press */
         /* Redirect to and Call user's home page */
         JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
@@ -141,11 +144,11 @@ public class SubscriptionForm extends InteractionForm {
         JSeparator sep = new JSeparator();
         a.add(sep);
 
-        String[] columnNames = {"Type",
-                                "# of Bedrooms",
-                                "# of Bathrooms",
-                                "Furnished",
-                                "Quadrant"};
+        String[] columnNames = { "Type",
+                "# of Bedrooms",
+                "# of Bathrooms",
+                "Furnished",
+                "Quadrant" };
 
         Object data[][] = new Object[subs.size()][5];
         for (int i = 0; i < subs.size(); i++) {
@@ -154,8 +157,7 @@ public class SubscriptionForm extends InteractionForm {
             data[i][2] = Integer.valueOf(subs.get(i).getNumBathrooms());
             if (subs.get(i).getFurnished()) {
                 data[i][3] = "Yes";
-            }
-            else {
+            } else {
                 data[i][3] = "No";
             }
             data[i][4] = subs.get(i).getQuadrant();
@@ -165,7 +167,7 @@ public class SubscriptionForm extends InteractionForm {
         table.setDefaultEditor(Object.class, null);
         table.setRowSelectionAllowed(true);
         table.setColumnSelectionAllowed(false);
-        
+
         JScrollPane scrollPane = new JScrollPane(table);
         table.setFillsViewportHeight(true);
         a.add(scrollPane);
@@ -202,7 +204,8 @@ public class SubscriptionForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 enterSubCriteria();
-                a.dispose();            }
+                a.dispose();
+            }
         });
 
         // DELETE BUTTON RESPONSE
@@ -215,16 +218,20 @@ public class SubscriptionForm extends InteractionForm {
                     if (data[i][3].equals("Yes")) {
                         furnished = true;
                     }
-                    selectUnsub((String)data[i][0], (int)data[i][1], (int)data[i][2], furnished, (String)data[i][4]);
+                    selectUnsub((String) data[i][0], (int) data[i][1], (int) data[i][2], furnished,
+                            (String) data[i][4]);
                 }
                 a.dispose();
                 displayMySubs();
             }
         });
-
         a.setVisible(true);
     }
 
+    /*
+     * This private method simply takes in the subscription parameter and calls upon
+     * fowardDeleteSub in the controller.
+     */
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         controller.forwardDeleteSub(type, numBedrooms, numBathrooms, furnished, quadrant, email);
     }

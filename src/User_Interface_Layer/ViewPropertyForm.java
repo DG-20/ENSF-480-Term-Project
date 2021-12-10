@@ -1,3 +1,11 @@
+/*
+ * File Name: ViewPropertyForm.java
+ * Authors:
+ *      Cheyenne Goh (UCID: 30040528)
+ *      Divyansh Goyal (UCID: 30089488)
+ *      Rui Guan(UCID: 30072848)
+ *      Sajid Hafiz (UCID: 30061336)
+ */
 package User_Interface_Layer;
 
 import Business_Layer.Property;
@@ -6,12 +14,18 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+/*
+ * ViewPropertyForm is a class whose purpose is to display 
+ * a dropdown of all Properties that are passed in an Arraylist into the Constrcutor
+ * and if the User clicks view after selecting one, display the Property's attributes
+ * as well as provide the interface of 
+ * sending an email. This class extends InteractionForm.
+ */
 public class ViewPropertyForm extends InteractionForm {
 
-        /**
-         * Constructor
-         * 
-         * @param myProperties - A list of properties to view/display.
+        /*
+         * This Constructor takes in an ArrayList of Properties and calls upon
+         * displayProperties.
          */
         public ViewPropertyForm(ArrayList<Property> myProperties) {
                 matchedProperties = myProperties;
@@ -20,10 +34,13 @@ public class ViewPropertyForm extends InteractionForm {
 
         private ArrayList<Property> matchedProperties;
 
-        /**
-         * Displays a list of properties
+        /*
+         * Displays a list of properties in a dropdown and based on the user's selection
+         * calls upon displayProperty to display the attributes of one property.
          */
         private void displayProperties() {
+                // If the ArrayList is empty, print an error message pane and go back to the
+                // homepage.
                 if (matchedProperties.size() == 0) {
                         JOptionPane.showMessageDialog(null, "No properties matching your search!");
                         GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
@@ -31,17 +48,20 @@ public class ViewPropertyForm extends InteractionForm {
                         return;
                 }
 
+                // Creating a new JFrame and setting its properties.
                 JFrame frame = new JFrame("SEARCH RESULTS");
                 frame.setSize(400, 280);
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.setVisible(true);
 
+                // Creating the elements to be displayed on the JFrame.
                 JLabel titleLabel = new JLabel();
                 JComboBox<String> addressComboBox = new JComboBox<String>();
                 JButton detailsButton = new JButton();
                 JButton goBackButton = new JButton();
 
+                // Setting the values and attributes of the elements.
                 titleLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 titleLabel.setText("Search Results");
 
@@ -50,6 +70,8 @@ public class ViewPropertyForm extends InteractionForm {
 
                 int numSize = matchedProperties.size();
 
+                // Creating an array of the addresses of all properties to be displayed in the
+                // drop down menu.
                 String[] addresses = new String[numSize];
                 for (int i = 0; i < matchedProperties.size(); i++) {
                         addresses[i] = matchedProperties.get(i).getAddress();
@@ -68,6 +90,8 @@ public class ViewPropertyForm extends InteractionForm {
                 goBackButton.setFont(new java.awt.Font("Times New Roman", 1, 12));
                 goBackButton.setText("Go Back");
 
+                // Creating a layout (both horizontal and vertical) which fixates the size and
+                // positions of all elements as well as gaps in between.
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
                 frame.getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
@@ -122,8 +146,13 @@ public class ViewPropertyForm extends InteractionForm {
                                                                 .addComponent(goBackButton)
                                                                 .addContainerGap()));
 
+                // Packs all elements according to their set sizes and locations.
                 frame.pack();
 
+                // If the details button is clicked, getting the chosen address from the
+                // dropdown, iterating through the ArrayList of properties to find the
+                // corresponding property, and then calling upon displayProperty, passing in
+                // that property.
                 detailsButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -138,6 +167,8 @@ public class ViewPropertyForm extends InteractionForm {
                         }
                 });
 
+                // If the go back button is pressed, dispose of this frame and go back to the
+                // homepage.
                 goBackButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -148,18 +179,18 @@ public class ViewPropertyForm extends InteractionForm {
                 });
         }
 
-        /**
-         * Displays a single chosen property
-         * 
-         * @param chosenProperty
+        /*
+         * Displays a single chosen property.
          */
         public void displayProperty(Property chosenProperty) {
+                // Creating a new JFrame and setting its properties.
                 JFrame frame = new JFrame("PROPERTY DISPLAY");
                 frame.setSize(400, 580);
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.setVisible(true);
 
+                // Creating elements that will go on the JFrame.
                 JLabel titleLabel = new javax.swing.JLabel();
                 JLabel addressLabel = new javax.swing.JLabel();
                 JLabel typeLabel = new javax.swing.JLabel();
@@ -184,6 +215,7 @@ public class ViewPropertyForm extends InteractionForm {
                 JLabel messageLabel = new javax.swing.JLabel();
                 JSeparator seperator = new javax.swing.JSeparator();
 
+                // Setting the values, fonts, and texts of the elements.
                 titleLabel.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 titleLabel.setText("Property Information");
 
@@ -260,6 +292,8 @@ public class ViewPropertyForm extends InteractionForm {
                 messageLabel.setFont(new java.awt.Font("Times New Roman", 1, 12));
                 messageLabel.setText("Please type a message below:");
 
+                // Creating a new layout (both horizontal and vertical) to fixate the positions
+                // of the elements, their sizes, and the spaces between them.
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
                 frame.getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
@@ -472,12 +506,15 @@ public class ViewPropertyForm extends InteractionForm {
                                                                 .addComponent(sendEmailButton)
                                                                 .addGap(7, 7, 7)));
 
+                // Packs all elements according to their set sizes and locations.
                 frame.pack();
 
                 // If the send button is clicked, display a message box saying email sent and
-                // dispose this frame.
+                // dispose this frame but error check first..
                 sendEmailButton.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent end_event) {
+                                // If the email or message body was left empty, display a new error pane which
+                                // lets the user know that they have an error present.
                                 if (emailInput.getText().length() == 0 || messageInput.getText().length() == 0) {
                                         JOptionPane.showMessageDialog(null,
                                                         "Invalid input(s) to the email section values!",
@@ -485,6 +522,8 @@ public class ViewPropertyForm extends InteractionForm {
                                                         JOptionPane.ERROR_MESSAGE);
                                         return;
                                 }
+                                // If there are no errors present, display a confirmation pane to show that the
+                                // email was successfully sent.
                                 String[] option = { "Great!" };
                                 JOptionPane.showOptionDialog(null, "Email has been sent to landlord",
                                                 "Confirmation page",
@@ -493,7 +532,8 @@ public class ViewPropertyForm extends InteractionForm {
                         }
                 });
 
-                // If the done button is clicked, dispose of this frame.
+                // If the done button is clicked, dispose of this frame and go back to
+                // displayProperties page.
                 doneButton.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent end_event) {
                                 frame.dispose();

@@ -32,7 +32,6 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm mySummaryForm;
     private InteractionForm myChangePF;
     private InteractionForm myPropertyForm;
-    private InteractionForm myUserInfoForm;
 
     // Getters and Setters.
     public InteractionForm getMySummaryForm() {

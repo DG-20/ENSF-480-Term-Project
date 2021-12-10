@@ -16,15 +16,15 @@ package User_Interface_Layer;
  * the user type.
  */
 public class GUIHomePage {
-    
+
     // Member attributes
     private static String email;
     private static Strategy displayStrategy;
 
     /*
-    * This constructor assigns the email member variable
-    * It takes in an email address of type String as a parameter.
-    */
+     * This constructor assigns the email member variable
+     * It takes in an email address of type String as a parameter.
+     */
     public GUIHomePage(String email) {
         GUIHomePage.email = email;
     }
@@ -35,20 +35,20 @@ public class GUIHomePage {
     }
 
     /*
-    * This function calls the display of the member variable displayStrategy
-    * It takes in no parameters.
-    */
+     * This function calls the display of the member variable displayStrategy
+     * It takes in no parameters.
+     */
     public void performStrategy() {
         displayStrategy.display(email);
     }
 
     /*
-    * This function takes in the user type as a String and accordingly sets a 
-    * strategy depending on the usertype.
-    * It takes in the type of user {Landlord, RR, Unregistered Renter, Manager}
-    * of type String as a parameter.
-    * And returns void.
-    */
+     * This function takes in the user type as a String and accordingly sets a
+     * strategy depending on the usertype.
+     * It takes in the type of user {Landlord, RR, Unregistered Renter, Manager}
+     * of type String as a parameter.
+     * And returns void.
+     */
     public void setDisplayStrategy(String userType) {
         if (userType.equals("Landlord")) {
             displayStrategy = new DisplayLL();

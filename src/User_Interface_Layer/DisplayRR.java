@@ -12,22 +12,22 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
+/*
  * A class concerned with displaying all relevant Registered Renter use cases 
  * which include: browsing a property, adding a subscription, removing a 
  * subscription, and notifications.
  */
 public class DisplayRR extends javax.swing.JFrame implements Strategy {
-    
+
     // Member attributes
     private InteractionForm mySearchForm;
     private InteractionForm mySubForm;
     private InteractionForm myNotifView;
 
     /*
-    * This constructor initializes the mySearchForm member object
-    * It takes in no parameters.
-    */
+     * This constructor initializes the mySearchForm member object
+     * It takes in no parameters.
+     */
     public DisplayRR() {
         mySearchForm = new SearchForm();
     }
@@ -63,12 +63,11 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
     }
 
     /*
-    * This function displays the Registered Renter Homepage.
-    * It takes in a user's email address of type String as a parameter.
-    * And returns void.
-    */
+     * This function displays the Registered Renter Homepage.
+     * It takes in a user's email address of type String as a parameter.
+     * And returns void.
+     */
     public void display(String email) {
-
         // Frame
         JFrame frame = this;
         frame.setVisible(true);
@@ -151,8 +150,9 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
 
         pack();
 
-        /* On Manage Subscriptions button press */
-        /* Call Manage Subs */
+        /*
+         * On manageSubscriptions button press, calls displayMySubs in SubscriptionForm.
+         */
         manageSubscriptionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -162,8 +162,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* On Notifications button press */
-        /* Call Notification View */
+        /* On notificationsButton press call Notification View's method showSubbed. */
         notificationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -173,18 +172,16 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /* On Browse button press */
-        /* Call Search Form */
+        /* On browseButton press, call SearchForm's method, createSearchQuery. */
         browseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
-                ((SearchForm) mySearchForm).createSearchQuery(); // Rui's implementation
+                ((SearchForm) mySearchForm).createSearchQuery();
             }
         });
 
-        /* On logout button press */
-        /* Do a Logout */
+        /* On logoutButton press, perform a Logout. */
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

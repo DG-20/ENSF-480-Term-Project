@@ -23,10 +23,10 @@ public abstract class InteractionForm {
     protected ArrayList<Controller> myControllers;
 
     /*
-    * This constructor allocates space for the myControllers member.
-    * It takes no parameters.
-    * And returns void.
-    */
+     * This constructor allocates space for the myControllers member.
+     * It takes no parameters.
+     * And returns void.
+     */
     public InteractionForm() {
         myControllers = new ArrayList<>();
     }
