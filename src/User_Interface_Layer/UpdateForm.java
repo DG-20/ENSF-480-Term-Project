@@ -48,7 +48,6 @@ public class UpdateForm extends InteractionForm {
                   javax.swing.JLabel header1;
                   javax.swing.JLabel header2;
                   javax.swing.JPanel jPanel1;
-                  javax.swing.JSeparator jSeparator1;
                   javax.swing.JLabel numBathroomsLabel;
                   javax.swing.JLabel numBedroomsLabel;
                   javax.swing.JLabel propertyAddressLabel;
@@ -67,7 +66,6 @@ public class UpdateForm extends InteractionForm {
                   javax.swing.JLabel typeLabel;
                   javax.swing.JButton updateButton;
 
-                  jSeparator1 = new javax.swing.JSeparator();
                   header1 = new javax.swing.JLabel();
                   header2 = new javax.swing.JLabel();
                   jPanel1 = new javax.swing.JPanel();
@@ -289,7 +287,6 @@ public class UpdateForm extends InteractionForm {
                   f.getContentPane().setLayout(layout);
                   layout.setHorizontalGroup(
                           layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                  .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                                   .addGroup(layout.createSequentialGroup()
                                           .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(layout.createSequentialGroup()
@@ -316,7 +313,6 @@ public class UpdateForm extends InteractionForm {
                                           .addGap(7, 7, 7)
                                           .addComponent(header1)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(header2)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
