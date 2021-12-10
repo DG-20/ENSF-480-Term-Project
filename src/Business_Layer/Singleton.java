@@ -76,10 +76,17 @@ public class Singleton {
         return result;
     }
 
+    /**
+     * Default constructor.
+     */
     private Singleton() {
         this.registeredUsers = new ArrayList<User>();
     }
 
+    /**
+     * Adds a registered user to the registeredUsers arraylist.
+     * @param u A specific user
+     */
     public void addUser(User u) {
         this.registeredUsers.add(u);
         return;

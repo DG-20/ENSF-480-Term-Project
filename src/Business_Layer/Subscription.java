@@ -19,15 +19,20 @@ public class Subscription {
     private boolean furnished;
     private String quadrant;
 
+    /**
+     * Constructor
+     * @param type
+     * @param numBedrooms
+     * @param numBathrooms
+     * @param furnished
+     * @param quadrant
+     */
     public Subscription(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         this.type = type;
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
         this.furnished = furnished;
         this.quadrant = quadrant;
-    }
-
-    public Subscription() {
     }
 
     public String getType() {
@@ -70,6 +75,9 @@ public class Subscription {
         this.quadrant = quadrant;
     }
 
+    /**
+     * Subscription display function
+     */
     public void display() {
         JFrame subscriptionDetailsFrame = new JFrame("Subscription display");
         subscriptionDetailsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

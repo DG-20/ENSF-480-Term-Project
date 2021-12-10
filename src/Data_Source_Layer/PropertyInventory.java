@@ -395,7 +395,7 @@ public class PropertyInventory implements Database {
                 boolean furnished_bool = false;
                 if (furnished.equals("Y"))
                     furnished_bool = true;
-                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
                 Timestamp posted = set.getTimestamp("PostedDate");
                 String postedDate = posted.toString();
                 Timestamp exp = set.getTimestamp("ExpDate");

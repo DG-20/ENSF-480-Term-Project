@@ -28,6 +28,9 @@ public class UpdateForm extends InteractionForm {
                 changeStatus();
         }
 
+        /**
+         *  A helper function. A view form that allows one to change the status of a property.
+         */
         private void changeStatus() {
                 // Creating the JFrame and setting properties.
                 f = new JFrame();
