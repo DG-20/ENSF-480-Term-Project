@@ -19,10 +19,15 @@ import java.util.*;
  */
 public abstract class InteractionForm {
 
-    // Default constructor which allocates space for the myControllers member.
+    // Member attribute
+    protected ArrayList<Controller> myControllers;
+
+    /*
+    * This constructor allocates space for the myControllers member.
+    * It takes no parameters.
+    * And returns void.
+    */
     public InteractionForm() {
         myControllers = new ArrayList<>();
     }
-
-    protected ArrayList<Controller> myControllers;
 }

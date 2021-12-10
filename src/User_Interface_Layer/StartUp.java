@@ -12,26 +12,35 @@ package User_Interface_Layer;
 import javax.swing.*;
 import java.awt.event.*;
 
-/* StartUp is the creation class which contains the main method.
- * This class contains an object of LoginFrom and a String which holds the type of user.
- * It presents the welcome page and calls upon the loginpage.
+/* StartUp is the creation class which contains the main method. This class 
+ * contains an object of LoginFrom and a String which holds the type of user. It
+ * presents the welcome page and calls upon the loginpage.
  */
 public class StartUp {
+
+    // Member attributes
     private String userType;
     private LoginForm login;
-    // private InteractionForm homePage; // not used
 
-    // A function which creates the LoginForm object and calls upon startLogin
-    // which presents the login GUI and takes user input.
-    public boolean loginPage() { // boolean not used (can be void)
+    /*
+    * This function creates the LoginForm object and calls upon startLogin which 
+    * presents the login GUI and takes user input.
+    * It takes in no parameters.
+    * And returns void.
+    */
+    public boolean loginPage() {
         login = new LoginForm(userType);
         login.startLogin();
         return true;
     }
 
-    // A function which presents the welcome screen where the user chooses which
-    // type of user they are. This calls loginPage(), and for unregistered renters,
-    // calls upon the appropriate function in the DisplayUR class.
+    /*
+    * This function presents the welcome screen where the user chooses which 
+    * type of user they are, calls loginPage(), and for unregistered renters, 
+    * calls upon the appropriate function in the DisplayUR class.
+    * It takes in no parameters.
+    * And returns void.
+    */
     public void welcome() {
         // Creating a new JFrame and setting its specs.
         JFrame frame = new JFrame("WELCOME SCREEN");
@@ -154,14 +163,19 @@ public class StartUp {
         frame.pack();
     }
 
-    // Main function which creates an object of type StartUp and calls upon the
-    // welcome function.
+    /*
+    * This main function creates an object of type StartUp and calls upon the
+    * welcome function.
+    * It takes in an array of command line arguments of type String as 
+    * parameters.
+    * And returns void.
+    */
     public static void main(String args[]) {
         StartUp startUp = new StartUp();
         startUp.welcome();
     }
 
-    // Empty default constructor.
+    // Empty default constructor
     public StartUp() {
     }
 }

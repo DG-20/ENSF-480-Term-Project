@@ -10,24 +10,45 @@
 package User_Interface_Layer;
 
 /*
- * A class which implements the Strategy Design Pattern by using 
- * function setStrateug and performStrategy.
- * This class contains an object of the interface Strategy as a member variable, 
- * which is set differently, based on the user type.
+ * A class which implements the Strategy Design Pattern by using function 
+ * setStrategy and performStrategy. This class contains an object of the 
+ * interface Strategy as a member variable, which is set differently, based on 
+ * the user type.
  */
 public class GUIHomePage {
+    
+    // Member attributes
     private static String email;
     private static Strategy displayStrategy;
 
-    // Calls the display of the member variable displayStrategy.
+    /*
+    * This constructor assigns the email member variable
+    * It takes in an email address of type String as a parameter.
+    */
+    public GUIHomePage(String email) {
+        GUIHomePage.email = email;
+    }
+
+    // Getter for email
+    public static String getEmail() {
+        return email;
+    }
+
+    /*
+    * This function calls the display of the member variable displayStrategy
+    * It takes in no parameters.
+    */
     public void performStrategy() {
         displayStrategy.display(email);
     }
 
-    /**
-     * Takes in the user type as a String and accordingly sets a strategy depending on the usertype.
-     * @param userType The type of the user {Landlord, Registered Renter, Unregistered Renter, Manager}
-     */
+    /*
+    * This function takes in the user type as a String and accordingly sets a 
+    * strategy depending on the usertype.
+    * It takes in the type of user {Landlord, RR, Unregistered Renter, Manager}
+    * of type String as a parameter.
+    * And returns void.
+    */
     public void setDisplayStrategy(String userType) {
         if (userType.equals("Landlord")) {
             displayStrategy = new DisplayLL();
@@ -38,15 +59,5 @@ public class GUIHomePage {
         } else {
             displayStrategy = new DisplayUR();
         }
-    }
-
-    // Getter.
-    public static String getEmail() {
-        return email;
-    }
-
-    // Default constructor.
-    public GUIHomePage(String email) {
-        GUIHomePage.email = email;
     }
 }

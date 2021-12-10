@@ -13,50 +13,70 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * A class concerned with displaying all relevant Registered Renter use cases which include: Browsing a property,
- * Adding a subscription, removing a subscription, and Notifications.
+ * A class concerned with displaying all relevant Registered Renter use cases 
+ * which include: browsing a property, adding a subscription, removing a 
+ * subscription, and notifications.
  */
 public class DisplayRR extends javax.swing.JFrame implements Strategy {
-
-    public DisplayRR() {
-        mySearchForm = new SearchForm();
-    }
-
+    
+    // Member attributes
     private InteractionForm mySearchForm;
     private InteractionForm mySubForm;
     private InteractionForm myNotifView;
 
+    /*
+    * This constructor initializes the mySearchForm member object
+    * It takes in no parameters.
+    */
+    public DisplayRR() {
+        mySearchForm = new SearchForm();
+    }
+
+    // Getter for mySearchForm
     public InteractionForm getMySearchForm() {
         return mySearchForm;
     }
 
+    // Setter for mySearchForm
     public void setMySearchForm(InteractionForm mySearchForm) {
         this.mySearchForm = mySearchForm;
     }
 
+    // Getter for mySubForm
     public InteractionForm getMySubForm() {
         return mySubForm;
     }
 
+    // Setter for mySubForm
     public void setMySubForm(InteractionForm mySubForm) {
         this.mySubForm = mySubForm;
     }
 
+    // Getter for myNotifView
     public InteractionForm getMyNotifView() {
         return myNotifView;
     }
 
+    // Setter for myNotifView
     public void setMyNotifView(InteractionForm myNotifView) {
         this.myNotifView = myNotifView;
     }
 
+    /*
+    * This function displays the Registered Renter Homepage.
+    * It takes in a user's email address of type String as a parameter.
+    * And returns void.
+    */
     public void display(String email) {
+
+        // Frame
         JFrame frame = this;
         frame.setVisible(true);
         frame.setTitle("REGISTERED RENTER HOMEPAGE");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
+        // Button and Label objects
         JButton manageSubscriptionsButton = new JButton();
         JButton notificationsButton = new JButton();
         JButton browseButton = new JButton();

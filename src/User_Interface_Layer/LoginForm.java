@@ -9,25 +9,30 @@
 
 package User_Interface_Layer;
 
-// import LoginController.*;
-import Control_Layer.Controller;
-import Control_Layer.LoginController;
+import Control_Layer.*;
 
 import javax.swing.*;
 import java.awt.event.*;
 
 /*
- * LoginForm presents the login page for managers, landlords, and registered renters. 
- * It displays the GUI and gets the user input. 
- * This class contains member variables which store the email, password, and the user type.
+ * LoginForm presents the login page for managers, landlords, and registered 
+ * renters. It displays the GUI and gets the user input. This class contains 
+ * member variables which store the email, password, and the user type.
  */
 public class LoginForm extends InteractionForm {
+
+    // Member attributes
     private String inputEmail;
     private String inputPassword;
-    private String userType; // not relevant
+    private String userType;
 
-    // Function which performs the GUI operation to login.
+    /*
+    * This function performs the GUI operation to login
+    * It takes in no parameters.
+    * And returns void.
+    */
     public void startLogin() {
+
         // Setting the JFrame properties.
         JFrame frame = new JFrame("LOGIN PAGE");
         frame.setLocationRelativeTo(null);
@@ -167,20 +172,25 @@ public class LoginForm extends InteractionForm {
         frame.pack();
     }
 
-    // The constructor takes in a String of the user type and sets it.
-    // Creating a LoginController object and adding it to the myControllers
-    // ArrayList.
+
+    /*
+    * This constructor sets the userType member variable, creates a 
+    * LoginController object and adds it to the myControllers ArrayList.
+    * It takes in a user type of type String as a parameter.
+    * And returns void.
+    */
     public LoginForm(String userType) {
         this.userType = userType;
         Controller x = new LoginController();
         myControllers.add(x);
     }
 
-    // Getters.
+    // Getter for inputEmail
     public String getInputEmail() {
         return inputEmail;
     }
 
+    // Getter for inputPassword
     public String getInputPassword() {
         return inputPassword;
     }
