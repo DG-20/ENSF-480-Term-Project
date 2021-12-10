@@ -29,6 +29,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         mySummaryForm = new SummaryForm();
         myChangePF = new ChangePeriodFeesForm();
         myPropertyForm = new PropertyForm();
+        myUserInfoForm = new UserInfoForm();
+        myDetailedViewProperty = new DetailedViewProperty();
     }
 
     private InteractionForm mySummaryForm;
@@ -180,11 +182,14 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
+        /**
+         * If View detailed property info button is click then display all properties and their details */
+         */
         propertyInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new DetailedViewProperty();
+                ((DetailedViewProperty)myUserInfoForm).display();
             }
         });
 
@@ -251,7 +256,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new UserInfoForm();
+                ((UserInfoForm)myUserInfoForm).display();
             }
         });
 

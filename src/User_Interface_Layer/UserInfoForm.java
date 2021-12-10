@@ -20,11 +20,9 @@ import java.util.*;
  */
 public class UserInfoForm extends InteractionForm {
         /*
-         * The public default constructor calls upon the display method everytime the
-         * object of this class is created.
+         * The public default constructor
          */
         public UserInfoForm() {
-                display();
         }
 
         /*
