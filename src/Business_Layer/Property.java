@@ -43,8 +43,8 @@ public class Property {
         this.ID = ID;
         this.address = address;
         this.email = email_address;
-        this.postedDate = posted_date;
-        this.expDate = exp_date;
+        this.postedDate = posted_date.substring(0,10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
+        this.expDate = exp_date.substring(0,10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
     }
 
     /*

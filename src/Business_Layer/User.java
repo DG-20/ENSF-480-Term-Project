@@ -48,6 +48,13 @@ public class User {
         this.name = name;
     }
 
+    /**
+     * Constructor
+     * @param email
+     * @param password
+     * @param type
+     * @param name
+     */
     public User(String email, String password, String type, String name) {
         this.email = email;
         this.password = password;
@@ -55,6 +62,4 @@ public class User {
         this.name = name;
     }
 
-    public User() {
-    }
 }

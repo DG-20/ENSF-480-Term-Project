@@ -36,8 +36,13 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy {
                 this.myPropertyForm = (PropertyForm) myPropertyForm;
         }
 
-        // Displays the homepage of the LandLord.
+
+        /** Displays the homepage of the LandLord.
+         *
+         * @param email of the Landlord.
+         */
         public void display(String email) {
+
                 // Setting the JFrame's properties.
                 JFrame f = this;
                 f.setTitle("LANDLORD HOMEPAGE");
