@@ -13,7 +13,7 @@ import Data_Source_Layer.*;
 import java.util.*;
 
 /**
- * 
+ * The controller for the property registration
  */
 public class RegistrationController extends Controller {
 
@@ -26,6 +26,7 @@ public class RegistrationController extends Controller {
     }
 
     /**
+     * Call the registerProperty function of PropertyInventory class
      * @param type
      * @param numBedrooms
      * @param numBathrooms
