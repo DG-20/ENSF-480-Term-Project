@@ -38,7 +38,7 @@ public class NotificationView extends InteractionForm {
                     "No Matches Found!",
                     "Sorry...",
                     JOptionPane.INFORMATION_MESSAGE);
-            new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+            pageBack.performStrategy();
             return;
         }
         new ViewPropertyForm(p);
