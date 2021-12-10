@@ -27,6 +27,7 @@ public class SearchController extends Controller {
     }
 
     /**
+     * Call the getMatching function of Property class
      * @param type
      * @param numBedrooms
      * @param numBathrooms
