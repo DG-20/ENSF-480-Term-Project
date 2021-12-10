@@ -67,7 +67,7 @@ public class SearchForm extends InteractionForm {
         rowEntry.add(numBedroomsT);
 
         /* Furnished? */
-        String[] furn = { "Y", "N" };
+        String[] furn = { "Yes", "No" };
         JLabel furnishedLabel = new JLabel("Furnished");
         JComboBox furnishedT = new JComboBox(furn);
         rowEntry.add(furnishedLabel);
