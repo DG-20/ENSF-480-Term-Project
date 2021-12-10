@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 /**
- * 
+ * A class concerned with registering a property and retrieving a list of assigned properties.
  */
 public class PropertyForm extends InteractionForm {
 
@@ -137,16 +137,17 @@ public class PropertyForm extends InteractionForm {
         f.add(info);
 
         /* Submit */
-        JButton b1 = new JButton("SUBMIT");
+        JButton submit = new JButton("SUBMIT");
         rowEntry.add(new JSeparator(SwingConstants.HORIZONTAL));
         rowEntry.add(new JSeparator(SwingConstants.HORIZONTAL));
-        b1.setBackground(Color.GREEN);
-        f.add(b1);
+        submit.setBackground(Color.GREEN);
+        f.add(submit);
 
         f.setVisible(true);
 
-        /* Submit Listener */
-        b1.addActionListener(new ActionListener() {
+        /*On SUBMIT button press */
+        /* REgister the property into the database by calling appropriate conrollers */
+        submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String address = addressFieldT.getText();
@@ -189,7 +190,8 @@ public class PropertyForm extends InteractionForm {
 
         });
 
-        /* Back Button */
+        /* On Back Button press */
+        /* Go back to user's home page */
         JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
             @Override

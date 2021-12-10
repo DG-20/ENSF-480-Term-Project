@@ -18,6 +18,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
+/**
+ * A class concerned with the Notifications of a Registered Renter.
+ */
 public class NotificationView extends InteractionForm {
 
     public NotificationView(String email) {
@@ -33,7 +36,6 @@ public class NotificationView extends InteractionForm {
     public void showSubbed() {
 
         ArrayList<Property> p = subController.getSubbedProperties(email);
-        //p.get(0).getAddress(); // for debugging
         JFrame a = new JFrame("Notifications");
         a.setLocationRelativeTo(null);
         a.setSize(350, 350);

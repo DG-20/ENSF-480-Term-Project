@@ -14,6 +14,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * A class concerned with displaying all relevant Registered Renter use cases which include: Browsing a property,
+ * Adding a subscription, removing a subscription, and Notifications.
+ */
 public class DisplayRR extends javax.swing.JFrame implements Strategy {
 
     public DisplayRR() {
@@ -129,6 +133,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
 
         pack();
 
+        /* On Manage Subscriptions button press */
         /* Call Manage Subs */
         manageSubscriptionsButton.addActionListener(new ActionListener() {
             @Override
@@ -139,6 +144,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
+        /* On Notifications button press */
         /* Call Notification View */
         notificationsButton.addActionListener(new ActionListener() {
             @Override
@@ -149,6 +155,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
+        /* On Browse button press */
         /* Call Search Form */
         browseButton.addActionListener(new ActionListener() {
             @Override
@@ -158,6 +165,7 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             }
         });
 
+        /* On logout button press */
         /* Do a Logout */
         logoutButton.addActionListener(new ActionListener() {
             @Override

@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * 
+ * A database interface class concerned only with user information including name, login, password.
  */
 public class UserInfo implements Database {
 

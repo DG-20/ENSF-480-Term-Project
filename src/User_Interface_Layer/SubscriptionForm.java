@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 /**
- * 
+ * A class concerned with adding and removing Registered Renter's subscriptions and displaying them.
  */
 public class SubscriptionForm extends InteractionForm {
 
@@ -86,7 +86,8 @@ public class SubscriptionForm extends InteractionForm {
 
         f.setVisible(true);
 
-        /* Submit Listener */
+        /* On SUBMIT button press */
+        /* REgister the subscription into the database by calling appropriate conrollers */
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,7 +106,8 @@ public class SubscriptionForm extends InteractionForm {
             }
         });
 
-        /* Back Button */
+        /*On Back button press */
+        /* Redirect to and Call user's home page */
         JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
             @Override
