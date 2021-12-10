@@ -20,7 +20,8 @@ import java.util.*;
  */
 public class UserInfoForm extends InteractionForm {
         /*
-         * The public default constructor is empty.
+         * The public default constructor
+
          */
         public UserInfoForm() {
         }

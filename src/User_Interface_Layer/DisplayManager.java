@@ -8,6 +8,8 @@
  */
 package User_Interface_Layer;
 
+import Business_Layer.Property;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,13 +29,17 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         mySummaryForm = new SummaryForm();
         myChangePF = new ChangePeriodFeesForm();
         myPropertyForm = new PropertyForm();
-        myUserInfo = new UserInfoForm();
+        myUserInfoForm = new UserInfoForm();
+        myDetailedViewProperty = new DetailedViewProperty();
+
     }
 
     private InteractionForm mySummaryForm;
     private InteractionForm myChangePF;
     private InteractionForm myPropertyForm;
-    private InteractionForm myUserInfo;
+    private InteractionForm myUserInfoForm;
+    private InteractionForm myDetailedViewProperty;
+
 
     // Getters and Setters.
     public InteractionForm getMySummaryForm() {
@@ -76,10 +82,11 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         JButton logoutButton = new JButton();
         JButton userInfoButton = new JButton();
         JLabel titleText = new JLabel();
+        JButton propertyInfoButton = new JButton();
 
         // Setting the fonts and texts of the created elements.
         updateListingButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
-        updateListingButton.setText("Update Listing/View Properties");
+        updateListingButton.setText("Update Listing");
 
         changePFButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         changePFButton.setText("Change Amount and Period of Fees");
@@ -97,6 +104,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
 
         userInfoButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         userInfoButton.setText("Show All User Information");
+
+        propertyInfoButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
+        propertyInfoButton.setText("View Properties");
 
         // Creating a new layout (both horizontal and vertical) to position all elements
         // and size them as we intend.
@@ -126,6 +136,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                                                                 376, Short.MAX_VALUE)
                                                         .addComponent(userInfoButton,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, 376,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(propertyInfoButton,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 376,
                                                                 Short.MAX_VALUE))))
                                 .addContainerGap())
                         .addGroup(layout.createSequentialGroup()
@@ -151,6 +164,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                                 .addComponent(userInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(propertyInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
@@ -165,6 +181,17 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 ((PropertyForm) myPropertyForm).browseProperties();
+            }
+        });
+
+        /**
+         * If View detailed property info button is click then display all properties and their details */
+         */
+        propertyInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                ((DetailedViewProperty)myUserInfoForm).display();
             }
         });
 
@@ -231,7 +258,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ((UserInfoForm) myUserInfo).display();
+                ((UserInfoForm)myUserInfoForm).display();
+
             }
         });
 

@@ -49,6 +49,22 @@ public class PropertyInventory implements Database {
         }
     }
 
+    public ArrayList<Property> getAllProperties()
+    {
+        ArrayList<Property> allProperties = new ArrayList<>();
+        try{
+            String query = "SELECT * FROM PROPERTY";
+            Statement stmt = dbConnect.createStatement();
+            ResultSet set = stmt.executeQuery(query);
+            allProperties = convertToProperty(set);
+            stmt.close();
+            set.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allProperties;
+    }
+
 
     /** Finds the matched properties that match the parameters and are also active.
      *
