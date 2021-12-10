@@ -22,6 +22,9 @@ import java.util.*;
 import java.sql.Date.*;
 import java.util.Date;
 
+/*
+A database interface class concerned with property management.
+ */
 public class PropertyInventory implements Database {
 
     private Connection dbConnect;

@@ -24,8 +24,10 @@ public class GUIHomePage {
         displayStrategy.display(email);
     }
 
-    // This function takes in the user type as a String and accordingly initializes
-    // the object.
+    /**
+     * Takes in the user type as a String and accordingly sets a strategy depending on the usertype.
+     * @param userType The type of the user {Landlord, Registered Renter, Unregistered Renter, Manager}
+     */
     public void setDisplayStrategy(String userType) {
         if (userType.equals("Landlord")) {
             displayStrategy = new DisplayLL();

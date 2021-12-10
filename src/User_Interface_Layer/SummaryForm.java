@@ -13,6 +13,7 @@ import Business_Layer.Property;
 
 import java.util.*;
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,18 +25,22 @@ import java.awt.event.ActionListener;
 public class SummaryForm extends InteractionForm {
         // The default constructor initializes the three Database member objects.
         public SummaryForm() {
-                myInventory = new PropertyInventory();
-                myPaymentPeriod = new PaymentPeriodRecord();
-                myUserInfo = new UserInfo();
+                myData = new ArrayList<>();
+                Database myInventory = new PropertyInventory();
+                Database myPaymentPeriod = new PaymentPeriodRecord();
+                Database myUserInfo = new UserInfo();
+                myData.add(myInventory);
+                myData.add(myPaymentPeriod);
+                myData.add(myUserInfo);
         }
 
-        private Database myInventory;
-        private Database myPaymentPeriod;
-        private Database myUserInfo;
+
+
+        private ArrayList<Database> myData;
 
         // Getter for the period, calls upon retrievePeriod from myPaymentPeriod.
         public int getPeriod() {
-                return ((PaymentPeriodRecord) myPaymentPeriod).retrievePeriod();
+                return ((PaymentPeriodRecord) myData.get(1)).retrievePeriod();
         }
 
         // Displays the Summary in a clean GUI page.
@@ -66,12 +71,13 @@ public class SummaryForm extends InteractionForm {
                 JScrollPane totalRentedListingsPane = new JScrollPane(totalRentedListingsDisplay,
                                 JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+
                 // Retrieving the total statistics from myInventory using various functions.
-                int totalRentedListings = ((PropertyInventory) myInventory).getNumRentedListingsPeriod(periodChosen);
-                int totalPeriodListings = ((PropertyInventory) myInventory).getNumListingsPeriod(periodChosen);
-                int totalActiveListings = ((PropertyInventory) myInventory).getNumActiveListings();
+                int totalRentedListings = ((PropertyInventory) myData.get(0)).getNumRentedListingsPeriod(periodChosen);
+                int totalPeriodListings = ((PropertyInventory) myData.get(0)).getNumListingsPeriod(periodChosen);
+                int totalActiveListings = ((PropertyInventory) myData.get(0)).getNumActiveListings();
                 // Getting an ArrayList of Properties using retrieveSummary.
-                ArrayList<Property> rentedProperties = ((PropertyInventory) myInventory).retrieveSummary(periodChosen);
+                ArrayList<Property> rentedProperties = ((PropertyInventory) myData.get(0)).retrieveSummary(periodChosen);
                 int numPropertiesRented = rentedProperties.size();
 
                 // Setting the characteristics of the elements.
@@ -121,7 +127,7 @@ public class SummaryForm extends InteractionForm {
 
                 for (int i = 0; i < numPropertiesRented; i++) {
                         Property propertyGet = rentedProperties.get(i);
-                        vals[i][0] = ((UserInfo) myUserInfo).retrieveLandlordsName(propertyGet.getEmail());
+                        vals[i][0] = ((UserInfo) myData.get(2)).retrieveLandlordsName(propertyGet.getEmail());
                         vals[i][1] = propertyGet.getID();
                         vals[i][2] = propertyGet.getAddress();
                 }

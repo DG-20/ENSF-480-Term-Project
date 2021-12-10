@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * 
+ * A database interface class concerned with only Registered Renter's subscriptions.
  */
 public class SubscriptionList implements Database {
 

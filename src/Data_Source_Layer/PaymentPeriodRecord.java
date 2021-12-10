@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * 
+ * A database interface class that is concerned with payment and period tables in the database.
  */
 public class PaymentPeriodRecord implements Database {
     private Connection dbConnect;
