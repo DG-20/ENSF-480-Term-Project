@@ -40,7 +40,6 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm myUserInfoForm;
     private InteractionForm myDetailedViewProperty;
 
-
     // Getters and Setters.
     public InteractionForm getMySummaryForm() {
         return mySummaryForm;
@@ -184,14 +183,15 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /**
-         * If View detailed property info button is click then display all properties and their details */
+        /*
+         * If View detailed property info button is click then display all properties
+         * and their details.
          */
         propertyInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ((DetailedViewProperty)myUserInfoForm).display();
+                ((DetailedViewProperty) myUserInfoForm).display();
             }
         });
 
@@ -258,7 +258,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ((UserInfoForm)myUserInfoForm).display();
+                ((UserInfoForm) myUserInfoForm).display();
 
             }
         });

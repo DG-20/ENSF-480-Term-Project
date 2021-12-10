@@ -186,7 +186,6 @@ public class DisplayRR extends javax.swing.JFrame implements Strategy {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ;
                 StartUp.main(new String[] { "" });
             }
         });

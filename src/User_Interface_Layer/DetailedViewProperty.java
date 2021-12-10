@@ -19,12 +19,11 @@ public class DetailedViewProperty extends InteractionForm {
      */
     public DetailedViewProperty() {
         myData = new PropertyInventory();
-        allProperties = ((PropertyInventory)myData).getAllProperties();
+        allProperties = ((PropertyInventory) myData).getAllProperties();
     }
 
     public void display() {
-        
-    }
 
+    }
 
 }

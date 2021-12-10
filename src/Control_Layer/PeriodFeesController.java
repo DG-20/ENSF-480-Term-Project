@@ -34,6 +34,7 @@ public class PeriodFeesController extends Controller {
 
     /**
      * Call the updatePeriodPayment function of PaymentPeriodRecord class
+     * 
      * @param fee
      * @param period
      * @return
@@ -48,6 +49,7 @@ public class PeriodFeesController extends Controller {
 
     /**
      * Call the retrievePayment function of PaymentPeriodRecord class
+     * 
      * @return
      */
     public int sendPayment() {

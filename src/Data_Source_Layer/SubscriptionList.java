@@ -15,7 +15,8 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * A database interface class concerned with only Registered Renter's subscriptions.
+ * A database interface class concerned with only Registered Renter's
+ * subscriptions.
  */
 public class SubscriptionList implements Database {
 
@@ -96,7 +97,7 @@ public class SubscriptionList implements Database {
     /**
      * @param email
      * @return ArrayList<Subscription>
-     *     Returns the subscription details associated with a registered
+     *         Returns the subscription details associated with a registered
      *         renter's email
      */
     public ArrayList<Subscription> retrieveSubscription(String email) {

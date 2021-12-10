@@ -24,9 +24,9 @@ public class PropertyInventory implements Database {
     private Connection dbConnect;
     Database myPaymentPeriodRecord;
 
-
-    /** Default constructor which initializes the connection, and updates the
-     *  properties using the date.
+    /**
+     * Default constructor which initializes the connection, and updates the
+     * properties using the date.
      */
     public PropertyInventory() {
         myPaymentPeriodRecord = new PaymentPeriodRecord();
@@ -35,7 +35,8 @@ public class PropertyInventory implements Database {
     }
 
     /**
-     * A helper function. This updates all properties in the database where the current date >  Expiry Date and
+     * A helper function. This updates all properties in the database where the
+     * current date > Expiry Date and
      * the status is not Rented to Cancelled.
      */
     private void updateAllProperties() {
@@ -49,10 +50,9 @@ public class PropertyInventory implements Database {
         }
     }
 
-    public ArrayList<Property> getAllProperties()
-    {
+    public ArrayList<Property> getAllProperties() {
         ArrayList<Property> allProperties = new ArrayList<>();
-        try{
+        try {
             String query = "SELECT * FROM PROPERTY";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
@@ -65,8 +65,8 @@ public class PropertyInventory implements Database {
         return allProperties;
     }
 
-
-    /** Finds the matched properties that match the parameters and are also active.
+    /**
+     * Finds the matched properties that match the parameters and are also active.
      *
      * @param type
      * @param numBedrooms
@@ -97,8 +97,8 @@ public class PropertyInventory implements Database {
         return matchedProperties;
     }
 
-
-    /** Inserts a property into the database
+    /**
+     * Inserts a property into the database
      *
      * @param type
      * @param numBedrooms
@@ -115,7 +115,8 @@ public class PropertyInventory implements Database {
             LocalDateTime localDate = LocalDateTime.now();
             String currentDate = dateFormat.format(localDate);
 
-            LocalDateTime localExpdate = localDate.plusDays(((PaymentPeriodRecord)myPaymentPeriodRecord).retrievePeriod());
+            LocalDateTime localExpdate = localDate
+                    .plusDays(((PaymentPeriodRecord) myPaymentPeriodRecord).retrievePeriod());
             String expDate = dateFormat.format(localExpdate);
 
             String furn = "N";
@@ -141,8 +142,9 @@ public class PropertyInventory implements Database {
         }
     }
 
-
-    /**     Finds all properties associated with a user and their usertype and returns those properties.
+    /**
+     * Finds all properties associated with a user and their usertype and returns
+     * those properties.
      *
      * @param email The email of a landlord/Manager
      * @return ArrayList<Property> that is managed by that user.
@@ -183,11 +185,13 @@ public class PropertyInventory implements Database {
         return myProperties;
     }
 
-
-    /**     Matches all properties that fit the registered renter's criteria and returns them
+    /**
+     * Matches all properties that fit the registered renter's criteria and returns
+     * them
      *
      * @param email The email of the registered Renter
-     * @return An arraylist<Property> that matches the registered renter's subscriptions
+     * @return An arraylist<Property> that matches the registered renter's
+     *         subscriptions
      */
     public ArrayList<Property> getNotifications(String email) {
         ArrayList<Property> notifiedProperties = new ArrayList<>();
@@ -218,8 +222,10 @@ public class PropertyInventory implements Database {
         return notifiedProperties;
     }
 
-    /**     Updates the property in the database to a new status.
-     *      If the property's new status is Rented, update the RentedDate as well.
+    /**
+     * Updates the property in the database to a new status.
+     * If the property's new status is Rented, update the RentedDate as well.
+     * 
      * @param p The property chosen to be updated.
      */
     public void updateProperty(Property p) {
@@ -234,8 +240,7 @@ public class PropertyInventory implements Database {
             stmt.close();
 
             /* If the new status is rented, also update the RentedDate to today */
-            if (newStatus.equals("Rented"))
-            {
+            if (newStatus.equals("Rented")) {
                 updateRentedDate(p);
             }
         } catch (SQLException e) {
@@ -244,7 +249,8 @@ public class PropertyInventory implements Database {
     }
 
     /**
-     *      Update the property's Rented Date.
+     * Update the property's Rented Date.
+     * 
      * @param p The property chosen to be updated.
      */
     private void updateRentedDate(Property p) {
@@ -267,11 +273,10 @@ public class PropertyInventory implements Database {
         }
     }
 
-
-
     /**
      *
-     * @param period The period of the report where it checks the dates betweeen [currentDate-period, currentDate]
+     * @param period The period of the report where it checks the dates betweeen
+     *               [currentDate-period, currentDate]
      * @return An arraylist of properties that were rented within the period.
      */
     public ArrayList<Property> retrieveSummary(int period) {
@@ -287,7 +292,8 @@ public class PropertyInventory implements Database {
                 int houseID = set.getInt("House_ID");
                 String address = set.getString("Address");
                 String emailAddress = set.getString("LandlordEmail");
-                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd hh:mm:ss", emailAddress, "", "yyyy-MM-dd hh:mm:ss");
+                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "yyyy-MM-dd hh:mm:ss",
+                        "yyyy-MM-dd hh:mm:ss", emailAddress, "", "yyyy-MM-dd hh:mm:ss");
                 rented.add(p);
             }
             stmt.close();
@@ -317,10 +323,10 @@ public class PropertyInventory implements Database {
         }
     }
 
-
     /**
      *
-     * @param period The period of the report where it checks the dates betweeen [currentDate-period, currentDate]
+     * @param period The period of the report where it checks the dates betweeen
+     *               [currentDate-period, currentDate]
      * @return the total number of listings within a period.
      */
     public int getNumListingsPeriod(int period) {
@@ -342,10 +348,10 @@ public class PropertyInventory implements Database {
         return count;
     }
 
-
     /**
      *
-     * @param  period The period of the report where it checks the rentedDate betweeen [currentDate-period, currentDate]
+     * @param period The period of the report where it checks the rentedDate
+     *               betweeen [currentDate-period, currentDate]
      * @return Retrieves the total number of listings RENTED within a period.
      */
     public int getNumRentedListingsPeriod(int period) {
@@ -371,7 +377,8 @@ public class PropertyInventory implements Database {
 
     /**
      *
-     * @param period The period of the report where it checks the dates betweeen [currentDate-period, currentDate]
+     * @param period The period of the report where it checks the dates betweeen
+     *               [currentDate-period, currentDate]
      * @return the total number of active listings within a period.
      */
     public int getNumActiveListingsPeriod(int period) {
@@ -392,7 +399,6 @@ public class PropertyInventory implements Database {
         }
         return count;
     }
-
 
     /**
      *
@@ -417,10 +423,10 @@ public class PropertyInventory implements Database {
 
     }
 
-
     /**
-     *      This helper function takes in a ResultSet generated from an SQL query, parses
-     *      it, calls the property constructor, and returns the list of properties.
+     * This helper function takes in a ResultSet generated from an SQL query, parses
+     * it, calls the property constructor, and returns the list of properties.
+     * 
      * @param set - The set of all affected rows from the query
      * @return The converted array list of properties from the ResultSet
      */
