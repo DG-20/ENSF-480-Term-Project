@@ -31,326 +31,354 @@ public class UpdateForm extends InteractionForm {
         /**
          *  A helper function. A view form that allows one to change the status of a property.
          */
-        private void changeStatus() {
+          private void  changeStatus() {
                 // Creating the JFrame and setting properties.
                 f = new JFrame();
                 f.setVisible(true);
                 f.setLocationRelativeTo(null);
 
                 // Creating all the elements which will be displayed on the JFrame.
-                JLabel addressLabel;
-                JButton backButton;
-                JLabel dateExpiryLabel;
-                JLabel datePostedLabel;
-                JLabel furnishedLabel;
-                JLabel header1;
-                JLabel header2;
-                JLabel header3;
-                JSeparator jSeparator1;
-                JLabel numBathroomsLabel;
-                JLabel numBedroomsLabel;
-                JLabel propertyAddressLabel;
-                JLabel propertyDateExpiryLabel;
-                JLabel propertyDatePostedLabel;
-                JLabel propertyFurnishedLabel;
-                JLabel propertyNumBathroomsLabel;
-                JLabel propertyNumBedroomsLabel;
-                JLabel propertyQuadrantLabel;
-                JLabel propertyStatusLabel;
-                JLabel propertyTypeLabel;
-                JLabel quadrantLabel;
-                JLabel statusLabel;
-                JComboBox<String> statusList;
-                JLabel typeLabel;
-                JButton updateButton;
+                  javax.swing.JLabel addressLabel;
+                  javax.swing.JButton backButton;
+                  javax.swing.JLabel currentStatusLabel;
+                  javax.swing.JLabel dateExpiredLabel;
+                  javax.swing.JLabel dateLastRentedLabel;
+                  javax.swing.JLabel datePostedLabel;
+                  javax.swing.JLabel furnishedLabel;
+                  javax.swing.JLabel header1;
+                  javax.swing.JLabel header2;
+                  javax.swing.JPanel jPanel1;
+                  javax.swing.JSeparator jSeparator1;
+                  javax.swing.JLabel numBathroomsLabel;
+                  javax.swing.JLabel numBedroomsLabel;
+                  javax.swing.JLabel propertyAddressLabel;
+                  javax.swing.JLabel propertyCurrentStatusLabel;
+                  javax.swing.JLabel propertyDateExpiredLabel;
+                  javax.swing.JLabel propertyDateLastRentedLabel;
+                  javax.swing.JLabel propertyDatePostedLabel;
+                  javax.swing.JLabel propertyFurnishedLabel;
+                  javax.swing.JLabel propertyNumBathroomsLabel;
+                  javax.swing.JLabel propertyNumBedroomsLabel;
+                  javax.swing.JLabel propertyQuadrantLabel;
+                  javax.swing.JLabel propertyTypeLabel;
+                  javax.swing.JLabel quadrantLabel;
+                  javax.swing.JComboBox<String> statusList;
+                  javax.swing.JLabel statusListLabel;
+                  javax.swing.JLabel typeLabel;
+                  javax.swing.JButton updateButton;
 
-                header1 = new javax.swing.JLabel();
-                header2 = new javax.swing.JLabel();
-                jSeparator1 = new javax.swing.JSeparator();
-                addressLabel = new javax.swing.JLabel();
-                propertyAddressLabel = new javax.swing.JLabel();
-                quadrantLabel = new javax.swing.JLabel();
-                propertyQuadrantLabel = new javax.swing.JLabel();
-                typeLabel = new javax.swing.JLabel();
-                propertyTypeLabel = new javax.swing.JLabel();
-                furnishedLabel = new javax.swing.JLabel();
-                propertyFurnishedLabel = new javax.swing.JLabel();
-                numBathroomsLabel = new javax.swing.JLabel();
-                propertyNumBathroomsLabel = new javax.swing.JLabel();
-                numBedroomsLabel = new javax.swing.JLabel();
-                propertyNumBedroomsLabel = new javax.swing.JLabel();
-                datePostedLabel = new javax.swing.JLabel();
-                propertyDatePostedLabel = new javax.swing.JLabel();
-                dateExpiryLabel = new javax.swing.JLabel();
-                propertyDateExpiryLabel = new javax.swing.JLabel();
-                statusLabel = new javax.swing.JLabel();
-                propertyStatusLabel = new javax.swing.JLabel();
-                updateButton = new javax.swing.JButton();
-                backButton = new javax.swing.JButton();
-                header3 = new javax.swing.JLabel();
-                statusList = new javax.swing.JComboBox<>();
+                  jSeparator1 = new javax.swing.JSeparator();
+                  header1 = new javax.swing.JLabel();
+                  header2 = new javax.swing.JLabel();
+                  jPanel1 = new javax.swing.JPanel();
+                  addressLabel = new javax.swing.JLabel();
+                  quadrantLabel = new javax.swing.JLabel();
+                  typeLabel = new javax.swing.JLabel();
+                  furnishedLabel = new javax.swing.JLabel();
+                  numBathroomsLabel = new javax.swing.JLabel();
+                  numBedroomsLabel = new javax.swing.JLabel();
+                  datePostedLabel = new javax.swing.JLabel();
+                  dateExpiredLabel = new javax.swing.JLabel();
+                  dateLastRentedLabel = new javax.swing.JLabel();
+                  currentStatusLabel = new javax.swing.JLabel();
+                  propertyAddressLabel = new javax.swing.JLabel();
+                  propertyQuadrantLabel = new javax.swing.JLabel();
+                  propertyTypeLabel = new javax.swing.JLabel();
+                  propertyFurnishedLabel = new javax.swing.JLabel();
+                  propertyNumBathroomsLabel = new javax.swing.JLabel();
+                  propertyNumBedroomsLabel = new javax.swing.JLabel();
+                  propertyDatePostedLabel = new javax.swing.JLabel();
+                  propertyDateExpiredLabel = new javax.swing.JLabel();
+                  propertyDateLastRentedLabel = new javax.swing.JLabel();
+                  propertyCurrentStatusLabel = new javax.swing.JLabel();
+                  backButton = new javax.swing.JButton();
+                  updateButton = new javax.swing.JButton();
+                  statusListLabel = new javax.swing.JLabel();
+                  statusList = new javax.swing.JComboBox<>();
 
-                f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                f.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-                // Setting the text of the elements.
-                header1.setText("Choose a new status to update to.");
+                  // Setting the text of the elements.
+                  f.setBackground(new java.awt.Color(255, 255, 255));
 
-                header2.setText("Detailed Property Information:");
+                  header1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+                  header1.setText("Choose a new status to update to.");
 
-                addressLabel.setText("Address: ");
+                  header2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+                  header2.setText("Detailed Property Information");
 
-                propertyAddressLabel.setText("jLabel4");
+                  jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+                  jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));
+                  jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-                quadrantLabel.setText("Quadrant:");
+                  addressLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  addressLabel.setText("Address:");
 
-                propertyQuadrantLabel.setText("jLabel6");
+                  quadrantLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  quadrantLabel.setText("Quadrant:");
 
-                typeLabel.setText("Type:");
+                  typeLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  typeLabel.setText("Type:");
 
-                propertyTypeLabel.setText("jLabel8");
+                  furnishedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  furnishedLabel.setText("Furnished:");
 
-                furnishedLabel.setText("Furnished:");
+                  numBathroomsLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  numBathroomsLabel.setText("Number of bathrooms:");
 
-                propertyFurnishedLabel.setText("jLabel10");
+                  numBedroomsLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  numBedroomsLabel.setText("Number of Bedrooms:");
 
-                numBathroomsLabel.setText("Number of bathrooms:");
+                  datePostedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  datePostedLabel.setText("Date Posted:");
 
-                propertyNumBathroomsLabel.setText("jLabel12");
+                  dateExpiredLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  dateExpiredLabel.setText("Date of Expiry:");
 
-                numBedroomsLabel.setText("Number of bedrooms:");
+                  dateLastRentedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  dateLastRentedLabel.setText("Date Last Rented:");
 
-                propertyNumBedroomsLabel.setText("jLabel14");
+                  currentStatusLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  currentStatusLabel.setText("Current Status:");
 
-                datePostedLabel.setText("Date Posted:");
+                  propertyAddressLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyAddressLabel.setText("jLabel14");
 
-                propertyDatePostedLabel.setText("jLabel16");
+                  propertyQuadrantLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyQuadrantLabel.setText("jLabel15");
 
-                dateExpiryLabel.setText("Date of Expiry:");
+                  propertyTypeLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyTypeLabel.setText("jLabel16");
 
-                propertyDateExpiryLabel.setText("jLabel18");
+                  propertyFurnishedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyFurnishedLabel.setText("jLabel17");
 
-                statusLabel.setText("Current Status:");
+                  propertyNumBathroomsLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyNumBathroomsLabel.setText("jLabel18");
 
-                propertyStatusLabel.setText("jLabel20");
+                  propertyNumBedroomsLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyNumBedroomsLabel.setText("jLabel19");
 
-                updateButton.setForeground(new java.awt.Color(0, 255, 0));
-                updateButton.setText("CONFIRM UPDATE");
-                // If the update button is clicked, and the current status is not cancelled
-                // update the property.
-                updateButton.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                boolean success = true;
-                                String newStatus = statusList.getSelectedItem().toString();
-                                System.out.println("Current status is: " + chosenProperty.getStatus());
-                                        success = false;
-                                if (!success) {
-                                        JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
-                                                "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
-                                } else {
+                  propertyDatePostedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyDatePostedLabel.setText("jLabel20");
+
+                  propertyDateExpiredLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyDateExpiredLabel.setText("jLabel21");
+
+                  propertyDateLastRentedLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyDateLastRentedLabel.setText("jLabel22");
+
+                  propertyCurrentStatusLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  propertyCurrentStatusLabel.setText("jLabel23");
+
+                  javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+                  jPanel1.setLayout(jPanel1Layout);
+                  jPanel1Layout.setHorizontalGroup(
+                          jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                  .addGroup(jPanel1Layout.createSequentialGroup()
+                                          .addContainerGap()
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(dateExpiredLabel)
+                                                  .addComponent(currentStatusLabel)
+                                                  .addComponent(dateLastRentedLabel)
+                                                  .addComponent(datePostedLabel)
+                                                  .addComponent(numBedroomsLabel)
+                                                  .addComponent(numBathroomsLabel)
+                                                  .addComponent(furnishedLabel)
+                                                  .addComponent(typeLabel)
+                                                  .addComponent(quadrantLabel)
+                                                  .addComponent(addressLabel))
+                                          .addGap(112, 112, 112)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(propertyAddressLabel)
+                                                  .addComponent(propertyQuadrantLabel)
+                                                  .addComponent(propertyTypeLabel)
+                                                  .addComponent(propertyFurnishedLabel)
+                                                  .addComponent(propertyNumBathroomsLabel)
+                                                  .addComponent(propertyNumBedroomsLabel)
+                                                  .addComponent(propertyDatePostedLabel)
+                                                  .addComponent(propertyDateLastRentedLabel)
+                                                  .addComponent(propertyCurrentStatusLabel)
+                                                  .addComponent(propertyDateExpiredLabel))
+                                          .addContainerGap(138, Short.MAX_VALUE))
+                  );
+                  jPanel1Layout.setVerticalGroup(
+                          jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                  .addGroup(jPanel1Layout.createSequentialGroup()
+                                          .addContainerGap(34, Short.MAX_VALUE)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(addressLabel)
+                                                  .addComponent(propertyAddressLabel))
+                                          .addGap(18, 18, 18)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(quadrantLabel)
+                                                  .addComponent(propertyQuadrantLabel))
+                                          .addGap(18, 18, 18)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(typeLabel)
+                                                  .addComponent(propertyTypeLabel))
+                                          .addGap(31, 31, 31)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(furnishedLabel)
+                                                  .addComponent(propertyFurnishedLabel))
+                                          .addGap(32, 32, 32)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(numBathroomsLabel)
+                                                  .addComponent(propertyNumBathroomsLabel))
+                                          .addGap(35, 35, 35)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(numBedroomsLabel)
+                                                  .addComponent(propertyNumBedroomsLabel))
+                                          .addGap(34, 34, 34)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(datePostedLabel)
+                                                  .addComponent(propertyDatePostedLabel))
+                                          .addGap(30, 30, 30)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(dateExpiredLabel)
+                                                  .addComponent(propertyDateExpiredLabel))
+                                          .addGap(39, 39, 39)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(dateLastRentedLabel)
+                                                  .addComponent(propertyDateLastRentedLabel))
+                                          .addGap(49, 49, 49)
+                                          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(currentStatusLabel)
+                                                  .addComponent(propertyCurrentStatusLabel))
+                                          .addGap(46, 46, 46))
+                  );
+
+                  backButton.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  backButton.setText("Go Back");
+
+                  updateButton.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  updateButton.setForeground(new java.awt.Color(87, 242, 135));
+                  updateButton.setText("UPDATE");
+
+                  statusListLabel.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+                  statusListLabel.setText("Choose a new status");
+
+                  statusList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+
+                  statusList.setModel(new javax.swing.DefaultComboBoxModel<>(
+                          new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+                  statusList.setModel(new javax.swing.DefaultComboBoxModel<>(
+                          new String[] { "Active", "Cancelled", "Rented", "Suspended" }));
+                  String furn = "Y";
+                  if (!chosenProperty.isFurnished())
+                          furn = "N";
+                  propertyAddressLabel.setText(chosenProperty.getAddress());
+                  propertyQuadrantLabel.setText(chosenProperty.getQuadrant());
+                  propertyFurnishedLabel.setText(furn);
+                  propertyCurrentStatusLabel.setText(chosenProperty.getStatus());
+                  propertyNumBathroomsLabel.setText(String.valueOf(chosenProperty.getNumBathrooms()));
+                  propertyNumBedroomsLabel.setText(String.valueOf(chosenProperty.getNumBedrooms()));
+                  propertyDateExpiredLabel.setText(chosenProperty.getExpDate());
+                  propertyDatePostedLabel.setText(chosenProperty.getPostedDate());
+                  propertyTypeLabel.setText(chosenProperty.getType());
+                  String dateLastRented = chosenProperty.getRentedDate();
+                  if (dateLastRented.equals("yyyy-MM-dd"))
+                  {
+                          dateLastRented = "Not rented yet.";
+                  }
+                  propertyDateLastRentedLabel.setText(dateLastRented);
+
+                  javax.swing.GroupLayout layout = new javax.swing.GroupLayout(f.getContentPane());
+                  f.getContentPane().setLayout(layout);
+                  layout.setHorizontalGroup(
+                          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                  .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                  .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addGroup(layout.createSequentialGroup()
+                                                          .addContainerGap()
+                                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                  .addComponent(statusList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(statusListLabel)
+                                                                  .addGroup(layout.createSequentialGroup()
+                                                                          .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                          .addGap(241, 241, 241)
+                                                                          .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                  .addGroup(layout.createSequentialGroup()
+                                                          .addGap(113, 113, 113)
+                                                          .addComponent(header2))
+                                                  .addGroup(layout.createSequentialGroup()
+                                                          .addGap(113, 113, 113)
+                                                          .addComponent(header1)))
+                                          .addContainerGap(23, Short.MAX_VALUE))
+                  );
+                  layout.setVerticalGroup(
+                          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                  .addGroup(layout.createSequentialGroup()
+                                          .addGap(7, 7, 7)
+                                          .addComponent(header1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(header2)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(statusListLabel)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(statusList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addGap(31, 31, 31)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                  .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                  );
+
+                  f.pack();
+
+                  updateButton.setForeground(new java.awt.Color(0, 255, 0));
+                  updateButton.setText("CONFIRM UPDATE");
+                  // If the update button is clicked, and the current status is not cancelled
+                  // update the property.
+                  updateButton.addActionListener(new java.awt.event.ActionListener() {
+                          public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                  boolean success = true;
+                                  String newStatus = statusList.getSelectedItem().toString();
+                                  System.out.println("Current status is: " + chosenProperty.getStatus());
+                                  if(chosenProperty.getStatus().equals("Cancelled")) success = false;
+                                  if (!success) {
+                                          JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
+                                                  "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
+                                  } else {
 
                                         /*
                                         If you are trying to update a state from anything other than Active-->Rented, prompt an error message.
                                          */
-                                        if (!chosenProperty.getStatus().equals("Active") && newStatus.equals("Rented"))
-                                        {
-                                                JOptionPane.showMessageDialog(f, "You cannot update the property to rented unless it is active.",
-                                                        "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
-                                        } else {
-                                                chosenProperty.setStatus(newStatus);
-                                                /* Send the new property to the controller for it to be updated. */
-                                                ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
-                                                JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
-                                                        "Update successful",
-                                                        1);
-                                                f.dispose();
-                                                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
-                                        }
-                                }
-                        }
-                });
+                                          if (!chosenProperty.getStatus().equals("Active") && newStatus.equals("Rented"))
+                                          {
+                                                  JOptionPane.showMessageDialog(f, "You cannot update the property to rented unless it is active.",
+                                                          "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
+                                          } else {
+                                                  chosenProperty.setStatus(newStatus);
+                                                  /* Send the new property to the controller for it to be updated. */
+                                                  ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
+                                                  JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
+                                                          "Update successful",
+                                                          1);
+                                                  f.dispose();
+                                                  new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                          }
+                                  }
+                          }
+                  });
 
-                backButton.setText("Go Back");
-                // If the back button is clicked, take them to the property selection page.
-                backButton.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                        f.dispose();
-                                        new PropertyForm().browseProperties();
+                  backButton.setText("Go Back");
+                  // If the back button is clicked, take them to the property selection page.
+                  backButton.addActionListener(new java.awt.event.ActionListener() {
+                          public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                  f.dispose();
+                                  new PropertyForm().browseProperties();
 
-                        }
-                });
-
-                header3.setText("Choose a new status:");
-
-                statusList.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-                statusList.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                new String[] { "Active", "Cancelled", "Rented", "Suspended" }));
-                String furn = "Y";
-                if (!chosenProperty.isFurnished())
-                        furn = "N";
-                propertyAddressLabel.setText(chosenProperty.getAddress());
-                propertyQuadrantLabel.setText(chosenProperty.getQuadrant());
-                propertyFurnishedLabel.setText(furn);
-                propertyStatusLabel.setText(chosenProperty.getStatus());
-                propertyNumBathroomsLabel.setText(String.valueOf(chosenProperty.getNumBathrooms()));
-                propertyNumBedroomsLabel.setText(String.valueOf(chosenProperty.getNumBedrooms()));
-                propertyDateExpiryLabel.setText(chosenProperty.getExpDate());
-                propertyDatePostedLabel.setText(chosenProperty.getPostedDate());
-                propertyTypeLabel.setText(chosenProperty.getType());
-
-                // Creating a new layout (both horizontal and vertical) to place all the
-                // elements exactly and place the sizes accordingly.
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(f.getContentPane());
-                f.getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(layout.createSequentialGroup()
-                                                                                                .addGroup(layout.createParallelGroup(
-                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(layout.createSequentialGroup()
-                                                                                                                                .addGap(111, 111,
-                                                                                                                                                111)
-                                                                                                                                .addComponent(header1))
-                                                                                                                .addGroup(layout.createSequentialGroup()
-                                                                                                                                .addContainerGap()
-                                                                                                                                .addComponent(header2))
-                                                                                                                .addGroup(layout.createSequentialGroup()
-                                                                                                                                .addContainerGap()
-                                                                                                                                .addGroup(layout.createParallelGroup(
-                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                .addComponent(addressLabel)
-                                                                                                                                                .addComponent(quadrantLabel)
-                                                                                                                                                .addComponent(typeLabel)
-                                                                                                                                                .addComponent(furnishedLabel)
-                                                                                                                                                .addComponent(numBathroomsLabel)
-                                                                                                                                                .addComponent(numBedroomsLabel)
-                                                                                                                                                .addComponent(datePostedLabel)
-                                                                                                                                                .addComponent(dateExpiryLabel)
-                                                                                                                                                .addComponent(statusLabel))
-                                                                                                                                .addGap(147, 147,
-                                                                                                                                                147)
-                                                                                                                                .addGroup(layout.createParallelGroup(
-                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                .addComponent(propertyStatusLabel)
-                                                                                                                                                .addComponent(propertyDateExpiryLabel)
-                                                                                                                                                .addComponent(propertyDatePostedLabel)
-                                                                                                                                                .addComponent(propertyNumBedroomsLabel)
-                                                                                                                                                .addComponent(propertyNumBathroomsLabel)
-                                                                                                                                                .addComponent(propertyFurnishedLabel)
-                                                                                                                                                .addComponent(propertyTypeLabel)
-                                                                                                                                                .addComponent(propertyQuadrantLabel)
-                                                                                                                                                .addComponent(propertyAddressLabel))))
-                                                                                                .addGap(0, 85, Short.MAX_VALUE))
-                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                                                layout.createSequentialGroup()
-                                                                                                                .addContainerGap()
-                                                                                                                .addComponent(backButton)
-                                                                                                                .addPreferredGap(
-                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                                Short.MAX_VALUE)
-                                                                                                                .addGroup(layout.createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                .addComponent(header3)
-                                                                                                                                .addComponent(updateButton)
-                                                                                                                                .addGroup(layout.createSequentialGroup()
-                                                                                                                                                .addGap(20, 20, 20)
-                                                                                                                                                .addComponent(statusList,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                                .addContainerGap()));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(header1)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jSeparator1,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                11,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(header2)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(addressLabel)
-                                                                                .addComponent(propertyAddressLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(quadrantLabel)
-                                                                                .addComponent(propertyQuadrantLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(typeLabel)
-                                                                                .addComponent(propertyTypeLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(furnishedLabel)
-                                                                                .addComponent(propertyFurnishedLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(numBathroomsLabel)
-                                                                                .addComponent(propertyNumBathroomsLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(numBedroomsLabel)
-                                                                                .addComponent(propertyNumBedroomsLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(datePostedLabel)
-                                                                                .addComponent(propertyDatePostedLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(dateExpiryLabel)
-                                                                                .addComponent(propertyDateExpiryLabel))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(statusLabel)
-                                                                                .addComponent(propertyStatusLabel))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                24, Short.MAX_VALUE)
-                                                                .addComponent(header3)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(statusList,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(45, 45, 45)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(updateButton)
-                                                                                .addComponent(backButton))
-                                                                .addContainerGap()));
-
-                // Packs all elements according to their set sizes and locations.
-                f.pack();
+                          }
+                  });
         }
 
 }
