@@ -207,7 +207,11 @@ public class SubscriptionForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i : table.getSelectedRows()) {
-                    selectUnsub((String)data[i][0], (int)data[i][1], (int)data[i][2], (boolean)data[i][3], (String)data[i][4]);
+                    boolean furnished = false;
+                    if (data[i][3].equals("Yes")) {
+                        furnished = true;
+                    }
+                    selectUnsub((String)data[i][0], (int)data[i][1], (int)data[i][2], furnished, (String)data[i][4]);
                 }
                 a.dispose();
                 displayMySubs();
