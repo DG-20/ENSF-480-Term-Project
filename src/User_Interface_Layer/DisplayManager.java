@@ -32,12 +32,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
     private InteractionForm mySummaryForm;
     private InteractionForm myChangePF;
     private InteractionForm myPropertyForm;
+    private InteractionForm myUserInfoForm;
 
-    /*
-     * getMySummaryForm is a getter for the member variable mySummaryForm.
-     * This function does not take in any parameters.
-     * It returns an object of InteractionForm.
-     */
+    // Getters and Setters.
     public InteractionForm getMySummaryForm() {
         return mySummaryForm;
     }
@@ -46,11 +43,6 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         this.mySummaryForm = mySummaryForm;
     }
 
-    /*
-     * getMyChangePF is a getter for the member variable myChangePF.
-     * This function does not take in any parameters.
-     * It returns an object of InteractionForm.
-     */
     public InteractionForm getMyChangePF() {
         return myChangePF;
     }
@@ -59,11 +51,6 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         this.myChangePF = myChangePF;
     }
 
-    /*
-     * getMyPropertyForm is a getter for the member variable mySummaryForm.
-     * This function does not take in any parameters.
-     * It returns an object of InteractionForm.
-     */
     public InteractionForm getMyPropertyForm() {
         return myPropertyForm;
     }
@@ -86,11 +73,12 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         JButton changePFButton = new JButton();
         JButton summaryButton = new JButton();
         JButton logoutButton = new JButton();
+        JButton userInfoButton = new JButton();
         JLabel titleText = new JLabel();
 
         // Setting the fonts and texts of the created elements.
         updateListingButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
-        updateListingButton.setText("Update Listing");
+        updateListingButton.setText("Update Listing/View Properties");
 
         changePFButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
         changePFButton.setText("Change Amount and Period of Fees");
@@ -106,6 +94,9 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         titleText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleText.setText("Please make a selection:");
 
+        userInfoButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
+        userInfoButton.setText("Show All User Information");
+
         // Creating a new layout (both horizontal and vertical) to position all elements
         // and size them as we intend.
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
@@ -114,6 +105,10 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(125, 125, 125)
+                                                .addComponent(titleText)
+                                                .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addGroup(layout
@@ -126,17 +121,16 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, 376,
                                                                 Short.MAX_VALUE)
                                                         .addComponent(summaryButton,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                376, Short.MAX_VALUE)
+                                                        .addComponent(userInfoButton,
                                                                 javax.swing.GroupLayout.DEFAULT_SIZE, 376,
-                                                                Short.MAX_VALUE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(113, 113, 113)
-                                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                                Short.MAX_VALUE))))
                                 .addContainerGap())
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(titleText)
+                                .addGap(110, 110, 110)
+                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +147,12 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                                 .addComponent(changePFButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(userInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap()));
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         // Packs all elements according to their set sizes and locations.
         pack();
@@ -165,7 +162,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         updateListingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                frame.dispose();
                 ((PropertyForm) myPropertyForm).browseProperties();
             }
         });
@@ -175,7 +172,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         changePFButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                frame.dispose();
                 ((ChangePeriodFeesForm) myChangePF).changePeriodFees();
             }
         });
@@ -222,8 +219,18 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                     }
                 }
                 // Hiding this GUI page and calling upon showSummary in mySummaryForm.
-                frame.setVisible(false);
+                frame.dispose();
                 ((SummaryForm) mySummaryForm).showSummary(periodChosen);
+            }
+        });
+
+        // If the user info button was clicked, dispose of this frame and call upon the
+        // UserInfoForm constructor which displays all the users' information.
+        userInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new UserInfoForm();
             }
         });
 

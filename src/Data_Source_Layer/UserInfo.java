@@ -15,7 +15,8 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * A database interface class concerned only with user information including name, login, password.
+ * A database interface class concerned only with user information including
+ * name, login, password.
  */
 public class UserInfo implements Database {
 
@@ -28,20 +29,21 @@ public class UserInfo implements Database {
      */
     public UserInfo() {
         initializeConnection();
-        this.users = Singleton.getInstance();
+        users = Singleton.getInstance();
         /* We've already added the users, return out */
-        if (this.users.isAdded()) return;
+        if (users.isAdded())
+            return;
         ArrayList<User> registeredUsers = getAllUsers();
         for (User u : registeredUsers) {
             this.users.addUser(u);
         }
+        users.setAdded(true);
     }
 
     /**
      * Singleton design pattern. Holds the list of all users in the database
      */
     private Singleton users;
-
 
     /**
      * @param email
@@ -67,7 +69,7 @@ public class UserInfo implements Database {
     /**
      * @param email The email of the Landlord.
      * @return String The name of the landlord associated with their login email.
-     * Finds the Landlord's name from their email.
+     *         Finds the Landlord's name from their email.
      */
     public String retrieveLandlordsName(String email) {
         String name = "";
@@ -80,9 +82,9 @@ public class UserInfo implements Database {
         return name;
     }
 
-
     /**
-     *  Queries the database to collect all user info.
+     * Queries the database to collect all user info.
+     * 
      * @return ArrayList<User>
      */
     public ArrayList<User> getAllUsers() {
