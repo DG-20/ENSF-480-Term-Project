@@ -38,6 +38,7 @@ public class SearchForm extends InteractionForm {
         JFrame f = new JFrame("Search Property Form");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setSize(500, 300);
+        f.setLocationRelativeTo(null);
         f.setLayout(new FlowLayout());
         JPanel rowEntry = new JPanel();
         rowEntry.setLayout(new GridLayout(0, 2));
@@ -49,24 +50,29 @@ public class SearchForm extends InteractionForm {
         labelTitle.setHorizontalTextPosition(JLabel.CENTER);
         f.add(labelTitle);
 
-        JLabel typesLabel = new JLabel("House Types");
-        rowEntry.add(typesLabel);
-        JTextField typesTextField = new JTextField();
-        rowEntry.add(typesTextField);
+        /* Type */
+        JLabel typeLabel = new JLabel("Type");
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        JComboBox<String> typeT = new JComboBox<String>(typeChoices);
+        rowEntry.add(typeLabel);
+        rowEntry.add(typeT);
 
-        /* number of bathrooms & number of bedrooms */
-        String[] numChoices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        /* numBathrooms & bedrooms spinner */
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
+        JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
+        numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
+        numBedroomsT.setEditor(new JSpinner.DefaultEditor(numBedroomsT));
         JLabel numBathroomsLabel = new JLabel("Number of bathrooms");
-        JComboBox numBathroomsT = new JComboBox(numChoices);
         rowEntry.add(numBathroomsLabel);
         rowEntry.add(numBathroomsT);
         JLabel numBedroomsLabel = new JLabel("Number of bedrooms");
-        JComboBox numBedroomsT = new JComboBox(numChoices);
         rowEntry.add(numBedroomsLabel);
         rowEntry.add(numBedroomsT);
 
         /* Furnished? */
-        String[] furn = { "Yes", "No" };
+        String[] furn = { "Y", "N" };
         JLabel furnishedLabel = new JLabel("Furnished");
         JComboBox furnishedT = new JComboBox(furn);
         rowEntry.add(furnishedLabel);
@@ -94,9 +100,9 @@ public class SearchForm extends InteractionForm {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedType = typesTextField.getText();
-                String selectedBath = numBathroomsT.getSelectedItem().toString();
-                String selectedBed = numBedroomsT.getSelectedItem().toString();
+                String selectedType = typeT.getSelectedItem().toString();
+                int selectedBath = (Integer) numBathroomsT.getValue();
+                int selectedBed = (Integer) numBedroomsT.getValue();
                 String selectedFurn = furnishedT.getSelectedItem().toString();
                 String selectedQuad = quadrantList.getSelectedItem().toString();
                 boolean furn = false;
@@ -104,8 +110,8 @@ public class SearchForm extends InteractionForm {
                     furn = true;
 
                 ArrayList<Property> p = new ArrayList<>();
-                p = ((SearchController) myControllers.get(0)).forwardSearch(selectedType, Integer.parseInt(selectedBed),
-                        Integer.parseInt(selectedBath), furn, selectedQuad);
+                p = ((SearchController) myControllers.get(0)).forwardSearch(selectedType, selectedBed,
+                        selectedBath, furn, selectedQuad);
                 f.dispose();
                 new ViewPropertyForm(p);
             }

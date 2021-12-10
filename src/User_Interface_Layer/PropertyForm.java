@@ -69,18 +69,22 @@ public class PropertyForm extends InteractionForm {
 
         /* Type */
         JLabel typeLabel = new JLabel("Type");
-        JTextField typeT = new JTextField(12);
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        JComboBox<String> typeT = new JComboBox<String>(typeChoices);
         rowEntry.add(typeLabel);
         rowEntry.add(typeT);
 
-        /* number of bathrooms & number of bedrooms */
-        String[] numChoices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        /* numBathrooms & bedrooms spinner */
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
+        JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
+        numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
+        numBedroomsT.setEditor(new JSpinner.DefaultEditor(numBedroomsT));
         JLabel numBathroomsLabel = new JLabel("Number of bathrooms");
-        JComboBox numBathroomsT = new JComboBox(numChoices);
         rowEntry.add(numBathroomsLabel);
         rowEntry.add(numBathroomsT);
         JLabel numBedroomsLabel = new JLabel("Number of bedrooms");
-        JComboBox numBedroomsT = new JComboBox(numChoices);
         rowEntry.add(numBedroomsLabel);
         rowEntry.add(numBedroomsT);
 
@@ -151,7 +155,7 @@ public class PropertyForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String address = addressFieldT.getText();
-                String type = typeT.getText();
+                String type = typeT.getSelectedItem().toString();
                 String cardNumber = ccNumber.getText();
                 String cardHolderName = cardHolderNameT.getText();
                 String furnished = furnishedT.getSelectedItem().toString();
@@ -162,8 +166,8 @@ public class PropertyForm extends InteractionForm {
                 String CVV = cvvT.getText();
                 String months = monthsT.getSelectedItem().toString();
                 String year = yearsT.getSelectedItem().toString();
-                String numBedrooms = numBedroomsT.getSelectedItem().toString();
-                String numBathrooms = numBathroomsT.getSelectedItem().toString();
+                int numBedrooms = (Integer) numBedroomsT.getValue();
+                int numBathrooms = (Integer) numBathroomsT.getValue();
 
                 /* Invalid Input - Error Checking */
                 if ((address.length() == 0 || type.length() == 0 || cardNumber.length() == 0
@@ -181,8 +185,8 @@ public class PropertyForm extends InteractionForm {
                 /* Valid Details */
                 JOptionPane.showMessageDialog(f, "Your property has been registered.", "Success!", 1);
                 /* Send the property details to Controller */
-                ((RegistrationController) myControllers.get(1)).forwardProperty(type, Integer.parseInt(numBedrooms),
-                        Integer.parseInt(numBathrooms), furn, quadrant, GUIHomePage.getEmail(), address);
+                ((RegistrationController) myControllers.get(1)).forwardProperty(type, numBedrooms,
+                        numBathrooms, furn, quadrant, GUIHomePage.getEmail(), address);
                 f.dispose();
                 GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
                 x.performStrategy();
@@ -211,7 +215,18 @@ public class PropertyForm extends InteractionForm {
     public void browseProperties() {
         ArrayList<Property> p = new ArrayList<>();
         p = ((UpdateController) myControllers.get(2)).forwardRequest(GUIHomePage.getEmail());
+
+        /* Landlord has zero registered properties */
+        /*  redirect them to home page */
+        if (p.size() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "You have zero registered properties!",
+                    "NO PROPERTIES!", JOptionPane.ERROR_MESSAGE);
+            new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+            return;
+        }
         displayMyProperties(p);
+
     }
 
     /* Displays the Landlord's Properties. */

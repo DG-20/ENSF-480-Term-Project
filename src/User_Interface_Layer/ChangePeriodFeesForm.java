@@ -85,10 +85,10 @@ public class ChangePeriodFeesForm extends InteractionForm {
                 periodInput.setFont(new java.awt.Font("Times New Roman", 0, 10));
 
                 amountLabel.setFont(new java.awt.Font("Times New Roman", 1, 12));
-                amountLabel.setText("Amount (int):");
+                amountLabel.setText("Amount:");
 
                 periodLabel.setFont(new java.awt.Font("Times New Roman", 1, 12));
-                periodLabel.setText("Period (int):");
+                periodLabel.setText("Period:");
 
                 confirmButton.setFont(new java.awt.Font("Times New Roman", 1, 14));
                 confirmButton.setText("Confirm");
