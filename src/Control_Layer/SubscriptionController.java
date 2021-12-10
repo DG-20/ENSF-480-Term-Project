@@ -15,7 +15,7 @@ import Business_Layer.*;
 import java.util.*;
 
 /**
- * 
+ * Controller for managing subscription
  */
 public class SubscriptionController extends Controller {
 
@@ -33,6 +33,7 @@ public class SubscriptionController extends Controller {
     private boolean addSub;
 
     /**
+     * Call insertSubscription function of Subscription class
      * @param type
      * @param numBedrooms
      * @param numBathrooms
@@ -51,6 +52,7 @@ public class SubscriptionController extends Controller {
     }
 
     /**
+     * Call retrieveSubscription function of Subscription class
      * @param email
      * @return
      */
@@ -62,6 +64,7 @@ public class SubscriptionController extends Controller {
     }
 
     /**
+     * Call deleteSubscription function of Subscription class
      * @param type
      * @param numBedrooms
      * @param numBathrooms
