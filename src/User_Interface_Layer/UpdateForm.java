@@ -29,9 +29,10 @@ public class UpdateForm extends InteractionForm {
         }
 
         /**
-         *  A helper function. A view form that allows one to change the status of a property.
+         * A helper function. A view form that allows one to change the status of a
+         * property.
          */
-          private void  changeStatus() {
+        private void changeStatus() {
                 // Creating the JFrame and setting properties.
                 f = new JFrame();
                 f.setVisible(true);
@@ -346,35 +347,39 @@ public class UpdateForm extends InteractionForm {
                                   } else {
 
                                         /*
-                                        If you are trying to update a state from anything other than Active-->Rented, prompt an error message.
+                                         * If you are trying to update a state from anything other than Active-->Rented,
+                                         * prompt an error message.
                                          */
-                                          if (!chosenProperty.getStatus().equals("Active") && newStatus.equals("Rented"))
-                                          {
-                                                  JOptionPane.showMessageDialog(f, "You cannot update the property to rented unless it is active.",
-                                                          "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
-                                          } else {
-                                                  chosenProperty.setStatus(newStatus);
-                                                  /* Send the new property to the controller for it to be updated. */
-                                                  ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
-                                                  JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
-                                                          "Update successful",
-                                                          1);
-                                                  f.dispose();
-                                                  new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
-                                          }
-                                  }
-                          }
-                  });
+                                        if (!chosenProperty.getStatus().equals("Active")
+                                                        && newStatus.equals("Rented")) {
+                                                JOptionPane.showMessageDialog(f,
+                                                                "You cannot update the property to rented unless it is active.",
+                                                                "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
+                                        } else {
+                                                chosenProperty.setStatus(newStatus);
+                                                /* Send the new property to the controller for it to be updated. */
+                                                ((UpdateController) (myControllers.get(0)))
+                                                                .forwardPropertyStatus(chosenProperty);
+                                                JOptionPane.showMessageDialog(null,
+                                                                "Your property has successfully been updated!",
+                                                                "Update successful",
+                                                                1);
+                                                f.dispose();
+                                                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                        }
+                                }
+                        }
+                });
 
-                  backButton.setText("Go Back");
-                  // If the back button is clicked, take them to the property selection page.
-                  backButton.addActionListener(new java.awt.event.ActionListener() {
-                          public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                  f.dispose();
-                                  new PropertyForm().browseProperties();
+                backButton.setText("Go Back");
+                // If the back button is clicked, take them to the property selection page.
+                backButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                f.dispose();
+                                new PropertyForm().browseProperties();
 
-                          }
-                  });
+                        }
+                });
         }
 
 }

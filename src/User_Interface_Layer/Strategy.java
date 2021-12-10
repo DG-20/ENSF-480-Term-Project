@@ -8,9 +8,12 @@
  */
 package User_Interface_Layer;
 
+/*
+ * Strategy is the interface which contains the contractual method display. 
+ * This interface provides flexibility for future improvements upon types 
+ * of users and what they can do.
+ */
 public interface Strategy {
-
-
+    // The contractual display method.
     public void display(String email);
-
 }

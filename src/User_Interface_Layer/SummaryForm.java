@@ -34,8 +34,6 @@ public class SummaryForm extends InteractionForm {
                 myData.add(myUserInfo);
         }
 
-
-
         private ArrayList<Database> myData;
 
         // Getter for the period, calls upon retrievePeriod from myPaymentPeriod.
@@ -71,13 +69,13 @@ public class SummaryForm extends InteractionForm {
                 JScrollPane totalRentedListingsPane = new JScrollPane(totalRentedListingsDisplay,
                                 JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-
                 // Retrieving the total statistics from myInventory using various functions.
                 int totalRentedListings = ((PropertyInventory) myData.get(0)).getNumRentedListingsPeriod(periodChosen);
                 int totalPeriodListings = ((PropertyInventory) myData.get(0)).getNumListingsPeriod(periodChosen);
                 int totalActiveListings = ((PropertyInventory) myData.get(0)).getNumActiveListings();
                 // Getting an ArrayList of Properties using retrieveSummary.
-                ArrayList<Property> rentedProperties = ((PropertyInventory) myData.get(0)).retrieveSummary(periodChosen);
+                ArrayList<Property> rentedProperties = ((PropertyInventory) myData.get(0))
+                                .retrieveSummary(periodChosen);
                 int numPropertiesRented = rentedProperties.size();
 
                 // Setting the characteristics of the elements.

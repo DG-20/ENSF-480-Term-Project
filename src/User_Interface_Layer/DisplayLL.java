@@ -1,12 +1,11 @@
 /*
- /*
- * File Name: DisplayLL.java
- * Authors:
- *      Cheyenne Goh (UCID: 30040528)
- *      Divyansh Goyal (UCID: 30089488)
- *      Rui Guan(UCID: 30072848)
- *      Sajid Hafiz (UCID: 30061336)
- */
+* File Name: DisplayLL.java
+* Authors:
+*      Cheyenne Goh (UCID: 30040528)
+*      Divyansh Goyal (UCID: 30089488)
+*      Rui Guan(UCID: 30072848)
+*      Sajid Hafiz (UCID: 30061336)
+*/
 package User_Interface_Layer;
 
 import javax.swing.*;
@@ -36,8 +35,8 @@ public class DisplayLL extends javax.swing.JFrame implements Strategy {
                 this.myPropertyForm = (PropertyForm) myPropertyForm;
         }
 
-
-        /** Displays the homepage of the LandLord.
+        /**
+         * Displays the homepage of the LandLord.
          *
          * @param email of the Landlord.
          */
