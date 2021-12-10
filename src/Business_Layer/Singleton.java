@@ -18,10 +18,19 @@ import java.util.*;
 public class Singleton {
     private static Singleton instance;
     private ArrayList<User> registeredUsers;
+    boolean added; // Checks to see if registeredUsers was already added.
 
     // Getter and setter.
     public ArrayList<User> getRegisteredUsers() {
         return registeredUsers;
+    }
+
+    public boolean isAdded() {
+        return added;
+    }
+
+    public void setAdded(boolean added) {
+        this.added = added;
     }
 
     public void setRegisteredUsers(ArrayList<User> registeredUsers) {
@@ -89,6 +98,7 @@ public class Singleton {
      */
     private Singleton() {
         this.registeredUsers = new ArrayList<User>();
+        added = false;
     }
 
     /*

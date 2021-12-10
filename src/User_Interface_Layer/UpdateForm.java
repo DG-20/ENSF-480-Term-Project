@@ -141,20 +141,30 @@ public class UpdateForm extends InteractionForm {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 boolean success = true;
                                 String newStatus = statusList.getSelectedItem().toString();
-                                if (chosenProperty.getStatus().equals("Cancelled"))
+                                System.out.println("Current status is: " + chosenProperty.getStatus());
                                         success = false;
                                 if (!success) {
                                         JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
                                                 "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
                                 } else {
-                                        chosenProperty.setStatus(newStatus);
-                                        /* Send the new property to the controller for it to be updated. */
-                                        ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
-                                        JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
-                                                "Update successful",
-                                                1);
-                                        f.dispose();
-                                        new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+
+                                        /*
+                                        If you are trying to update a state from anything other than Active-->Rented, prompt an error message.
+                                         */
+                                        if (!chosenProperty.getStatus().equals("Active") && newStatus.equals("Rented"))
+                                        {
+                                                JOptionPane.showMessageDialog(f, "You cannot update the property to rented unless it is active.",
+                                                        "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
+                                        } else {
+                                                chosenProperty.setStatus(newStatus);
+                                                /* Send the new property to the controller for it to be updated. */
+                                                ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
+                                                JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
+                                                        "Update successful",
+                                                        1);
+                                                f.dispose();
+                                                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                        }
                                 }
                         }
                 });

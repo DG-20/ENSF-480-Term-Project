@@ -39,25 +39,27 @@ numBedrooms     TINYINT,
 Type           varchar(25),
 PostedDate      timestamp,
 ExpDate         timestamp,
+RentedDate 		timestamp,
 primary key (ID),
 foreign key (LandlordEmail) references USER(Email) ON UPDATE CASCADE
 );
 
-INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate) VALUES
-('landlord@example.com', 'Active', 'NE', '402 Elmo Street NE', 'Y', 2, 4, 'Detached', '2021-11-24', '2021-12-30'),
-('landlord@example.com', 'Active', 'NW', '123 Baker Street NW', 'Y', 1, 3, 'Dormitory', '2021-11-24', '2022-12-30'),
-('landlord2@example.com', 'Active', 'SW', '123 Grover Street N', 'N', 1, 3, 'Apartment', '2021-11-29', '2021-12-29'),
-('landlord2@example.com', 'Active', 'SW', '500 Orange Drive N', 'N', '1', 3, 'Apartment', '2021-11-29', '2022-12-29'),
-('landlord@example.com', 'Suspended', 'SE', '421 University Drive SE', 'Y', '2', '1', 'Dormitory', '2021-10-30', '2021-11-30'),
-('landlord4@example.com', 'Active', 'SE', '421 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-10-30', '2021-11-30'),
-('landlord4@example.com', 'Rented', 'SE', '300 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-11-30', '2021-11-30'),
-('landlord4@example.com', 'Rented', 'NW', '405 Maple Drive SW', 'N', '4', '4', 'Apartment', '2021-09-30', '2021-11-30'),
-('landlord@example.com', 'Suspended', 'SW', '123 Garbage Street SW', 'Y', 2, 4, 'Dormitory', '2021-12-09', '2022-1-30'),
-('landlord@example.com', 'Rented', 'SE', '123 Pororidge Drive SE', 'Y', 3, 3, 'Apartment', '2021-12-09', '2022-1-30'),
-('landlord3@example.com', 'Rented', 'NE', '232 Whitehaven Crescent NE', 'N', 1, 1, 'Apartment', '2021-12-09', '2022-1-30' ),
-('landlord3@example.com', 'Cancelled', 'NW', '415 Elmo Street SW', 'N', 1, 1, 'Apartment', '2021-10-20', '2021-11-20'),
-('landlord3@example.com', 'Active', 'NE', '100 Crow Street NE', 'Y', 1, 1, 'Apartment', '2021-10-20', '2022-1-30'),
-('landlord4@example.com', 'Active', 'SE', '100 Northway SE', 'N', 2,2, 'Detached', '2021-12-09', '2022-1-30');
+INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate, RentedDate) VALUES
+('landlord@example.com', 'Active', 'NE', '402 Elmo Street NE', 'Y', 2, 4, 'Detached', '2021-11-24', '2021-12-30', NULL),
+('landlord@example.com', 'Active', 'NW', '123 Baker Street NW', 'Y', 1, 3, 'Dormitory', '2021-11-24', '2022-12-30', NULL),
+('landlord2@example.com', 'Active', 'SW', '123 Grover Street N', 'N', 1, 3, 'Apartment', '2021-11-29', '2021-12-29', NULL),
+('landlord2@example.com', 'Active', 'SW', '500 Orange Drive N', 'N', '1', 3, 'Apartment', '2021-11-29', '2022-12-29', NULL),
+('landlord@example.com', 'Suspended', 'SE', '421 University Drive SE', 'Y', '2', '1', 'Dormitory', '2021-10-30', '2021-11-30', NULL),
+('landlord4@example.com', 'Active', 'SE', '421 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-10-30', '2021-11-30', NULL),
+('landlord4@example.com', 'Cancelled', 'SE', '300 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-11-30', '2021-11-30', NULL ),
+('landlord4@example.com', 'Cancelled', 'NW', '405 Maple Drive SW', 'N', '4', '4', 'Apartment', '2021-09-30', '2021-11-30' , NULL),
+('landlord@example.com', 'Suspended', 'SW', '123 Garbage Street SW', 'Y', 2, 4, 'Dormitory', '2021-12-09', '2022-1-30', NULL),
+('landlord@example.com', 'Rented', 'SE', '123 Pororidge Drive SE', 'Y', 3, 3, 'Apartment', '2021-12-06', '2022-1-30', '2021-12-09'),
+('landlord3@example.com', 'Rented', 'NE', '232 Whitehaven Crescent NE', 'N', 1, 1, 'Apartment', '2021-12-06', '2022-1-30', '2021-12-09'),
+('landlord3@example.com', 'Cancelled', 'NW', '415 Elmo Street SW', 'N', 1, 1, 'Apartment', '2021-10-20', '2021-11-20', NULL),
+('landlord3@example.com', 'Active', 'NE', '100 Crow Street NE', 'Y', 1, 1, 'Apartment', '2021-10-20', '2022-1-30', NULL),
+('landlord3@example.com', 'Rented', 'NE', '100 Banana Street NE', 'Y', 1, 1, 'Apartment', '2021-10-20', '2022-1-30', '2021-12-09'),
+('landlord4@example.com', 'Active', 'SE', '100 Northway SE', 'N', 2,2, 'Detached', '2021-12-09', '2022-1-30', NULL);
 
 DROP TABLE IF EXISTS subscription;
 CREATE TABLE subscription (
