@@ -40,7 +40,7 @@ public class NotificationView extends InteractionForm {
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         /* Header */
-        JLabel header = new JLabel("Choose one of the following properties to update");
+        JLabel header = new JLabel("Choose one of the following properties to view");
         JPanel row1 = new JPanel(new FlowLayout());
         row1.add(header);
         a.add(row1);

@@ -127,7 +127,7 @@ public class SubscriptionForm extends InteractionForm {
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         /* Header */
-        JLabel header = new JLabel("Choose which properties to receive notifications for");
+        JLabel header = new JLabel("Choose what kinds of properties to receive notifications for");
         JPanel row1 = new JPanel(new FlowLayout());
         row1.add(header);
         a.add(row1);
