@@ -45,19 +45,24 @@ public class SubscriptionForm extends InteractionForm {
         labelTitle.setHorizontalTextPosition(JLabel.CENTER);
         f.add(labelTitle);
 
-        JLabel typesLabel = new JLabel("House Types");
-        rowEntry.add(typesLabel);
-        JTextField typesTextField = new JTextField();
-        rowEntry.add(typesTextField);
+        /* Type */
+        JLabel typeLabel = new JLabel("Type");
+        String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
+        JComboBox<String> typeT = new JComboBox<String>(typeChoices);
+        rowEntry.add(typeLabel);
+        rowEntry.add(typeT);
 
         /* number of bathrooms & number of bedrooms */
-        String[] numChoices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
+        SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
+        JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
+        JSpinner numBedroomsT = new JSpinner(numBedroomsVal);
+        numBathroomsT.setEditor(new JSpinner.DefaultEditor(numBathroomsT));
+        numBedroomsT.setEditor(new JSpinner.DefaultEditor(numBedroomsT));
         JLabel numBathroomsLabel = new JLabel("Number of bathrooms");
-        JComboBox<String> numBathroomsT = new JComboBox<String>(numChoices);
         rowEntry.add(numBathroomsLabel);
         rowEntry.add(numBathroomsT);
         JLabel numBedroomsLabel = new JLabel("Number of bedrooms");
-        JComboBox<String> numBedroomsT = new JComboBox<String>(numChoices);
         rowEntry.add(numBedroomsLabel);
         rowEntry.add(numBedroomsT);
 
@@ -90,16 +95,16 @@ public class SubscriptionForm extends InteractionForm {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedType = typesTextField.getText();
-                String selectedBath = numBathroomsT.getSelectedItem().toString();
-                String selectedBed = numBedroomsT.getSelectedItem().toString();
+                String selectedType = typeT.getSelectedItem().toString();
+                int selectedBath = (Integer) numBathroomsT.getValue();
+                int selectedBed = (Integer) numBedroomsT.getValue();
                 String selectedFurn = furnishedT.getSelectedItem().toString();
                 String selectedQuad = quadrantList.getSelectedItem().toString();
                 boolean furn = false;
                 if (selectedFurn.equals("Y")) {
                     furn = true;
                 }
-                controller.forwardSub(selectedType, Integer.parseInt(selectedBed), Integer.parseInt(selectedBath), furn, selectedQuad, email);
+                controller.forwardSub(selectedType, selectedBed, selectedBath, furn, selectedQuad, email);
                 f.dispose();
                 displayMySubs();
             }
