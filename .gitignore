@@ -7,3 +7,9 @@
 .idea/.gitignore
 .DS_Store
 .vscode/settings.json
+.idea/libraries/mysql_connector_java_8_0_23.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+ENSF-480-Term-Project.iml
+out
