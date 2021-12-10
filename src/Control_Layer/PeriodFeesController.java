@@ -10,15 +10,15 @@ package Control_Layer;
 
 import Data_Source_Layer.*;
 
-import java.util.*;
-
 /**
- * 
+ * PeriodFeesController is a class which inherits from Controller.
+ * This class communicates with PaymentPeriodRecord and is used
+ * when updating/retrieving the info of the payment period or amount.
  */
 public class PeriodFeesController extends Controller {
 
-    /**
-     * Default constructor
+    /*
+     * Default constructor for PeriodFeesController
      */
     public PeriodFeesController() {
         Database data = new PaymentPeriodRecord();

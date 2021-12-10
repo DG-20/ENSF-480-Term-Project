@@ -23,11 +23,11 @@ public class StartUp {
     private LoginForm login;
 
     /*
-    * This function creates the LoginForm object and calls upon startLogin which 
-    * presents the login GUI and takes user input.
-    * It takes in no parameters.
-    * And returns void.
-    */
+     * This function creates the LoginForm object and calls upon startLogin which
+     * presents the login GUI and takes user input.
+     * It takes in no parameters.
+     * And returns void.
+     */
     public boolean loginPage() {
         login = new LoginForm(userType);
         login.startLogin();
@@ -35,12 +35,12 @@ public class StartUp {
     }
 
     /*
-    * This function presents the welcome screen where the user chooses which 
-    * type of user they are, calls loginPage(), and for unregistered renters, 
-    * calls upon the appropriate function in the DisplayUR class.
-    * It takes in no parameters.
-    * And returns void.
-    */
+     * This function presents the welcome screen where the user chooses which
+     * type of user they are, calls loginPage(), and for unregistered renters,
+     * calls upon the appropriate function in the DisplayUR class.
+     * It takes in no parameters.
+     * And returns void.
+     */
     public void welcome() {
         // Creating a new JFrame and setting its specs.
         JFrame frame = new JFrame("WELCOME SCREEN");
@@ -164,12 +164,12 @@ public class StartUp {
     }
 
     /*
-    * This main function creates an object of type StartUp and calls upon the
-    * welcome function.
-    * It takes in an array of command line arguments of type String as 
-    * parameters.
-    * And returns void.
-    */
+     * This main function creates an object of type StartUp and calls upon the
+     * welcome function.
+     * It takes in an array of command line arguments of type String as
+     * parameters.
+     * And returns void.
+     */
     public static void main(String args[]) {
         StartUp startUp = new StartUp();
         startUp.welcome();
