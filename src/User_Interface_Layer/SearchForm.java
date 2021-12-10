@@ -49,11 +49,10 @@ public class SearchForm extends InteractionForm {
         labelTitle.setHorizontalTextPosition(JLabel.CENTER);
         f.add(labelTitle);
 
-        String[] types = { "Apartment", "Attached House", "Detached House", "Townhouse" };
         JLabel typesLabel = new JLabel("House Types");
         rowEntry.add(typesLabel);
-        JComboBox typesList = new JComboBox(types);
-        rowEntry.add(typesList);
+        JTextField typesTextField = new JTextField();
+        rowEntry.add(typesTextField);
 
         /* number of bathrooms & number of bedrooms */
         String[] numChoices = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -95,7 +94,7 @@ public class SearchForm extends InteractionForm {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedType = typesList.getSelectedItem().toString();
+                String selectedType = typesTextField.getText();
                 String selectedBath = numBathroomsT.getSelectedItem().toString();
                 String selectedBed = numBedroomsT.getSelectedItem().toString();
                 String selectedFurn = furnishedT.getSelectedItem().toString();
