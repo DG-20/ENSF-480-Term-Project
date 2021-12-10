@@ -14,7 +14,7 @@ import Business_Layer.Property;
 import java.util.*;
 
 /**
- * 
+ * Class for update the property inventory
  */
 public class UpdateController extends Controller {
 
@@ -27,6 +27,7 @@ public class UpdateController extends Controller {
     }
 
     /**
+     * Call getMatching function of PropertyInventory class
      * @param email
      * @return
      */
@@ -38,6 +39,7 @@ public class UpdateController extends Controller {
     }
 
     /**
+     * Call updateProperty function of PropertyInventory class
      * @param Property p
      * @return
      */
