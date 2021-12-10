@@ -43,8 +43,7 @@ public class ViewPropertyForm extends InteractionForm {
                 // homepage.
                 if (matchedProperties.size() == 0) {
                         JOptionPane.showMessageDialog(null, "No properties matching your search!");
-                        GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
-                        x.performStrategy();
+                        pageBack.performStrategy();
                         return;
                 }
 

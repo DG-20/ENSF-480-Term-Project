@@ -21,6 +21,7 @@ public abstract class InteractionForm {
 
     // Member attribute
     protected ArrayList<Controller> myControllers;
+    protected GUIHomePage pageBack = new GUIHomePage(GUIHomePage.getEmail());
 
     /*
      * This constructor allocates space for the myControllers member.

@@ -269,8 +269,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
                                 JOptionPane.showMessageDialog(frame, "The period and fees have been updated.",
                                                 "Success!", 1);
                                 frame.dispose();
-                                GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
-                                x.performStrategy();
+                                pageBack.performStrategy();
                         }
                 });
 

@@ -250,7 +250,7 @@ public class SummaryForm extends InteractionForm {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                 frame.dispose();
-                                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                pageBack.performStrategy();
                         }
                 });
         }

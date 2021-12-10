@@ -133,7 +133,7 @@ public class SearchForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                pageBack.performStrategy();
             }
         });
         f.add(backButton);

@@ -149,8 +149,7 @@ public class UserInfoForm extends InteractionForm {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                 frame.dispose();
-                                GUIHomePage x = new GUIHomePage(GUIHomePage.getEmail());
-                                x.performStrategy();
+                                pageBack.performStrategy();
                         }
                 });
         }

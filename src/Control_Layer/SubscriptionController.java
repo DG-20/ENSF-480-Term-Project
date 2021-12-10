@@ -23,14 +23,11 @@ public class SubscriptionController extends Controller {
      * myData.
      */
     public SubscriptionController(boolean addSub) {
-        this.addSub = addSub;
         Database data = new SubscriptionList();
         myData.add(data);
         Database data2 = new PropertyInventory();
         myData.add(data2);
     }
-
-    private boolean addSub;
 
     /*
      * Calls insertSubscription function in SubscriptionList.

@@ -194,7 +194,7 @@ public class SubscriptionForm extends InteractionForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 a.dispose();
-                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                pageBack.performStrategy();
             }
         });
 

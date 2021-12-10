@@ -408,7 +408,7 @@ public class UpdateForm extends InteractionForm {
                                                                 "Update successful",
                                                                 1);
                                                 f.dispose();
-                                                new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                                pageBack.performStrategy();
                                         }
                                 }
                         }
