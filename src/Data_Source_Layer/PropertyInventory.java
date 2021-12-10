@@ -246,7 +246,7 @@ public class PropertyInventory implements Database {
                 int houseID = set.getInt("House_ID");
                 String address = set.getString("Address");
                 String emailAddress = set.getString("LandlordEmail");
-                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "", "", emailAddress, "");
+                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd hh:mm:ss", emailAddress, "");
                 rented.add(p);
             }
             stmt.close();
