@@ -33,10 +33,16 @@ public class SearchForm extends InteractionForm {
 
     private SearchController controller;
 
+    /*
+     * Create a new search
+     */
     public void createSearchQuery() {
-        // TODO implement here
+        
+        //create a new frame
         JFrame f = new JFrame("Search Property Form");
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        //setup the frame
         f.setSize(500, 300);
         f.setLocationRelativeTo(null);
         f.setLayout(new FlowLayout());
@@ -50,14 +56,14 @@ public class SearchForm extends InteractionForm {
         labelTitle.setHorizontalTextPosition(JLabel.CENTER);
         f.add(labelTitle);
 
-        /* Type */
+        /* combo box of the house types */
         JLabel typeLabel = new JLabel("Type");
         String[] typeChoices = { "Apartment", "Detached", "Attached", "Townhouse", "Penthouse", "Dormitory"};
         JComboBox<String> typeT = new JComboBox<String>(typeChoices);
         rowEntry.add(typeLabel);
         rowEntry.add(typeT);
 
-        /* numBathrooms & bedrooms spinner */
+        /* combo box of the num of bathrooms & bedrooms */
         SpinnerModel numBathroomsVal = new SpinnerNumberModel(1, 0, 99, 1 );
         SpinnerModel numBedroomsVal = new SpinnerNumberModel(1, 1, 99, 1 );
         JSpinner numBathroomsT = new JSpinner(numBathroomsVal);
@@ -71,22 +77,24 @@ public class SearchForm extends InteractionForm {
         rowEntry.add(numBedroomsLabel);
         rowEntry.add(numBedroomsT);
 
-        /* Furnished? */
+        /* combo box of furnished or not */
         String[] furn = { "Y", "N" };
         JLabel furnishedLabel = new JLabel("Furnished");
         JComboBox furnishedT = new JComboBox(furn);
         rowEntry.add(furnishedLabel);
         rowEntry.add(furnishedT);
 
+        /* combo box of the quadrants */
         String[] quadrants = { "NE", "NW", "SW", "SE" };
         JLabel quadrantLabel = new JLabel("Quadrants");
         rowEntry.add(quadrantLabel);
         JComboBox quadrantList = new JComboBox(quadrants);
         rowEntry.add(quadrantList);
 
+        // add rowEntry into the frame
         f.add(rowEntry);
 
-        /* Submit */
+        /* Button of Submit */
         JButton submit = new JButton("SUBMIT");
         rowEntry.add(new JSeparator(SwingConstants.HORIZONTAL));
         rowEntry.add(new JSeparator(SwingConstants.HORIZONTAL));
