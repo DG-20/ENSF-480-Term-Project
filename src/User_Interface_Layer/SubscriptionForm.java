@@ -127,7 +127,7 @@ public class SubscriptionForm extends InteractionForm {
         a.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         /* Header */
-        JLabel header = new JLabel("Choose one of the following properties to update");
+        JLabel header = new JLabel("Choose which properties to receive notifications for");
         JPanel row1 = new JPanel(new FlowLayout());
         row1.add(header);
         a.add(row1);
@@ -146,7 +146,12 @@ public class SubscriptionForm extends InteractionForm {
             data[i][0] = subs.get(i).getType();
             data[i][1] = Integer.valueOf(subs.get(i).getNumBedrooms());
             data[i][2] = Integer.valueOf(subs.get(i).getNumBathrooms());
-            data[i][3] = Boolean.valueOf(subs.get(i).getFurnished());
+            if (subs.get(i).getFurnished()) {
+                data[i][3] = "Yes";
+            }
+            else {
+                data[i][3] = "No";
+            }
             data[i][4] = subs.get(i).getQuadrant();
         }
 

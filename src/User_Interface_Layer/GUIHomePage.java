@@ -45,6 +45,6 @@ public class GUIHomePage {
 
     // Default constructor.
     public GUIHomePage(String email) {
-        this.email = email;
+        GUIHomePage.email = email;
     }
 }
