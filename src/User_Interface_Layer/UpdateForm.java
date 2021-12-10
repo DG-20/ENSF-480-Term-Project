@@ -135,23 +135,37 @@ public class UpdateForm extends InteractionForm {
 
                 updateButton.setForeground(new java.awt.Color(0, 255, 0));
                 updateButton.setText("CONFIRM UPDATE");
-                // If the update button is clicked, getting the selected item (new Status) and
-                // calling updateButtonActionPerformed.
+                // If the update button is clicked, and the current status is not cancelled
+                // update the property.
                 updateButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 boolean success = true;
                                 String newStatus = statusList.getSelectedItem().toString();
                                 if (chosenProperty.getStatus().equals("Cancelled"))
                                         success = false;
-                                updateButtonActionPerformed(evt, success, newStatus);
+                                if (!success) {
+                                        JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
+                                                "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                        chosenProperty.setStatus(newStatus);
+                                        /* Send the new property to the controller for it to be updated. */
+                                        ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
+                                        JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
+                                                "Update successful",
+                                                1);
+                                        f.dispose();
+                                        new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
+                                }
                         }
                 });
 
                 backButton.setText("Go Back");
-                // If the back button is clicked, backButtonActionPerformed is called.
+                // If the back button is clicked, take them to the property selection page.
                 backButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                backButtonActionPerformed(evt);
+                                        f.dispose();
+                                        new PropertyForm().browseProperties();
+
                         }
                 });
 
@@ -329,27 +343,4 @@ public class UpdateForm extends InteractionForm {
                 f.pack();
         }
 
-        // If user clicks update, send the new updated property to controller and take
-        // user back to the home page.
-        private void updateButtonActionPerformed(java.awt.event.ActionEvent evt, boolean success, String newStatus) {
-                if (!success) {
-                        JOptionPane.showMessageDialog(f, "You cannot update a property that has been cancelled.",
-                                        "INVALID SELECTION", JOptionPane.ERROR_MESSAGE);
-                } else {
-                        chosenProperty.setStatus(newStatus);
-                        /* Send the new property to the controller for it to be updated. */
-                        ((UpdateController) (myControllers.get(0))).forwardPropertyStatus(chosenProperty);
-                        JOptionPane.showMessageDialog(null, "Your property has successfully been updated!",
-                                        "Update successful",
-                                        1);
-                        f.dispose();
-                        new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
-                }
-        }
-
-        // If the user presses back button, take them to the property selection page.
-        private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
-                f.dispose();
-                new PropertyForm().browseProperties();
-        }
 }

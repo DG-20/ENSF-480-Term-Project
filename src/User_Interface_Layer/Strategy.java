@@ -11,7 +11,7 @@ package User_Interface_Layer;
 import java.util.*;
 
 /**
- * 
+ * Strategy interface
  */
 public interface Strategy {
 

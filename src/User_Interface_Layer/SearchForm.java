@@ -21,7 +21,7 @@ import java.util.*;
 import javax.swing.*;
 
 /*
- * 
+ * A class concerned with searching for a property.
  */
 public class SearchForm extends InteractionForm {
     /*
@@ -90,7 +90,8 @@ public class SearchForm extends InteractionForm {
 
         f.setVisible(true);
 
-        /* Submit Listener */
+        /*On SUBMIT button press */
+        /* Forward the search parameters to the controller and then call the ViewPropertyForm display the matched properties */
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -111,13 +112,13 @@ public class SearchForm extends InteractionForm {
             }
         });
 
-        /* Back Button */
+        /* On Back Button press */
+        /* Go back to user's home page */
         JButton backButton = new JButton("Go Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                // new DisplayUR().display(null);
                 new GUIHomePage(GUIHomePage.getEmail()).performStrategy();
             }
         });

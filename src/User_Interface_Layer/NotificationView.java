@@ -18,6 +18,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
+/**
+ * A class concerned with the Notifications of a Registered Renter.
+ */
 public class NotificationView extends InteractionForm {
 
     public NotificationView(String email) {

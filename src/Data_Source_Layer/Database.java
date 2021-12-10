@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.util.*;
 
 /**
- * 
+ * An interface for database-related classes.
  */
 public interface Database {
 
