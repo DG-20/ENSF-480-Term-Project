@@ -53,8 +53,7 @@ INSERT INTO property (LandlordEmail, Status, Quadrant, Address, Furnished, numBa
 ('landlord4@example.com', 'Rented', 'SE', '300 Maple Drive SE', 'Y', '2', '1', 'Apartment', '2021-11-30', '2021-11-30'),
 ('landlord@example.com', 'Suspended', 'SW', '123 Garbage Street SW', 'Y', 2, 4, 'Dormitory', '2021-12-09', '2022-1-30'),
 ('landlord@example.com', 'Rented', 'SE', '123 Pororidge Drive SE', 'Y', 3, 3, 'Apartment', '2021-12-09', '2022-1-30'),
-('landlord3@example.com', 'Rented', 'NE', '232 Whitehaven Crescent NE', 1, 1, 'Apartment', '2021-12-09', '2022-1-30' ),
-('landlord2@example.com', 'Rented', 'SE', '456 Pineridge Street SE', 'N', 2, 1, 'Detached', '2021-12-09', '2022-1-30'),
+('landlord3@example.com', 'Rented', 'NE', '232 Whitehaven Crescent NE', 'N', 1, 1, 'Apartment', '2021-12-09', '2022-1-30' ),
 ('landlord3@example.com', 'Cancelled', 'NW', '415 Elmo Street SW', 'N', 1, 1, 'Apartment', '2021-10-20', '2021-11-20'),
 ('landlord4@example.com', 'Active', 'SE', '100 Northway SE', 'N', 2,2, 'House', '2021-12-09', '2022-1-30');
 
@@ -81,7 +80,7 @@ INSERT INTO subscription(RREmail, Quadrant, Furnished, numBathrooms, numBedrooms
 ('tom@example.com', 'NW', 'N', 2, 7, 'Detached'),
 ('tom@example.com', 'SE', 'Y', 3, 3, 'Apartment'),
 ('tom@example.com', 'NW', 'N', 1, 1, 'Apartment'),
-('rr2@example.com', 'SE', 'N', 2,  2, 'House');
+('rr2@example.com', 'SE', 'N', 2,  2, 'House'),
 ('john@example.com', 'SE', 'N', 2,  2, 'House');
 
 DROP TABLE IF EXISTS fee;
