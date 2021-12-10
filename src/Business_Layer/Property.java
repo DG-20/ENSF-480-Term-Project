@@ -8,10 +8,6 @@
  */
 package Business_Layer;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-
 /*
  * Property is an entity class which contains the information of the property itself.
  */

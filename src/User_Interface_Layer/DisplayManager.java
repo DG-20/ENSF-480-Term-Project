@@ -190,6 +190,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                 String input = JOptionPane.showInputDialog(
                         "Please choose the period (number of days) of the summary you would like to view:",
                         defaultPeriod);
+                if (input == null)
+                    return;
                 int periodChosen = defaultPeriod;
                 // Error checking to only take in a positive integer value, and re-prompting the
                 // user until a valid input is entered.
