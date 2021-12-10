@@ -6,14 +6,22 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ViewPropertyForm {
+public class ViewPropertyForm extends InteractionForm {
+
+    /**
+     * Constructor
+     * @param myProperties - A list of properties to view/display.
+     */
     public ViewPropertyForm(ArrayList<Property> myProperties) {
         matchedProperties = myProperties;
         displayProperties();
     }
 
-    ArrayList<Property> matchedProperties;
+    private ArrayList<Property> matchedProperties;
 
+    /**
+     * Displays a list of properties
+     */
     private void displayProperties() {
         if (matchedProperties.size() == 0) {
             JOptionPane.showMessageDialog(null, "No properties matching your search!");
@@ -122,6 +130,11 @@ public class ViewPropertyForm {
         });
     }
 
+
+    /**
+     * Displays a single chosen property
+     * @param chosenProperty
+     */
     public void displayProperty(Property chosenProperty) {
         JFrame frame = new JFrame("PROPERTY DISPLAY");
         frame.setSize(400, 580);
