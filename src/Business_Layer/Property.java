@@ -23,13 +23,14 @@ public class Property {
     private String email;
     private String expDate;
     private String postedDate;
+    private String rentedDate;
 
     /*
      * The Constrcutor of Property takes in all the values of the property and
      * initializes the member variables.
      */
     public Property(String status, int numBedrooms, int numBathrooms, boolean furnished, String quadrant, int ID,
-            String address, String posted_date, String exp_date, String email_address, String type) {
+                    String address, String posted_date, String exp_date, String email_address, String type, String rentedDate) {
         this.status = status;
         this.type = type;
         this.numBedrooms = numBedrooms;
@@ -41,6 +42,7 @@ public class Property {
         this.email = email_address;
         this.postedDate = posted_date.substring(0, 10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
         this.expDate = exp_date.substring(0, 10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
+        this.rentedDate = rentedDate.substring(0,10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
     }
 
     /*
@@ -49,9 +51,17 @@ public class Property {
     public Property() {
     }
 
+
     // Getters and Setters.
     public String getStatus() {
         return status;
+    }
+    public String getRentedDate() {
+        return rentedDate;
+    }
+
+    public void setRentedDate(String rentedDate) {
+        this.rentedDate = rentedDate;
     }
 
     public String getType() {

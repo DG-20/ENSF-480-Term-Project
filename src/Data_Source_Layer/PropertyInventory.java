@@ -11,16 +11,10 @@ package Data_Source_Layer;
 import Business_Layer.Property;
 import Business_Layer.Singleton;
 
-import javax.swing.text.DateFormatter;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.sql.Date.*;
-import java.util.Date;
 
 /*
 A database interface class concerned with property management.
@@ -111,7 +105,7 @@ public class PropertyInventory implements Database {
             String furn = "N";
             if (furnished)
                 furn = "Y";
-            String query = "INSERT INTO property (ID, LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate) VALUES (ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO property (ID, LandlordEmail, Status, Quadrant, Address, Furnished, numBathrooms, numBedrooms, Type, PostedDate, ExpDate, RentedDate) VALUES (ID, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = dbConnect.prepareStatement(query);
             stmt.setString(1, email);
             stmt.setString(2, "Active");
@@ -123,6 +117,7 @@ public class PropertyInventory implements Database {
             stmt.setString(8, type);
             stmt.setTimestamp(9, java.sql.Timestamp.valueOf(currentDate));
             stmt.setTimestamp(10, java.sql.Timestamp.valueOf(expDate));
+            stmt.setNull(11, Types.NULL);
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
@@ -184,7 +179,7 @@ public class PropertyInventory implements Database {
             String query = "SELECT * \n" +
                     "FROM\n" +
                     "(\n" +
-                    "SELECT property.ID, property.LandlordEmail, property.Status, property.Quadrant, property.Address, property.Furnished, property.numBathrooms, property.numBedrooms, property.Type, property.PostedDate, property.ExpDate\n"
+                    "SELECT property.ID, property.LandlordEmail, property.Status, property.Quadrant, property.Address, property.Furnished, property.numBathrooms, property.numBedrooms, property.Type, property.PostedDate, property.ExpDate, property.RentedDate\n"
                     +
                     "FROM\n" +
                     "(\n" +
@@ -208,7 +203,7 @@ public class PropertyInventory implements Database {
     }
 
     /**     Updates the property in the database to a new status.
-     *
+     *      If the property's new status is Rented, update the RentedDate as well.
      * @param p The property chosen to be updated.
      */
     public void updateProperty(Property p) {
@@ -218,6 +213,36 @@ public class PropertyInventory implements Database {
             String query = "UPDATE property SET STATUS = ? WHERE ID = ?";
             PreparedStatement stmt = dbConnect.prepareStatement(query);
             stmt.setString(1, newStatus);
+            stmt.setInt(2, ID);
+            stmt.executeUpdate();
+            stmt.close();
+
+            /* If the new status is rented, also update the RentedDate to today */
+            if (newStatus.equals("Rented"))
+            {
+                updateRentedDate(p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *      Update the property's Rented Date.
+     * @param p The property chosen to be updated.
+     */
+    private void updateRentedDate(Property p) {
+        int ID = p.getID();
+        try {
+            String query = "UPDATE property SET RentedDate = ? WHERE ID = ?";
+
+            /* Get current date */
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+            LocalDateTime localDate = LocalDateTime.now();
+            String currentDate = dateFormat.format(localDate);
+
+            PreparedStatement stmt = dbConnect.prepareStatement(query);
+            stmt.setString(1, currentDate);
             stmt.setInt(2, ID);
             stmt.executeUpdate();
             stmt.close();
@@ -238,15 +263,15 @@ public class PropertyInventory implements Database {
         try {
             String query = "SELECT LandlordEmail, Name, ID AS House_ID, Address\n" +
                     "FROM property INNER JOIN user ON property.LandlordEmail = user.Email\n" +
-                    "WHERE property.PostedDate >= DATE_SUB(SYSDATE(), " + " INTERVAL " + period +
-                    " DAY) AND Status = 'Rented';";
+                    "WHERE property.RentedDate >= DATE_SUB(SYSDATE(), " + " INTERVAL " + period +
+                    " DAY);";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
             while (set.next()) {
                 int houseID = set.getInt("House_ID");
                 String address = set.getString("Address");
                 String emailAddress = set.getString("LandlordEmail");
-                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd hh:mm:ss", emailAddress, "");
+                Property p = new Property("Rented", -1, -1, false, "AA", houseID, address, "yyyy-MM-dd hh:mm:ss", "yyyy-MM-dd hh:mm:ss", emailAddress, "", "yyyy-MM-dd hh:mm:ss");
                 rented.add(p);
             }
             stmt.close();
@@ -304,7 +329,7 @@ public class PropertyInventory implements Database {
 
     /**
      *
-     * @param  period The period of the report where it checks the dates betweeen [currentDate-period, currentDate]
+     * @param  period The period of the report where it checks the rentedDate betweeen [currentDate-period, currentDate]
      * @return Retrieves the total number of listings RENTED within a period.
      */
     public int getNumRentedListingsPeriod(int period) {
@@ -312,8 +337,8 @@ public class PropertyInventory implements Database {
         try {
             String query = "SELECT COUNT(*) AS Number_Of_Rented_Listings\n" +
                     "FROM property\n" +
-                    "WHERE PostedDate >= DATE_SUB(SYSDATE(), INTERVAL " + period
-                    + " DAY) AND property.Status = 'Rented'";
+                    "WHERE RentedDate >= DATE_SUB(SYSDATE(), INTERVAL " + period
+                    + " DAY)";
             Statement stmt = dbConnect.createStatement();
             ResultSet set = stmt.executeQuery(query);
             set.next();
@@ -404,8 +429,13 @@ public class PropertyInventory implements Database {
                 Timestamp exp = set.getTimestamp("ExpDate");
                 String emailLl = set.getString("LandLordEmail");
                 String expDate = exp.toString();
+                Timestamp rented = set.getTimestamp("RentedDate");
+                String rentedDate = "yyyy-MM-dd hh:mm:ss";
+                if (!set.wasNull()) {
+                    rentedDate = rented.toString();
+                }
                 Property p = new Property(status, numBedrooms, numBathrooms, furnished_bool, quadrant, ID, address,
-                        postedDate, expDate, emailLl, type);
+                        postedDate, expDate, emailLl, type, rentedDate);
                 result.add(p);
             }
         } catch (SQLException e) {

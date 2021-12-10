@@ -28,9 +28,11 @@ public class UserInfo implements Database {
      */
     public UserInfo() {
         initializeConnection();
-        users = Singleton.getInstance();
-        ArrayList<User> users = getAllUsers();
-        for (User u : users) {
+        this.users = Singleton.getInstance();
+        /* We've already added the users, return out */
+        if (this.users.isAdded()) return;
+        ArrayList<User> registeredUsers = getAllUsers();
+        for (User u : registeredUsers) {
             this.users.addUser(u);
         }
     }
