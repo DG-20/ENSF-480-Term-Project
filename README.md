@@ -1,6 +1,6 @@
-# Online Rental Property Management System
+# Rent'R'Us
 
-ORPMS is a comprehensive system designed to allow renters, landlords, and managers to rent, manage and register properties
+Rent'R'Us is a Online Rental Property Management System designed to allow renters, landlords, and managers to rent, manage and register properties
 
 ## Pre-Requisites
 
