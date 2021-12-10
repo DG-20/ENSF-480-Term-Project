@@ -28,7 +28,7 @@ public class SubscriptionForm extends InteractionForm {
         this.email = email;
     }
 
-    private SubscriptionController controller; // different from UML
+    private SubscriptionController controller;
     private String email;
 
     public void enterSubCriteria() {

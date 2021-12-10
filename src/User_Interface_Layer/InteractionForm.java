@@ -12,7 +12,7 @@ import Control_Layer.Controller;
 
 import java.util.*;
 
-/**
+/*
  * This class is abstract and is a container class for all Form classes in this
  * package. It contains an ArrayList of Controllers for easier usage by all
  * classes that inherit this abstract class.

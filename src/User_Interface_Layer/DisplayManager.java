@@ -31,7 +31,6 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
         myPropertyForm = new PropertyForm();
         myUserInfoForm = new UserInfoForm();
         myDetailedViewProperty = new DetailedViewProperty();
-
     }
 
     private InteractionForm mySummaryForm;

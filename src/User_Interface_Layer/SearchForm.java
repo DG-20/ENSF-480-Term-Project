@@ -31,8 +31,6 @@ public class SearchForm extends InteractionForm {
         myControllers.add(new SearchController());
     }
 
-    private SearchController controller;
-
     /*
      * Create a new search
      */
