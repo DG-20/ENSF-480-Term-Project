@@ -183,15 +183,13 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
-        /*
-         * If View detailed property info button is click then display all properties
-         * and their details.
-         */
+
+        /* If View detailed property info button is click then display all properties and their details */
         propertyInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ((DetailedViewProperty) myUserInfoForm).display();
+                ((DetailedViewProperty) myDetailedViewProperty).display();
             }
         });
 
