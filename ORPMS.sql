@@ -12,19 +12,19 @@ CREATE TABLE user (
 );
 
 INSERT INTO user (Email, Password, Name, Type) VALUES
-('john@example.com', 'pass', 'John Baker', 'RR'),
-('admin@example.com', 'pass', 'admin', 'Manager'),
-('landlord@example.com', 'pass', 'Kenny Kenith', 'Landlord'),
-('tom@example.com', 'pass', 'Tom Sawyer', 'RR'),
-('landlord2@example.com', 'pass', 'Bob Mawyer', 'Landlord'),
-('landlord3@example.com', 'pass', 'Matt Lawyer', 'Landlord'),
-('landlord4@example.com', 'pass', 'Rob Bowyer', 'Landlord'),
-('landlord5@example.com', 'pass', 'Jim Rawyer', 'Landlord'),
-('ll6@example.com', 'pass', 'Rick Mawyer', 'Landlord'),
-('rr1@example.com', 'pass', 'Gale Nawyer', 'RR'),
-('rr2@example.com', 'pass', 'Rob Fawyer', 'RR'),
-('rr3@example.com', 'pass', 'Mary Lamb', 'RR'),
-('rr4@example.com', 'pass', 'Sam Sammy', 'RR');
+('john@example.com', 'john123', 'John Baker', 'RR'),
+('admin@example.com', 'admin123', 'Admin Person', 'Manager'),
+('landlord@example.com', 'll1', 'Kenny Kenith', 'Landlord'),
+('tom@example.com', 'tom123', 'Tom Sawyer', 'RR'),
+('landlord2@example.com', 'll2', 'Bob Mawyer', 'Landlord'),
+('landlord3@example.com', 'll3', 'Matt Lawyer', 'Landlord'),
+('landlord4@example.com', 'll4', 'Rob Bowyer', 'Landlord'),
+('landlord5@example.com', 'll5', 'Jim Rawyer', 'Landlord'),
+('ll6@example.com', 'll6', 'Rick Mawyer', 'Landlord'),
+('rr1@example.com', 'rr1', 'Gale Nawyer', 'RR'),
+('rr2@example.com', 'rr2', 'Rob Fawyer', 'RR'),
+('rr3@example.com', 'rr3', 'Mary Lamb', 'RR'),
+('rr4@example.com', 'rr4', 'Sam Sammy', 'RR');
 
 DROP TABLE IF EXISTS property;
 CREATE TABLE property (
