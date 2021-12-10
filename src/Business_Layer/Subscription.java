@@ -8,10 +8,10 @@
  */
 package Business_Layer;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-
+/*
+ * Subscription is an entity class which holds the parameters
+ * used for criteria subscription by a Registered Renter.
+ */
 public class Subscription {
     private String type;
     private int numBedrooms;
@@ -19,13 +19,9 @@ public class Subscription {
     private boolean furnished;
     private String quadrant;
 
-    /**
-     * Constructor
-     * @param type
-     * @param numBedrooms
-     * @param numBathrooms
-     * @param furnished
-     * @param quadrant
+    /*
+     * Constructor of Subscription, takes in all the parameters in a subscription
+     * and sets the local member variables accordingly.
      */
     public Subscription(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
         this.type = type;
@@ -35,6 +31,7 @@ public class Subscription {
         this.quadrant = quadrant;
     }
 
+    // Getters and Setters.
     public String getType() {
         return type;
     }
@@ -74,5 +71,4 @@ public class Subscription {
     public void setQuadrant(String quadrant) {
         this.quadrant = quadrant;
     }
-
 }

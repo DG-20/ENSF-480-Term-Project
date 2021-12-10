@@ -10,10 +10,10 @@ package Control_Layer;
 
 import Data_Source_Layer.*;
 
-import java.util.*;
-
-/**
- * 
+/*
+ * LoginController is the Controller class for LoginForm.
+ * This class extends Controller.
+ * It's main responsibility 
  */
 public class LoginController extends Controller {
 

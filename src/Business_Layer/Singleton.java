@@ -10,10 +10,16 @@ package Business_Layer;
 
 import java.util.*;
 
+/*
+ * Singleton class is a class of which only one instance can be made.
+ * This class checks the registeredUsers member variable 
+ * to determine the type of the email entered.
+ */
 public class Singleton {
     private static Singleton instance;
     private ArrayList<User> registeredUsers;
 
+    // Getter and setter.
     public ArrayList<User> getRegisteredUsers() {
         return registeredUsers;
     }
@@ -22,17 +28,21 @@ public class Singleton {
         this.registeredUsers = registeredUsers;
     }
 
+    /*
+     * The major singleton method. If an instance already occurs, return that
+     * instance.
+     * If it doesn't, create a new instance and return that.
+     */
     public static Singleton getInstance() {
         if (instance == null)
             instance = new Singleton();
         return instance;
     }
 
-    /**
-     *
-     * @param email - The email in question
-     * @return True if the email is associated with an existing Manager account,
-     *         otherwise return false
+    /*
+     * This method checks the email in question and
+     * returns True if the email is associated with an existing Manager account,
+     * otherwise returns false.
      */
     public boolean isManager(String email) {
         boolean result = false;
@@ -44,11 +54,10 @@ public class Singleton {
         return result;
     }
 
-    /**
-     *
-     * @param email - The email in question
-     * @return True if the email is associated with an existing Registered Renter
-     *         account, otherwise return false
+    /*
+     * This method checks the email in question and
+     * returns True if the email is associated with an existing Registered Renter
+     * account, otherwise returns false.
      */
     public boolean isRR(String email) {
         boolean result = false;
@@ -60,11 +69,10 @@ public class Singleton {
         return result;
     }
 
-    /**
-     *
-     * @param email - The email in question
-     * @return True if the email is associated with an existing Landlord account,
-     *         otherwise return false
+    /*
+     * This method checks the email in question and
+     * returns True if the email is associated with an existing LandLord account,
+     * otherwise returns false.
      */
     public boolean isLL(String email) {
         boolean result = false;
@@ -77,15 +85,15 @@ public class Singleton {
     }
 
     /**
-     * Default constructor.
+     * Default private constructor which allocates space for registeredUsers.
      */
     private Singleton() {
         this.registeredUsers = new ArrayList<User>();
     }
 
-    /**
-     * Adds a registered user to the registeredUsers arraylist.
-     * @param u A specific user
+    /*
+     * This method adds a registered user to the registeredUsers arraylist.
+     * It takes in a User u.
      */
     public void addUser(User u) {
         this.registeredUsers.add(u);

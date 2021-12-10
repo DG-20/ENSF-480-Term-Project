@@ -43,8 +43,8 @@ public class Property {
         this.ID = ID;
         this.address = address;
         this.email = email_address;
-        this.postedDate = posted_date.substring(0,10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
-        this.expDate = exp_date.substring(0,10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
+        this.postedDate = posted_date.substring(0, 10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
+        this.expDate = exp_date.substring(0, 10); // Trim off the hh:mm:ss. Format is now yyyy-MM-dd
     }
 
     /*
@@ -138,7 +138,6 @@ public class Property {
         this.postedDate = posted_date;
     }
 
-    // Setter.
     public void setType(String type) {
         this.type = type;
     }

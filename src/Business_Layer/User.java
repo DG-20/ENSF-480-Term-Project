@@ -8,14 +8,17 @@
  */
 package Business_Layer;
 
-import java.util.*;
-
+/*
+ * The User class is a class which contains the email, 
+ * password, user type, and name of the User.
+ */
 public class User {
     private String email;
     private String password;
     private String type;
     private String name;
 
+    // Getters and Setters.
     public String getEmail() {
         return email;
     }
@@ -48,12 +51,9 @@ public class User {
         this.name = name;
     }
 
-    /**
-     * Constructor
-     * @param email
-     * @param password
-     * @param type
-     * @param name
+    /*
+     * Constructor for User which takes in the User's information and sets the
+     * member variables accordingly.
      */
     public User(String email, String password, String type, String name) {
         this.email = email;
@@ -61,5 +61,4 @@ public class User {
         this.type = type;
         this.name = name;
     }
-
 }
