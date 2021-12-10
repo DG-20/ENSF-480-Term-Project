@@ -13,8 +13,8 @@ CREATE TABLE user (
 
 INSERT INTO user (Email, Password, Name, Type) VALUES
 ('john@example.com', 'pass', 'John Baker', 'RR'),
-('admin@example.com', 'superpassword', 'admin', 'Manager'),
-('landlord@example.com', 'slumlord', 'Kenny Kenith', 'Landlord'),
+('admin@example.com', 'pass', 'admin', 'Manager'),
+('landlord@example.com', 'pass', 'Kenny Kenith', 'Landlord'),
 ('tom@example.com', 'pass', 'Tom Sawyer', 'RR'),
 ('landlord2@example.com', 'pass', 'Bob Mawyer', 'Landlord'),
 ('landlord3@example.com', 'pass', 'Matt Lawyer', 'Landlord'),
