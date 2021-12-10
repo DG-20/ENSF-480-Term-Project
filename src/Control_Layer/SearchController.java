@@ -14,7 +14,7 @@ import Business_Layer.Property;
 import java.util.*;
 
 /**
- * 
+ * Controller for browsing matching properties
  */
 public class SearchController extends Controller {
 
