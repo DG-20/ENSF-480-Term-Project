@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * This class is a detaild view of all properties.
+ * This class is a detailed view of all properties.
  */
 public class DetailedViewProperty extends InteractionForm {
     ArrayList<Property> allProperties;

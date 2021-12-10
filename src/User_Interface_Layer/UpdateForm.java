@@ -36,7 +36,6 @@ public class UpdateForm extends InteractionForm {
                 // Creating the JFrame and setting properties.
                 f = new JFrame();
                 f.setVisible(true);
-                f.setLocationRelativeTo(null);
 
                 // Creating all the elements which will be displayed on the JFrame.
                 javax.swing.JLabel addressLabel;
@@ -371,9 +370,10 @@ public class UpdateForm extends InteractionForm {
                                                                                 Short.MAX_VALUE)));
 
                 f.pack();
+                f.setLocationRelativeTo(null);
 
                 updateButton.setForeground(new java.awt.Color(0, 255, 0));
-                updateButton.setText("CONFIRM UPDATE");
+                updateButton.setText("CONFIRM");
                 // If the update button is clicked, and the current status is not cancelled
                 // update the property.
                 updateButton.addActionListener(new java.awt.event.ActionListener() {
