@@ -23,6 +23,8 @@ java -cp ".;./lib/mysql-connector-java-8.0.23.jar" User_Interface_Layer/StartUp
 ```
 
 ## UML diagrams
+![UML Diagram](https://github.com/DG-20/ENSF-480-Term-Project/blob/main/uml.png?raw=true)
+![Class DIagram](https://github.com/DG-20/ENSF-480-Term-Project/blob/main/Class_Diagram.jpg?raw=true)
 
 
 ## Contributors
