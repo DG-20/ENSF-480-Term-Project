@@ -225,7 +225,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                     boolean valid = false;
                     while (valid == false) {
                         input = JOptionPane
-                                .showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                                .showInputDialog("Please choose the period of the summary you would like to view:", defaultPeriod);
                         try {
                             periodChosen = Integer.parseInt(input);
                             valid = true;
@@ -237,7 +237,7 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                 boolean valid = true;
                 while (periodChosen <= 0 || valid == false) {
                     input = JOptionPane
-                            .showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                            .showInputDialog("Please choose the period of the summary you would like to view:", defaultPeriod);
                     if (input == null)
                         return;
                     try {

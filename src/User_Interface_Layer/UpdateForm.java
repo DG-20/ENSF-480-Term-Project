@@ -380,7 +380,6 @@ public class UpdateForm extends InteractionForm {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 boolean success = true;
                                 String newStatus = statusList.getSelectedItem().toString();
-                                System.out.println("Current status is: " + chosenProperty.getStatus());
                                 if (chosenProperty.getStatus().equals("Cancelled"))
                                         success = false;
                                 if (!success) {
