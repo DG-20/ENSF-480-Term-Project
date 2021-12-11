@@ -15,11 +15,19 @@ First create a user in MySQL with the following details:
 | localhost | ORPMS |	ensf480|
 
 
-Next, to compile and run the program on Windows run the following command:
+## To compile & Run on Windows
+
 ```bash
 cd ENSF-480-Term-Project/src
 javac -cp ".;./lib/mysql-connector-java-8.0.23.jar" User_Interface_Layer/StartUp.java
 java -cp ".;./lib/mysql-connector-java-8.0.23.jar" User_Interface_Layer/StartUp
+```
+
+## To compile & Run on Mac
+```bash
+cd ENSF-480-Term-Project/src
+javac -cp .:lib/mysql-connector-java-8.0.23.jar:. User_Interface_Layer/StartUp.java
+java  -cp .:lib/mysql-connector-java-8.0.23.jar:. User_Interface_Layer.StartUp
 ```
 
 ## UML diagrams
