@@ -8,6 +8,7 @@
  */
 package User_Interface_Layer;
 
+import Control_Layer.Controller;
 import Control_Layer.SubscriptionController;
 import Business_Layer.Subscription;
 
@@ -24,11 +25,11 @@ import java.util.*;
 public class SubscriptionForm extends InteractionForm {
 
     public SubscriptionForm(String email) {
-        controller = new SubscriptionController(true);
+        Controller c = new SubscriptionController();
+        myControllers.add(c);
         this.email = email;
     }
 
-    private SubscriptionController controller;
     private String email;
 
     public void enterSubCriteria() {
@@ -107,7 +108,7 @@ public class SubscriptionForm extends InteractionForm {
                 if (selectedFurn.equals("Y")) {
                     furn = true;
                 }
-                controller.forwardSub(selectedType, selectedBed, selectedBath, furn, selectedQuad, email);
+                ((SubscriptionController)myControllers.get(0)).forwardSub(selectedType, selectedBed, selectedBath, furn, selectedQuad, email);
                 f.dispose();
                 displayMySubs();
             }
@@ -127,7 +128,7 @@ public class SubscriptionForm extends InteractionForm {
     }
 
     public void displayMySubs() {
-        ArrayList<Subscription> subs = new ArrayList<Subscription>(controller.getSubs(email));
+        ArrayList<Subscription> subs = new ArrayList<Subscription>(((SubscriptionController)myControllers.get(0)).getSubs(email));
 
         JFrame a = new JFrame("Manage Subscriptions");
         a.setLocationRelativeTo(null);
@@ -233,6 +234,6 @@ public class SubscriptionForm extends InteractionForm {
      * fowardDeleteSub in the controller.
      */
     private void selectUnsub(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant) {
-        controller.forwardDeleteSub(type, numBedrooms, numBathrooms, furnished, quadrant, email);
+        ((SubscriptionController)myControllers.get(0)).forwardDeleteSub(type, numBedrooms, numBathrooms, furnished, quadrant, email);
     }
 }

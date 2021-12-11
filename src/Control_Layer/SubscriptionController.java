@@ -22,7 +22,7 @@ public class SubscriptionController extends Controller {
      * This constructor adds objects of SubscriptionList and PropertyInventory into
      * myData.
      */
-    public SubscriptionController(boolean addSub) {
+    public SubscriptionController() {
         Database data = new SubscriptionList();
         myData.add(data);
         Database data2 = new PropertyInventory();

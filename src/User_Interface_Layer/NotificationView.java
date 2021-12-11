@@ -9,6 +9,7 @@
 package User_Interface_Layer;
 
 // import Control_Layer.SearchController;
+import Control_Layer.Controller;
 import Control_Layer.SubscriptionController;
 import Business_Layer.Property;
 
@@ -23,16 +24,16 @@ public class NotificationView extends InteractionForm {
     public NotificationView(String email) {
         // controller = new SearchController();
         this.email = email;
-        subController = new SubscriptionController(true);
+        Controller c = new SubscriptionController();
+        myControllers.add(c);
     }
 
     // private SearchController controller;
     private String email;
-    private SubscriptionController subController;
 
     public void showSubbed() {
 
-        ArrayList<Property> p = subController.getSubbedProperties(email);
+        ArrayList<Property> p = ((SubscriptionController)(myControllers.get(0))).getSubbedProperties(email);
         if (p.isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "No Matches Found!",
