@@ -14,6 +14,8 @@ First create a user in MySQL with the following details:
 |--|--|--|
 | localhost | ORPMS |	ensf480|
 
+The rest of the login information can be found in ORPMS.sql
+
 
 ## To compile & Run on Windows
 
