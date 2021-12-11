@@ -24,6 +24,7 @@ INSERT INTO user (Email, Password, Name, Type) VALUES
 ('rr1@example.com', 'rr1', 'Gale Nawyer', 'RR'),
 ('rr2@example.com', 'rr2', 'Rob Fawyer', 'RR'),
 ('rr3@example.com', 'rr3', 'Mary Lamb', 'RR'),
+('rr5@example.com', 'rr5', 'John John', 'RR'),
 ('rr4@example.com', 'rr4', 'Sam Sammy', 'RR');
 
 DROP TABLE IF EXISTS property;
