@@ -23,20 +23,13 @@ import java.awt.event.ActionListener;
  * This class extends InteractionForm as it is a form for the Manager.
  */
 public class ChangePeriodFeesForm extends InteractionForm {
-        // Default constructor which initializes myController.
+
+        /*
+        Default ctor
+         */
         public ChangePeriodFeesForm() {
-                myController = new PeriodFeesController();
-        }
-
-        private Controller myController;
-
-        // Getter and Setter for myController.
-        public Controller getMyController() {
-                return myController;
-        }
-
-        public void setMyController(Controller myController) {
-                this.myController = myController;
+                Controller c = new PeriodFeesController();
+                myControllers.add(c);
         }
 
         public void changePeriodFees() {
@@ -61,8 +54,8 @@ public class ChangePeriodFeesForm extends InteractionForm {
                 // Obtaining the current payment amount and period from the controller.
                 // A type-case is required as the myController object is of type Controller
                 // (container class).
-                int currentPaymentVal = ((PeriodFeesController) myController).sendPayment();
-                int currentPeriodVal = ((PeriodFeesController) myController).sendPeriod();
+                int currentPaymentVal = ((PeriodFeesController) myControllers.get(0)).sendPayment();
+                int currentPeriodVal = ((PeriodFeesController) myControllers.get(0)).sendPeriod();
 
                 // Setting the Strings of the elements that display values.
                 String currentDisplayField = "Amount: " + String.valueOf(currentPaymentVal)
@@ -265,7 +258,7 @@ public class ChangePeriodFeesForm extends InteractionForm {
 
                                 // Calling forwardPeriodFees with the entered information to update the
                                 // database. Then, showing the homepage for the Manager again.
-                                ((PeriodFeesController) myController).forwardPeriodFees(newAmountInt, newPeriodInt);
+                                ((PeriodFeesController) myControllers.get(0)).forwardPeriodFees(newAmountInt, newPeriodInt);
                                 JOptionPane.showMessageDialog(frame, "The period and fees have been updated.",
                                                 "Success!", 1);
                                 frame.dispose();
