@@ -182,8 +182,10 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
             }
         });
 
-
-        /* If View detailed property info button is click then display all properties and their details */
+        /*
+         * If View detailed property info button is click then display all properties
+         * and their details
+         */
         propertyInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -236,6 +238,8 @@ public class DisplayManager extends javax.swing.JFrame implements Strategy {
                 while (periodChosen <= 0 || valid == false) {
                     input = JOptionPane
                             .showInputDialog("Please choose the period of the summary you would like to view:", 60);
+                    if (input == null)
+                        return;
                     try {
                         periodChosen = Integer.parseInt(input);
                         valid = true;
