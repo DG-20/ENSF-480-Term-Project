@@ -1,6 +1,6 @@
 # Rent'R'Us
 
-Rent'R'Us is a Online Rental Property Management System designed to allow renters, landlords, and managers to rent, manage and register properties
+Rent'R'Us is an Online Rental Property Management System designed to allow renters, landlords, and managers to rent, manage, and register properties
 
 ## Pre-Requisites
 
