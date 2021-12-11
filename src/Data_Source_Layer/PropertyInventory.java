@@ -22,14 +22,12 @@ A database interface class concerned with property management.
 public class PropertyInventory implements Database {
 
     private Connection dbConnect;
-    Database myPaymentPeriodRecord;
 
     /**
      * Default constructor which initializes the connection, and updates the
      * properties using the date.
      */
     public PropertyInventory() {
-        myPaymentPeriodRecord = new PaymentPeriodRecord();
         initializeConnection();
         updateAllProperties();
     }
@@ -111,6 +109,9 @@ public class PropertyInventory implements Database {
     public void registerProperty(String type, int numBedrooms, int numBathrooms, boolean furnished, String quadrant,
             String email, String address) {
         try {
+
+            Database myPaymentPeriodRecord = new PaymentPeriodRecord();
+
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
             LocalDateTime localDate = LocalDateTime.now();
             String currentDate = dateFormat.format(localDate);
